@@ -1,0 +1,13 @@
+﻿<div id="gallery-feed" class="post-feed" data-bind="with: model">
+    <!-- ko foreach: gallerys -->
+    <div class="mini-post" data-bind="click: $parent.goToGallery">
+        <div class="date" data-bind="text: $parent.formatDateDayMonth($data)"></div>
+        <div class="image">
+            <img data-bind="attr: { src: $parent.getImagePath($data), alt: title }" />
+        </div>
+        <div class="content">
+            <div class="title" data-bind="html: title"></div>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>

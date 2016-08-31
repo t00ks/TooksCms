@@ -1,0 +1,7 @@
+﻿You have been contacted by ##NAME## on ##DATE##
+
+They left the following comment:
+
+##COMMENT##
+
+http://www.dig-ec.co.uk

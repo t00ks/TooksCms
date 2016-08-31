@@ -1,0 +1,151 @@
+﻿<div class="style-container" id="editor" data-bind="with: model">
+    <div class="inner">
+        <div class="top">
+            <input type="text" class="form-control" data-bind="attr: { id: 'title-' + id }, value: title " />
+            <div class="buttons">
+                <button class="btn btn-default" data-bind="click: $parent.upload">
+                    <i class="fa fa-upload"></i>
+                    Upload
+                </button>
+                <button class="btn btn-default" data-bind="click: $parent.save">
+                    <i class="fa fa-save"></i>
+                    Save
+                </button>
+            </div>
+        </div>
+        <div class="editor-host-table" data-bind="foreach: content">
+            <div class="editor-host-div" data-bind="attr: { id: 'editor-part-' + $index() }">
+                <!-- ko if: type() == "editablediv" -->
+                <table class="editor-host-table" data-bind=" attr: { 'data-position' : $index() }">
+                    <tr>
+                        <td class="editor-colm-left">
+                            <!-- ko template: { name : 'image-editor-template', data : {  index : $index(), side: '1', oposite: '2', parent: $parent, image: $parent.getImage($index(), '1') } } --><!-- /ko -->
+                        </td>
+                        <td class="editor-colm-centre">
+                            <div class="editor-text-host" data-bind="style: $parent.getEditorStyle($index())">
+                                <div class="editor-text-controls">
+                                    <a data-type="editablediv" data-bind=" attr: { 'data-position' : $index() }" title="Show Options"><i class="fa fa-caret-down"></i></a>
+                                    <span><i class="fa fa-list"></i></span>
+                                </div>
+                                <div data-type="editablediv" data-bind="attr: { 'class' : cssClass() + ' editable' }, editableText: value"></div>
+                            </div>
+                        </td>
+                        <td class="editor-colm-right">
+                            <!-- ko template: { name : 'image-editor-template', data : {  index : $index(), side: '2', oposite: '1', parent: $parent, image: $parent.getImage($index(), '2') } } --><!-- /ko -->
+                        </td>
+                    </tr>
+                </table>
+                <!-- /ko -->
+                <!-- ko if: type() == "codesnippet" -->
+                <div class="editor-host-snippet">
+                    <div class="editor-text-host">
+                        <div class="editor-text-controls">
+                            <a data-type="codesnippet" data-bind=" attr: { 'data-position' : $index() }" title="Show Options"><i class="fa fa-caret-down"></i></a>
+                            <span><i class="fa fa-list"></i></span>
+                        </div>
+                        <div class="watermark" data-bind="html: $parent.getCodeTypeText(cssClass())"></div>
+                        <div data-type="codesnippet" data-bind="attr: { 'class' : cssClass() }, editableText : value"></div>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: type() == "singleimage" -->
+                <div class="editor-host-image">
+                    <div class="editor-text-controls">
+                        <a data-type="singleimage" data-bind=" attr: { 'data-position' : $index() }" title="Show Options"><i class="fa fa-caret-down"></i></a>
+                        <span><i class="fa fa-list"></i></span>
+                    </div>
+                    <div class="editor-pic-host single-image-droppable" data-bind="attr: { id: 'pic-'+$index()+'-1' , 'data-id': $index()+'-1', 'data-sibling': $index()+'-1'}">
+                        <!-- ko with: $parent.getImage($index(), '1') -->
+                        <div class="editor-image" data-bind="attr: { 'data-name' : value }">
+                            <img data-bind="attr: { src: thumbnail, alt: $parents[0].title, style: getImageStyle($data)}" />
+                            <a title="Move Image" class="i-control move"><i class="fa fa-arrows"></i></a>
+                            <a class="i-control cancel" title="Cancel Move Image"><i class="fa fa-ban" /></a>
+                        </div>
+                        <!-- /ko -->
+                        <i class="fa fa-sign-in"></i>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: type() == "embededvideo" -->
+                <div class="editor-host-video">
+                    <div class="editor-text-host">
+                        <div class="editor-text-controls">
+                            <a data-type="embededvideo" data-bind=" attr: { 'data-position' : $index() }" title="Show Options"><i class="fa fa-caret-down"></i></a>
+                            <span><i class="fa fa-list"></i></span>
+                        </div>
+                        <div class="watermark" data-bind="html:$parent.getVideoTypeText(cssClass())"></div>
+                        <div data-type="embededvideo" data-bind="attr: { 'class' : cssClass() }, editableText : value"></div>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="clearfix controls">
+            <button class="btn btn-default pull-left" data-bind="click: $parent.save">
+                <i class="fa fa-save"></i>
+                Save
+            </button>
+            <button class="btn btn-default pull-right" data-bind="click: addVideo">
+                + Video
+            </button>
+            <button class="btn btn-default pull-right" data-bind="click: addSingleImage">
+                + Image Block
+            </button>
+            <button class="btn btn-default pull-right" data-bind="click: addSnippet">
+                + Code Snippet
+            </button>
+            <button class="btn btn-default pull-right" data-bind="click: addContent">
+                + Text Block
+            </button>
+        </div>
+        <!-- ko if: type === 'review' -->
+        <!-- ko template: { name : 'ratings-template', foreach: ratings } --><!-- /ko -->
+        <div class="rating-host">
+            <div class="rating-item summary">
+                <div class="name">
+                    <i class="fa fa-star"></i>
+                    <div id="rating-total" class="total" data-bind="attr : { class : getRatingClass(summary().rating) }, text : summary().rating"></div>
+                </div>
+                <div class="text">
+                    <textarea data-bind="text: summary().text"></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+    <div id="html-editor" class="white-popup big mfp-hide">
+        <div class="inner" id="html-editor-inner">
+
+        </div>
+    </div>
+    <!-- ko compose: { model : 'viewmodels/fileupload', activationData: $data } --><!-- /ko -->
+</div>
+
+<script type="text/html" id="image-editor-template">
+    <div class="editor-pic-host" data-bind="attr: { id: ('pic-'+ index +'-' + side) , 'data-id': index+'-' + side, 'data-sibling': index +'-' + oposite, style: parent.getContainerStyle(index, side) }">
+        <!-- ko if: image !== null -->
+        <div class="editor-image" data-bind="attr: { 'data-name' : image.value }">
+            <img data-bind="attr: { src: image.thumbnail , alt: parent.title, style: image.getImageStyle(image) }" />
+            <a title="Make Image Larger" class="i-control grow" data-bind="attr : { style : image.isLarge(image) ? 'display:none;' : ''}"><i class="fa fa-search-plus"></i></a>
+            <a title="Make Image Smaller" class="i-control shrink" data-bind="attr : { style : image.isLarge(image) ? '' : 'display:none;'}"><i class="fa fa-search-minus"></i></a>
+            <a title="Move Image" class="i-control move"><i class="fa fa-arrows"></i></a>
+            <a class="i-control cancel" title="Cancel Move Image"><i class="fa fa-ban" /></a>
+        </div>
+        <!-- /ko -->
+        <i class="fa fa-sign-in"></i>
+    </div>
+</script>
+
+<script type="text/html" id="ratings-template">
+    <div class="rating-host">
+        <div class="rating-item">
+            <div class="name">
+                <span data-bind="html:name"></span>
+                <input type="text" class="rating-value" data-bind="value: rating" />
+            </div>
+            <div class="text">
+                <textarea data-bind="text: text"></textarea>
+            </div>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+  <menu-tab name="Content" link-type="none" roles="*">
+    <menu-item name="News/Blog" link-type="url" link="/article/list/news" roles="*" />
+    <menu-item name="Reviews" link-type="url" link="/article/list/review" roles="*" />
+    <menu-item name="Gallerys" link-type="url" link="/gallery/list" roles="*" class="last" />
+  </menu-tab>
+  <menu-tab name="Contact" link-type="url" link="/contact" roles="*" />
+  <menu-tab name="About" link-type="url" link="/about" roles="*" />
+  <!--<menu-tab name="Wedding" link-type="url" link="/wedding" roles="*" />-->
+  <menu-tab name="Admin" link-type="none" roles="Admin, Mod">
+    <menu-item name="Users" link-type="url" link="/admin/user" roles="Admin" />
+    <menu-item name="Articles" link-type="url" link="/admin/article" roles="Admin, Mod" />
+    <menu-item name="Comments" link-type="url" link="/admin/comment" roles="Admin, Mod" />
+    <menu-item name="Gallerys" link-type="url" link="/admin/gallery" roles="Admin, Mod" />
+    <menu-item name="Lookup" link-type="url" link="/admin/lookup" roles="Admin, Mod" />
+    <menu-item name="Contact" link-type="url" link="/admin/contact" roles="Admin, Mod" />
+    <menu-item name="Ratings" link-type="url" link="/admin/ratings" roles="Admin, Mod" />
+    <menu-item name="Routes" link-type="url" link="/admin/routes" roles="Admin, Mod" />
+    <menu-item name="Gadgets" link-type="url" link="/admin/gadgets" roles="Admin, Mod" />
+    <menu-item name="Statistics" link-type="url" link="/admin/statistics" roles="Admin, Mod" />
+    <menu-item name="Wedding" link-type="url" link="/admin/wedding" roles="Admin, Mod" class="last" />
+  </menu-tab>
+</menu>

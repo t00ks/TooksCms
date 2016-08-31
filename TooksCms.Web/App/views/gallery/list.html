@@ -1,0 +1,22 @@
+﻿<div id="library-host" class="library" data-bind="with:model">
+    <h3>Galleries</h3>
+    <!-- ko template : { name : 'preview-template', foreach : galleries }--><!-- /ko -->
+</div>
+
+<script type="text/html" id="preview-template">
+    <div class="library-preview">
+        <a data-bind="attr: { href : $parent.getGalleryUrl($data) }">
+            <img class="lazy" src="/Content/Images/grey.png" data-bind="attr : { 'data-original' : thumbnail }" alt="image" />
+        </a>
+        <a class="title-overlay"data-bind="attr: { href : $parent.getGalleryUrl($data) }">
+            <div class="title">
+                <span data-bind="text: title"></span>
+                <div style="float:right;" data-bind="html:imageCount"></div>
+            </div>
+            <div class="detail">
+                <div class="date" data-bind="html:$parent.formatDate(createdDate)"></div>
+                <div class="user" data-bind="html:usersName"></div>
+            </div>
+        </a>
+    </div>
+</script>

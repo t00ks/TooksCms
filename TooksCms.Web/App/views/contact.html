@@ -1,0 +1,31 @@
+﻿<div id="contact-host" data-bind="with: model">
+    <h3>
+        Contact
+    </h3>
+    <div class="article style-container">
+        <div id="contact-form" class="inner">
+            <form class="form">
+                <div class="form-group" id="contact-form-title">
+                    <label>Title</label>
+                    <input type="text" class="form-control" placeholder="Enter Title" data-bind="value: title">
+                </div>
+                <div class="form-group" id="contact-form-name">
+                    <label>Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Name" data-bind="value: name">
+                </div>
+                <div class="form-group" id="contact-form-email">
+                    <label>Email</label>
+                    <input type="text" class="form-control" placeholder="Enter Email" data-bind="value: email">
+                </div>
+                <div class="form-group" id="contact-form-comment">
+                    <label>Comment</label>
+                    <textarea class="form-control" rows="5" data-bind="value: comment"></textarea>
+                </div>
+                <div id="recaptchaHost"></div>
+                <button type="submit" class="btn btn-default btn-primary" data-bind="click: submit">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

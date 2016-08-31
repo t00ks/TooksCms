@@ -1,0 +1,46 @@
+﻿<div class="ratings-admin" data-bind="with:model">
+    <div class="admin-controls">
+
+        <select id="dd-articleType" class="select" data-bind="options: articleTypes, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select category --'"></select>
+        <select id="dd-category" class="select" data-bind="options: categories, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select article type --'"></select>
+        <input id="btn-new-ratinglink" type="button" class="tkf-input button add" value="Add" data-bind="click: newLink" />
+
+        <div class="right-controls">
+            <input id="tb-new-rating-text" type="text" class="tkf-input text" />
+            <input id="btn-new-rating" type="button" class="tkf-input button add" value="Add" data-bind="click: addRating" />
+        </div>
+
+    </div>
+    <div id="ratings" class="div-list-host small droppable">
+        <!-- ko template : { name : 'rating-template', foreach : ratings }--><!-- /ko -->
+    </div>
+    <div id="rating-links" class="div-list-host auto small-right">
+        <!-- ko foreach: ratingLinks -->
+        <div class="rating-link" data-bind="attr : { id : 'ratingLinks-' + uid }">
+            <div class="ratings droppable" data-bind="attr : { id : 'ratings-' + uid }">
+            <!-- ko template : { name : 'rating-template', foreach : ratings }--><!-- /ko -->
+            </div>
+            <div class="description">
+                <div class="name type">
+                    Article Type:&nbsp;
+                    <span data-bind="text: articleTypeName"></span>
+                </div>
+                <div class="name cat">
+                    Category:&nbsp;
+                    <span data-bind="text: categoryName"></span>
+                </div>
+                <input type="button" value="Save" data-bind="click: save" />
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+<script type="text/html" id="rating-template">
+    <div class="rating draggable" data-bind="attr : { 'data-id' : id, 'data-uid' : uid, 'data-name' : name }">
+        <div class="handle">
+            <i class="fa fa-arrows"></i>
+        </div>
+        <div class="name" data-bind="text:name"></div>
+    </div>
+</script>

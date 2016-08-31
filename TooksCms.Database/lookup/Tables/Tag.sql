@@ -1,0 +1,7 @@
+﻿CREATE TABLE [lookup].[Tag] (
+    [TagId]  INT              IDENTITY (1, 1) NOT NULL,
+    [TagUid] UNIQUEIDENTIFIER ROWGUIDCOL NOT NULL,
+    [Name]   NVARCHAR (256)   NOT NULL,
+    CONSTRAINT [PK_Tag] PRIMARY KEY CLUSTERED ([TagId] ASC)
+);
+

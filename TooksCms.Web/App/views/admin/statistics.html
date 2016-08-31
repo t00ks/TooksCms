@@ -1,0 +1,41 @@
+﻿<div id="admin-stats" data-bind="with: model">
+    <div id="graphs">
+        <div class="chart-host half left">
+            <div id="visit-graph" class="chart">
+                <div id="visit-graph_svg" style="height:100%"></div>
+            </div>
+        </div>
+
+        <div class="chart-host half right">
+            <div id="browser-graph" class="chart">
+                <div id="browser-graph_svg" style="height:100%"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <br />
+    <div id="page-visits" class="div-list-host">
+        <div class="table-host">
+            <div class="list-item row header border-top">
+                <div class="name bdr cell pad">Date</div>
+                <div class="bdr cell pad">IP Address</div>
+                <div class="bdr cell pad">Referer</div>
+                <div class="bdr cell pad">Url</div>
+                <div class="small-num bdr cell pad">Area</div>
+                <div class="small-num bdr cell pad">Item Id</div>
+                <div class="cell pad">UserAgent</div>
+            </div>
+            <!-- ko foreach: pageVisit-->
+            <div class="list-item row">
+                <div class="name bdr cell pad" data-bind="text: dateTime"></div>
+                <div class="bdr cell pad" data-bind="text: ipAddress"></div>
+                <div class="bdr cell pad" data-bind="text: referer"></div>
+                <div class="bdr cell pad" data-bind="text: url"></div>
+                <div class="small-num bdr cell pad" data-bind="text: areaType"></div>
+                <div class="small-num bdr cell pad" data-bind="text: itemId"></div>
+                <div class="cell pad" data-bind="text: userAgent"></div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

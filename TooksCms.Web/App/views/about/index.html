@@ -1,0 +1,12 @@
+﻿<div id="about">
+    <nav class="col-xs-2">
+        <ul>
+            <!-- ko foreach: router.navigationModel() -->
+            <li>
+                <h3><a data-bind="text: title, attr: { href: hash }"></a></h3>
+            </li>
+            <!-- /ko-->
+        </ul>
+    </nav>
+    <section id="about-section" class="col-xs-10" data-bind="router: { module : router.activeItem, cacheViews: false }"></section>
+</div>

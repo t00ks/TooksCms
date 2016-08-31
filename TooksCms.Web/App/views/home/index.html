@@ -1,0 +1,92 @@
+﻿<div  data-bind="with: model">
+    <h3>Latest Posts</h3>
+    <div id="page-content">
+        <!-- ko template: { name : 'bulletin-template', foreach: bulletins } --><!-- /ko -->
+    </div>
+    <a id="hiddenNextSelector" style="display:none;" href="/api/bulletin/2">Next</a>
+</div>
+
+<script type="text/html" id="bulletin-template">
+    <section id="bulletin-@bulletin.Id" class="bulletin style-container" data-bind="attr : { id : 'bulletin-' + id }">
+        <div class="image-container">
+            <div class="cat" data-bind="html: categoryName"></div>
+            <!-- ko if: bulletinType == 'news' || bulletinType == 'review' -->
+            <img data-bind="attr : { alt : title, src : $parent.getArticleImage($data) }" />
+            <!-- /ko -->
+            <!-- ko if: bulletinType == 'gallery' -->
+            <img data-bind="attr : { alt : title, src : images[0].imagePath }" />
+            <!-- /ko-->
+        </div>
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="head">
+                    <h2 class="title">
+                        <a data-bind="attr: { href : '/' + link }, text: title"></a>
+                    </h2>
+                    <div class="date" data-bind="html: $parent.formatDate($data.date)"></div>
+                    <div class="details">
+                        <div class="auther">Timothy Crittenden</div>
+                    </div>
+                </div>
+                <div class="inner">
+                    <!-- ko if: bulletinType == 'news' || bulletinType == 'review' -->
+                    <!-- ko if: contentType == 'editablediv'-->
+                    <span data-bind="html: content"></span>
+                    <!-- /ko-->
+                    <!-- ko if: contentType == 'codesnippet'-->
+                    <div class="syntax-highlight-host">
+                        <pre data-type="CodeSnippet" data-bind="attr : { 'class' : contentCss }, html: content"></pre>
+                    </div>
+                    <!-- /ko-->
+                    <!-- ko if: contentType == 'embededvideo'-->
+                    <div data-type="EmbededVideo" class="embeded-video-host video-host">
+                        <div data-bind="attr: $parent.getVideoAttributes($data)"></div>
+                    </div>
+                    <!-- /ko-->
+                    <!-- ko if: bulletinType == 'review' -->
+                    <div class="rating-item summary">
+                        <div class="name">
+                            <i class="fa fa-star"></i>
+                            <div data-bind="attr: $parent.getRatingAttributes($data), html: summary.rating"></div>
+                        </div>
+                        <i class="fa fa-quote-left quote"></i>
+                        <div class="text" data-bind="html: summary.text"></div>
+                        <i class="fa fa-quote-right quote"></i>
+                    </div>
+                    <!-- /ko-->
+                    <!-- /ko -->
+
+                    <!-- ko if: bulletinType == 'gallery' -->
+                    <div class="gallery">
+                    <!-- ko template: { name : 'bulletin-gallery-template', data: images[1] } --><!-- /ko -->
+                    <!-- ko template: { name : 'bulletin-gallery-template', data: images[2] } --><!-- /ko -->
+                    </div>
+                    <!-- /ko-->
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+        <footer>
+            <div class="tag-host">
+
+            </div>
+            <div class="share">
+                <i class="fa fa-share"></i>
+            </div>
+            <div class="comments-host">
+                <i class="fa fa-comments-o"></i>
+                <p class="comment-txt">
+                    <span data-bind="text: commentCount"></span> Comments
+                </p>
+            </div>
+        </footer>
+    </section>
+</script>
+
+<script type="text/html" id="bulletin-gallery-template">
+    <div class="gallery-image bytwo">
+        <a class="gallery-image-a" data-bind="attr : { href : imagePath }">
+            <img data-bind="attr : { src : thumbnail, alt: $parent.title }" />
+        </a>
+    </div>
+</script>

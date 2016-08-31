@@ -1,0 +1,72 @@
+﻿<div id="lookups" data-bind="with: model">
+    <div class="admin-controls">
+        <input type="button" id="btn-category" data-bind="click: toggle('cats')" value="Categories" />
+        <input type="button" id="btn-country" data-bind="click: toggle('cunts')" value="Countries" />
+    </div>
+    <div id="lookup-admin-content" class="div-list-host">
+        <div id="categories" style="" class="table-host">
+            <div class="list-item tall row header" id="Category-Add">
+                <div class="name bdr cell">Category Name</div>
+                <div class="desc cell">Description</div>
+                <div class="name bdr lbdr cell">Parent Category</div>
+                <div class="control cell">
+                    <a data-bind="click: addCategory">
+                        <i class="fa fa-plus-square"></i>
+                    </a>
+                    <a data-bind="click: saveCategory">
+                        <i class="fa fa-save"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- ko template: { name : 'catergory-template', foreach: category } --><!-- /ko -->
+        </div>
+        <div id="countries" style="display:none;" class="table-host">
+            <div class="list-item tall row header" id="Category-Add">
+                <div class="name bdr cell">Country Name</div>
+                <div class="desc cell">ISO3166 Code</div>
+                <div class="name lbdr cell">Flag</div>
+                <div class="control cell">
+                    <a data-bind="click: addCountry">
+                        <i class="fa fa-plus-square"></i>
+                    </a>
+                    <a data-bind="click: saveCountry">
+                        <i class="fa fa-save"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- ko template: { name : 'country-template', foreach: country } --><!-- /ko -->
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="catergory-template">
+    <!-- ko ifnot: isDeleted -->
+    <div data-bind="attr: { id: 'category-' + uid(), 'class': 'list-item row' + $parent.getClass($data) }">
+        <div class="name bdr cell"><input type="text" data-bind="value: categoryName, valueUpdate: 'afterkeydown'" /></div>
+        <div class="desc left cell"><input type="text" data-bind="value: categoryDescription, valueUpdate: 'afterkeydown'" /></div>
+        <div class="name bdr lbdr cell">
+            <select data-bind="value: parentCategoryId, options: $parent.parentCategories, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select parent --'"></select>
+        </div>
+        <div class="control cell">
+            <a data-bind="click: remove">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="country-template">
+    <div data-bind="attr: { id: 'country-' + uid(), 'class': 'list-item row' + $parent.getClass($data) }">
+        <div class="name bdr cell"><input type="text" data-bind="value: name, valueUpdate: 'afterkeydown'" /></div>
+        <div class="desc left cell"><input type="text" data-bind="value: isO3166, valueUpdate: 'afterkeydown'" /></div>
+        <div class="name bdr lbdr cell">
+            <select data-bind="value: imageName, options: $parent.flags, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select country flag --'"></select>
+        </div>
+        <div class="control cell">
+            <a data-bind="click: remove">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+</script>

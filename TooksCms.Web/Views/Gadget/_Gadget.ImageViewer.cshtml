@@ -1,0 +1,27 @@
+﻿<div id="image-viewer-host" class="image-widget" data-bind="with:editor">
+    <div class="image-drop" style="display:none;">
+        <i class="fa fa-sign-in" style="display:none;"></i>
+    </div>
+    <!-- ko if: mode() == 'view' -->
+        <!-- ko foreach: article().images -->
+            <!-- ko if: position == 'gal' -->
+            <div class="editor-image" data-bind="attr: { 'data-name': value }">
+                <a title="" class="view-image" data-bind="attr: { href : imagePath }">
+                    <img data-bind="attr: { src : thumbnail }" alt="image" />
+                </a>
+            </div>
+            <!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: mode() == 'edit' -->
+        <!-- ko foreach: articleKo().images -->
+            <!-- ko if: position() == 'gal' -->
+            <div class="editor-image" data-bind="attr: { 'data-name': value }">
+                <img data-bind="attr: { src : thumbnail }" alt="image" />
+                <a class="i-control move" title="Move Image" href="#"><i class="fa fa-arrows"></i></a>
+                <a class="i-control cancel" title="Move Image" href="#"><i class="fa fa-ban"></i></a>
+            </div>
+            <!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+</div>

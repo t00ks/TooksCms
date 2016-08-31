@@ -1,0 +1,34 @@
+﻿<div id="tag-edit-host" class="style-container" style="float:left;" data-bind="with: model">
+    <div class="input-control">
+        <button class="btn btn-default add"  data-bind="click: add" >
+            + Add
+        </button>
+        <div class="input-host">
+            <input type="text" class="form-control" data-bind="value: name" />
+        </div>
+    </div>
+    <div id="tags-edit">
+        <div id="included-tags" class="tags edit">
+            <div class="title">
+                Included
+            </div>
+            <!-- ko foreach: included -->
+            <div class="list-item tag remove" data-bind="click: $parent.remove">
+                <div class="tag-control">-</div>
+                <span data-bind="text:name"></span>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div id="common-tags" class="tags edit">
+            <div class="title">
+                Common
+            </div>
+            <!-- ko foreach: common -->
+            <div class="list-item tag add" data-bind="click: $parent.register">
+                <div class="tag-control">+</div>
+                <span data-bind="text:name"></span>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

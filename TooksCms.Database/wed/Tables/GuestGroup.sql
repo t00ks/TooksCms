@@ -1,0 +1,6 @@
+﻿CREATE TABLE [wed].[GuestGroup]
+(
+	[GuestGroupId] INT NOT NULL PRIMARY KEY IDENTITY,
+	[Name] NVARCHAR(50) NOT NULL,
+	[Message] NVARCHAR(MAX) NULL
+)

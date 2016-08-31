@@ -1,0 +1,42 @@
+﻿<div id="article-list" data-bind="with: model">
+    <h3>Search Results For :'<span data-bind="text: searchTerm"></span>'</h3>
+    <!-- ko template : { name : 'article-list-template', foreach : results }--><!-- /ko -->
+</div>
+
+<script type="text/html" id="article-list-template">
+    <section class="article-small style-container">
+        <div class="inner">
+            <header>
+                <div class="cat" data-bind="html: categoryName"></div>
+                <img data-bind="attr : { alt : title, src : $parent.getArticleImage($data) }" />
+            </header>
+            <div class="content-wrapper">
+                <div class="content">
+                    <div class="title">
+                        <h2>
+                            <a data-bind="attr : { href : $parent.getArticleUrl($data) }, html: title"></a>
+                        </h2>
+                    </div>
+                    <div class="details">
+                        <div class="date" data-bind="html: $parent.formatDate(date)"></div>
+                        <div class="auther">Timothy Crittenden</div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="tag-host">
+
+                </div>
+                <div class="share">
+                    <i class="fa fa-share"></i>
+                </div>
+                <div class="comments-host">
+                    <i class="fa fa-comments-o"></i>
+                    <p class="comment-txt">
+                        0 Comments
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </section>
+</script>

@@ -1,0 +1,41 @@
+﻿<div id="routes" data-bind="with: model">
+    <div class="admin-controls">
+        <select id="dd-articleType" class="select" data-bind="value: selectedArticleType, options: articleTypes, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select article Type --'"></select>
+        <select id="dd-article" class="select" data-bind="options: articles, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select article --'"></select>
+        <input id="tb-new-route-text" type="text" class="tkf-input text" />
+        <a data-bind="click: addArticle">
+            <i class="fa fa-plus-square"></i>
+        </a>
+    </div>
+    <div class="admin-controls">
+        <select id="dd-gallery" class="select" data-bind="options: galleries, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select gallery --'"></select>
+        <input id="tb-new-gallery-route-text" type="text" class="tkf-input text" />
+        <a data-bind="click: addGallery">
+            <i class="fa fa-plus-square"></i>
+        </a>
+    </div>
+    <div class="div-list-host">
+        <div id="static-routes" class="table-host">
+            <div class="list-item row header">
+                <div class="name bdr cell pad">Route</div>
+                <div class="name bdr cell pad">Action</div>
+                <div class="desc bdr cell pad">Description</div>
+                <div class="control cell">
+
+                </div>
+            </div>
+            <!-- ko foreach: routes -->
+            <div class="list-item row">
+                <div class="name bdr cell pad" data-bind="html: staticRoute"></div>
+                <div class="name bdr cell pad" data-bind="html: action"></div>
+                <div class="desc bdr cell pad" data-bind="html: description"></div>
+                <div class="control cell">
+                    <a data-bind="click: $parent.remove">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

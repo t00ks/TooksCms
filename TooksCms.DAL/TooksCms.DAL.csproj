@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53655B7A-5486-479F-926D-0CD221C3E763}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TooksCms.DAL</RootNamespace>
+    <AssemblyName>TooksCms.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AccountRepository.cs" />
+    <Compile Include="Account\Address.cs" />
+    <Compile Include="Account\Email.cs" />
+    <Compile Include="Account\Guest.cs" />
+    <Compile Include="Account\PhoneNumber.cs" />
+    <Compile Include="Account\User.cs" />
+    <Compile Include="Address.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AreaType.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Article.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleComment.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleContent.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleImage.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleInfo.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleType.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Article\Article.cs" />
+    <Compile Include="Article\ArticleComment.cs" />
+    <Compile Include="Article\ArticleImage.cs" />
+    <Compile Include="Article\ArticleInfo.cs" />
+    <Compile Include="Article\ArticleRepository.cs" />
+    <Compile Include="BrowserStat.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bulletin.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BulletinContent.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BulletinType.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bulletin\Bulletin.cs" />
+    <Compile Include="Bulletin\BulletinRepository.cs" />
+    <Compile Include="Category.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryInfo.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config\ConfigRepository.cs" />
+    <Compile Include="Config\Gadget.cs" />
+    <Compile Include="Config\GadgetInfo.cs" />
+    <Compile Include="Config\Rating.cs" />
+    <Compile Include="Config\RatingLink.cs" />
+    <Compile Include="Config\StaticRoute.cs" />
+    <Compile Include="ContactForm.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactInfo.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\ContactForm.cs" />
+    <Compile Include="Contact\ContactInfo.cs" />
+    <Compile Include="Contact\ContactRepository.cs" />
+    <Compile Include="Country.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Email.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventLog.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Event\EventLog.cs" />
+    <Compile Include="Event\EventRepository.cs" />
+    <Compile Include="FoodChoice.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gadget.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gadget2Role2AreaType.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GadgetInfo.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryImage.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryInfo.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\Gallery.cs" />
+    <Compile Include="Gallery\GalleryImage.cs" />
+    <Compile Include="Gallery\GalleryInfo.cs" />
+    <Compile Include="Gallery\GalleryRepository.cs" />
+    <Compile Include="Guest.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Guest1.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GuestGroup.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lookup\Category.cs" />
+    <Compile Include="Lookup\CategoryInfo.cs" />
+    <Compile Include="Lookup\Country.cs" />
+    <Compile Include="Lookup\LookupRepository.cs" />
+    <Compile Include="Lookup\RankedTag.cs" />
+    <Compile Include="Lookup\Tag.cs" />
+    <Compile Include="PageVisit.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneNumber.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rating.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rating2ArticleType2Category.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\Role.cs" />
+    <Compile Include="Security\SecurityRepository.cs" />
+    <Compile Include="Security\Site.cs" />
+    <Compile Include="Site.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Snapshot.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SnapshotLite.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Snapshot\Snapshot.cs" />
+    <Compile Include="Snapshot\SnapshotLite.cs" />
+    <Compile Include="Snapshot\SnapshotRepository.cs" />
+    <Compile Include="StaticRoute.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stats\BrowserStat.cs" />
+    <Compile Include="Stats\PageVisit.cs" />
+    <Compile Include="Stats\StatsRepository.cs" />
+    <Compile Include="Stats\UniqueVisit.cs" />
+    <Compile Include="Tag.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TooksCms.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TooksCms.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TooksCms.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TooksCms.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TooksCms.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="UniqueVisit.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>TooksCms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wedding\FoodChoice.cs" />
+    <Compile Include="Wedding\Hotel.cs" />
+    <Compile Include="Wedding\WeddingGuest.cs" />
+    <Compile Include="Wedding\WeddingRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="TooksCms.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TooksCms.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TooksCms.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TooksCms.edmx</DependentUpon>
+      <LastGenOutput>TooksCms.Context.cs</LastGenOutput>
+    </None>
+    <None Include="TooksCms.edmx.diagram">
+      <DependentUpon>TooksCms.edmx</DependentUpon>
+    </None>
+    <None Include="TooksCms.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TooksCms.edmx</DependentUpon>
+      <LastGenOutput>TooksCms.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TooksCms.Core\TooksCms.Core.csproj">
+      <Project>{38a47ae9-9140-4767-b4c4-a7160abdb7ff}</Project>
+      <Name>TooksCms.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,39 @@
+﻿<div id="admin-gadgets" data-bind="with: model">
+    <div class="admin-controls">
+        <select id="dd-gadgets" class="select" data-bind="options: gadgetList, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select gadget --'"></select>
+        <select id="dd-roles" class="select" data-bind="options: roles, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select role --'"></select>
+        <select id="dd-areaType" class="select" data-bind="options: articleTypes, optionsText : 'text', optionsValue: 'value', optionsCaption: '-- select article type --'"></select>
+        <a data-bind="click: add">
+            <i class="fa fa-plus-square"></i>
+        </a>
+    </div>
+
+    <div class="div-list-host">
+        <div id="gadgets" class="table-host">
+            <div class="list-item row header">
+                <div class="name bdr cell pad">Name</div>
+                <div class="name bdr cell pad">Role</div>
+                <div class="name bdr cell pad">Area</div>
+                <div class="number bdr cell pad">Column</div>
+                <div class="name cell bdr pad">View Name</div>
+                <div class="control cell">
+
+                </div>
+            </div>
+            <!-- ko foreach: gadgets -->
+            <div class="list-item row">
+                <div class="name bdr cell pad" data-bind="attr: { title: description }, html: name"></div>
+                <div class="name bdr cell pad" data-bind="html: roleName"></div>
+                <div class="name bdr cell pad" data-bind="html: areaType"></div>
+                <div class="number bdr cell pad" data-bind="html: defaultColumn"></div>
+                <div class="name cell bdr pad" data-bind="html: view"></div>
+                <div class="control cell">
+                    <a data-bind="click: $parent.remove">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

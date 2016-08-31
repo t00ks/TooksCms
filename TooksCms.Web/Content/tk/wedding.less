@@ -1,0 +1,523 @@
+﻿@import "variables";
+
+@font-face {
+    font-family: 'RomanD';
+    src: url('../../fonts/romand-webfont.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wedding-colour {
+    background-color: #f9f6ef;
+
+    #peek {
+        background-color: #f9f6ef;
+    }
+}
+
+#wedding-host {
+    font-family: 'RomanD', 'Times New Roman', Times, serif;
+
+    .top-image {
+        margin: 6% 6% 2%;
+        position: relative;
+    }
+
+    @media screen and (max-width:600px) {
+        .top-image {
+            display: none;
+        }
+    }
+
+    .leaf {
+        position: fixed;
+        z-index: 0;
+        width: 15px;
+        top: 0;
+        height: 200%;
+        background-size: contain;
+
+        @one-width: 27px;
+        @two-width: 20px;
+        @three-width: 30px;
+
+        &.one {
+            background-repeat: repeat-y;
+            width: @one-width;
+
+            &.left {
+                background-image: url('/Content/images/wedding/leaf-1-l.png');
+                left: 5px;
+            }
+
+            &.right {
+                background-image: url('/Content/images/wedding/leaf-1-r.png');
+                right: 5px;
+            }
+        }
+
+        &.two {
+            background-repeat: repeat-y;
+            width: @two-width;
+            background-position-y: 30px;
+
+            &.left {
+                background-image: url('/Content/images/wedding/leaf-2-l.png');
+                left: @one-width + 10px;
+            }
+
+            &.right {
+                background-image: url('/Content/images/wedding/leaf-2-r.png');
+                right: @one-width + 10px;
+            }
+        }
+
+        &.three {
+            background-repeat: repeat-y;
+            width: @three-width;
+            background-position-y: 68px;
+
+            &.left {
+                background-image: url('/Content/images/wedding/leaf-3-l.png');
+                left: @one-width + @two-width + 15px;
+            }
+
+            &.right {
+                background-image: url('/Content/images/wedding/leaf-3-r.png');
+                right: @one-width + @two-width + 15px;
+            }
+        }
+    }
+
+    .frame-image {
+        position: absolute;
+        width: 15%;
+
+        &.top {
+            top: -55px;
+        }
+
+        &.bottom {
+            bottom: -35px;
+        }
+
+        &.left {
+            left: -60px;
+        }
+
+        &.right {
+            right: -60px;
+        }
+    }
+
+    .title {
+        font-family: 'RomanD', 'Times New Roman', Times, serif;
+        margin-bottom: 2%;
+
+        .message, .dates {
+            font-family: 'RomanD', 'Times New Roman', Times, serif;
+        }
+
+        .message {
+            font-size: 0;
+
+            > div {
+                font-size: 4rem;
+                display: inline-block;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            .left {
+                width: 25%;
+            }
+
+            .right {
+                width: 25%;
+            }
+
+            .logo {
+                width: 50%;
+
+                > img {
+                    max-width: 400px;
+                    width: 100%;
+                }
+            }
+        }
+
+        .date {
+            text-align: center;
+            font-size: 4rem;
+        }
+    }
+
+    @media screen and (max-width:1000px) {
+        .title {
+            .message {
+                > div {
+                    font-size: 3rem;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:580px) {
+        .title {
+            .message {
+                > div {
+                    font-size: 3rem;
+                }
+
+                .left {
+                    width: 100%;
+                }
+
+                .right {
+                    width: 100%;
+                }
+
+                .logo {
+                    width: 100%;
+
+                    > img {
+                    }
+                }
+            }
+
+            .date {
+                font-size: 3rem;
+            }
+        }
+    }
+
+
+    #content-host {
+        position: relative;
+        .transition(0.5s);
+
+        &.show {
+            opacity: 1;
+        }
+
+        .links {
+            width: 100%;
+            line-height: 6rem;
+            font-size: 3rem;
+        }
+
+        @media screen and (max-width:1000px) {
+            .links {
+                width: 100%;
+                line-height: 5rem;
+                font-size: 2rem;
+            }
+        }
+
+
+        .rsvp-guest {
+            padding: 2rem 2rem 2rem 0;
+        }
+
+        section {
+            position: relative;
+            margin-bottom: 3rem;
+
+            > header {
+                h2 {
+                    border-bottom: 2px solid;
+                    display: block;
+                }
+
+                h1 {
+                    text-align: right;
+                }
+            }
+
+            .image {
+                float: left;
+                width: 60%;
+            }
+
+            .details {
+                margin-left: 65%;
+            }
+
+            .or {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .icon {
+                width: 30%;
+                float: left;
+                font-size: 15rem;
+                padding-left: 10%;
+                color: #a3d2e4;
+            }
+
+            .icon-detail {
+                margin-left: 30%;
+                padding-top: 6rem;
+            }
+
+            &.detail-heavy {
+
+                .image {
+                    float: left;
+                    width: 30%;
+                    margin-top: 40px;
+                }
+
+                .details {
+                    margin-left: 35%;
+                }
+            }
+
+            .rsvp-guest {
+                input[type="checkbox"] {
+                    box-shadow: none;
+                }
+            }
+
+            .map {
+                cursor: pointer;
+            }
+        }
+
+        #gifts {
+            .image {
+            }
+
+            .details {
+            }
+        }
+
+        #info {
+            .icon {
+                font-size: 12rem;
+            }
+
+            .icon-detail {
+                padding-top: 3rem;
+
+                .row {
+                    > div {
+                        width: 32%;
+                    }
+
+                    .first {
+                        padding-left: 0;
+                    }
+                }
+            }
+
+            h3.trans {
+                margin-top: 1rem;
+            }
+        }
+
+        .map-host {
+            height: 420px;
+            position: relative;
+            top: 20px;
+        }
+    }
+
+    #login-host {
+        background-color: rgba(194, 223, 235, 0.50);
+        font-size: 2rem;
+        width: 100%;
+        .transition(0.5s);
+        position: relative;
+        padding: 2%;
+
+        h3 {
+            text-align: center;
+        }
+
+        .code, .input, .button, .thankyou {
+            font-size: 2rem;
+            padding: 0.5rem;
+            line-height: 5rem;
+        }
+
+        .code {
+            text-align: right;
+        }
+
+        @media screen and (max-width:767px) {
+            .code {
+                text-align: center;
+            }
+        }
+
+        .input {
+            > input {
+                text-align: center;
+                display: inline-block;
+            }
+
+            .fa {
+                position: absolute;
+                right: -3rem;
+                top: 50%;
+                font-size: 3rem;
+                margin-top: -1.5rem;
+                opacity: 0;
+                .transition();
+
+                &.show {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .button, .thankyou {
+            text-align: center;
+        }
+    }
+}
+
+#wedding-admin {
+    .admin-controls {
+        .count-host {
+            padding: 5px;
+            background-color: white;
+
+            .count-table {
+                width: 100%;
+
+                col {
+                    width: 25%;
+                }
+
+                th {
+                    font-weight: bold;
+                    border-bottom: 1px solid #444444;
+                }
+
+                .number {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    .table-host {
+        .list-item {
+            &.header {
+                .cell {
+                    text-indent: 0;
+                }
+            }
+
+            > div {
+
+                &:nth-child(1) {
+                    width: 80px;
+                    text-align: center;
+                }
+
+                &:nth-child(2), &:nth-child(3) {
+                    width: 17%;
+                }
+
+                &:nth-child(4) {
+                    width: 100px;
+                    text-align: center;
+                }
+
+                &:nth-child(5) {
+                    width: 60px;
+                    text-align: center;
+                }
+
+                &:nth-child(6) {
+                    width: 80px;
+                    text-align: center;
+                }
+
+                &:nth-child(7) {
+                    width: 15%;
+                }
+
+                &:nth-child(8) {
+                    width: 85px;
+                    text-align: center;
+
+                    i {
+                        font-size: 2rem;
+                        cursor: pointer;
+                    }
+                }
+
+                &:nth-child(9) {
+                    width: 20%;
+                }
+
+                &:nth-child(10) {
+                    width: 45px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .stats {
+        margin: 15px;
+
+        .title {
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            font-size: 25px;
+            text-align: center;
+
+            &.last {
+                border-right: none;
+            }
+        }
+
+        .sub-title {
+            border-right: 1px solid black;
+            text-align: center;
+
+            &.last {
+                border-right: none;
+            }
+        }
+
+        .stat {
+            border-right: 1px solid black;
+            text-align: center;
+            font-size: 15px;
+
+            &.last {
+                border-right: none;
+            }
+        }
+    }
+}
+
+#rsvp-form {
+    font-family: 'RomanD', 'Times New Roman', Times, serif;
+
+    h1 {
+        text-align: center;
+    }
+
+    .in-out {
+        font-size: 2rem;
+        text-align: center;
+
+        input {
+            vertical-align: text-top;
+        }
+    }
+
+    .meal-choice {
+        font-size: 2rem;
+        padding: 2rem;
+        text-align: center;
+    }
+}

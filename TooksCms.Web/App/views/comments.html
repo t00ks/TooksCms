@@ -1,0 +1,108 @@
+﻿<div id="comments-host" data-bind="with: model">
+    <div id="comments">
+        <!-- ko foreach: comments-->
+        <!-- ko template: { name : 'template-comment', data: $data }--><!-- /ko-->
+        <!-- /ko-->
+    </div>
+    <div id="leaveComment" class="style-container">
+        <div class="inner">
+            <div class="comment-header" data-bind="click: addComment">
+                <i class="fa fa-comments-o"></i>
+                <h2>Post your comment</h2>
+            </div>
+            <div id="comment-form" class="comment-form">
+                <!-- ko with: newComment -->
+                <!-- ko template: { name : 'template-newcomment', data: $data }--><!-- /ko-->
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="template-comment">
+    <div class="comment style-container" data-bind="attr : { id : 'comment-' + id }">
+        <div class="content inner">
+            <div class="cmt-header">
+                <div class="data">
+                    <h6 class="title" data-bind="text:title"></h6>
+                    <div class="meta">
+                        <span class="name">
+                            <a href="#" target="_blank" data-bind="attr : { href : website }, text: name"></a>
+                        </span>
+                        <span class="date" data-bind="html: formatTimeFromNow(date)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="cmt-content" data-bind="html: linkifyText(comment)"></div>
+            <div class="cmt-replies" data-bind="attr : { id : 'replies-' + id }">
+                <!-- ko foreach: children-->
+                <!-- ko template: { name : 'template-comment', data: $data }--><!-- /ko-->
+                <!-- /ko -->
+            </div>
+            <!-- ko ifnot: parentId -->
+            <div class="cmt-reply comment-form" data-bind="attr : { id : 'reply-' + id }">
+                <!-- ko with: replyComment -->
+                <!-- ko template: { name : 'template-newcomment', data: $data }--><!-- /ko-->
+                <!-- /ko -->
+            </div>
+            <div class="cmt-utils">
+                <ul class="cmnt-options">
+                    <li>
+                        <a class="icon-2-a i-reply-2" data-bind="click: reply">Reply</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="template-newcomment">
+    <form role="form">
+        <!-- ko ifnot: parentId() -->
+        <div class="form-group" id="comment-form-title">
+            <label>Title <span class="small">(Max Length: 75 characters)</span></label>
+            <input type="text" class="form-control" placeholder="Enter Title" data-bind="value: title, disable: isLoading">
+        </div>
+        <!-- /ko -->
+        <!-- ko if: !isLoggedIn() -->
+        <!-- ko ifnot: guest().isNew -->
+        <div class="form-group" data-bind="with: guest">
+            <label>
+                You last commented as
+                <a href="#" target="_blank" data-bind="attr : { href : website }, text: name"></a>
+                &nbsp;&nbsp;&nbsp;<span class="guest-signout" data-bind="click:$parent.signout">Click Here if this is not you</span>
+            </label>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: guest().isNew -->
+        <div class="form-group" id="comment-form-name">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Enter Name" data-bind="value: name, disable: isLoading">
+        </div>
+        <div class="form-group" id="comment-form-email">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Enter Email" data-bind="value: email, disable: isLoading">
+        </div>
+        <div class="form-group">
+            <label>Website <span class="small">(Optional)</span></label>
+            <input type="text" class="form-control" placeholder="Enter Title" data-bind="value: website, disable: isLoading">
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <div class="form-group" id="comment-form-textarea">
+            <label>Comment</label>
+            <textarea class="form-control" rows="3" data-bind="value: comment, disable: isLoading"></textarea>
+        </div>
+        <div id="comment-controls" data-bind="attr : { 'class' : isLoggedIn() ? '' : 'tall' }">
+            <div id="recaptchaHost"></div>
+            <br />
+            <button type="submit" data-bind="click: submit, disable: isLoading" class="btn btn-default btn-primary">
+                Submit Comment
+            </button>
+        </div>
+    </form>
+    <div class="loading" data-bind="fadeVisible: isLoading()">
+        <i class="fa fa-spinner fa-spin"></i>
+    </div>
+</script>

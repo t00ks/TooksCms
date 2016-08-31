@@ -1,0 +1,10 @@
+﻿<div id="twitter-feed" class="twitter-feed style-container" data-bind="with: model">
+    <!-- ko foreach: feed -->
+    <div class="tweet-host">
+        <div class="date" data-bind="html: $parent.formatDate($data)"></div>
+        <p class="tweet" data-bind="html: $parent.linkifyText(text)">
+
+        </p>
+    </div>
+    <!-- /ko -->
+</div>

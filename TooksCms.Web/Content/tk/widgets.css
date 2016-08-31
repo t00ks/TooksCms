@@ -1,0 +1,79 @@
+﻿.widget {
+  margin-bottom: 10px;
+}
+/*.widget .head {
+        background-color: #963C1D;
+        color: #FFFFFF;
+        font-size: 0.8rem;
+        height: 22px;
+        line-height: 22px;
+        margin: auto;
+        min-height: 22px;
+        padding: 0;
+        border-bottom: 1px solid #8A371A;
+        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.3);
+        text-indent: 5px;
+    }*/
+.post-feed .mini-post {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+.post-feed .mini-post .date {
+  background: none repeat scroll 0 0 #FFFFFF;
+  margin: 0 3% -19px 65%;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+.post-feed .mini-post .image {
+  max-height: 95px;
+  overflow: hidden;
+  position: relative;
+}
+.post-feed .mini-post .image img {
+  width: 100%;
+}
+.post-feed .mini-post .content .title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 3px;
+}
+.image-widget .view-image img {
+  width: 100%;
+}
+.image-widget .image-drop {
+  height: 0px;
+  vertical-align: bottom;
+  cursor: pointer;
+  border: 1px solid #D6D6D6;
+  border-radius: 1px;
+  background-color: #DDE3E6;
+}
+.image-widget .image-drop .fa-sign-in {
+  display: block;
+  font-size: 4rem;
+  margin-top: 2rem;
+  text-align: center;
+  width: 100%;
+  color: #888888;
+}
+.twitter-feed {
+  background-color: #FFFFFF;
+  margin-top: 3px;
+}
+.twitter-feed .tweet-host {
+  margin: 5px;
+}
+.twitter-feed .tweet-host .date {
+  text-align: right;
+}
+.twitter-feed .tweet-host .tweet {
+  border-bottom: 1px solid #EFEFEF;
+  padding-bottom: 5px;
+}
+.tag-cloud-gadget {
+  margin-top: 3px;
+}
+/*# sourceMappingURL=widgets.css.map */

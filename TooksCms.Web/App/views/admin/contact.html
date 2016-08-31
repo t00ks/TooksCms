@@ -1,0 +1,21 @@
+﻿<div id="contactForms" data-bind="with: model">
+    <!-- ko foreach: contactForms -->
+    <div class="contact-form">
+        <div class="header">
+            <div class="title" data-bind="text: title"></div>
+            <div class="name">
+                <a data-bind="attr: { href: 'mailto:' + email() }, text: name"></a>
+            </div>
+        </div>
+        <div class="content">
+            <span data-bind="text: comment"></span>
+            <div class="controls">
+                <input type="checkbox" data-bind="checked: read, attr: { 'id': 'read-' + id() }" data-type="read" />
+                <label data-bind="attr: { 'for': 'read-' + id() }">Read</label>
+                <input type="checkbox" data-bind="checked: public, attr: { 'id': 'public-' + id() }" data-type="public" />
+                <label data-bind="attr: { 'for': 'public-' + id() }">Public</label>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>

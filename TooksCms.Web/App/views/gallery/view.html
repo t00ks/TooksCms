@@ -1,0 +1,41 @@
+﻿<section class="article gallery style-container" data-bind="with: model">
+    <div class="inner">
+        <header>
+            <hgroup class="banner">
+                <h3 class="date" data-bind="html: formatDate(gallery.date)"></h3>
+                <h2 class="cat" data-bind="html: gallery.categoryName"></h2>
+            </hgroup>
+            <span class="triangle">
+                <span class="inner"></span>
+            </span>
+            <div class="links share">
+                <!-- ko template: { name : 'share-links', data: { id : gallery.id, title: gallery.title, type: 'gallery', addThisAttributes : addThisAttributes } } --><!-- /ko -->
+            </div>
+            <h2 class="title" data-bind="html: gallery.title"></h2>
+            <a class="details">
+                <img class="auther-image" src="/Content/images/avatars/rorschach.jpg" alt="avatar" />
+                <div class="auther">
+                    <span class="name">By <span data-bind="text: gallery.author"></span></span>
+                </div>
+            </a>
+        </header>
+        <article id="gallery-host" class="gallery">
+            <!-- ko foreach: gallery.images -->
+            <div class="gallery-image">
+                <a class="gallery-image-a" data-bind="attr : { href : image }">
+                    <img class="lazy" alt="image" data-bind="attr : { src : holding, 'data-original' : thumbnail }" />
+                </a>
+            </div>
+            <!-- /ko -->
+        </article>
+        <footer class="tag-host">
+            <ul class="tags">
+                <!-- ko foreach: tags -->
+                <li class="tag">
+                    <a data-bind="attr : { href : '/search/' + name }, html: name"></a>
+                </li>
+                <!-- /ko -->
+            </ul>
+        </footer>
+    </div>
+</section>

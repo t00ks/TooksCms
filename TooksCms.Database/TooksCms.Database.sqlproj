@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>TooksCms.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{aa835b7c-c8ec-461b-a250-3c33b0da1abd}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>TooksCms.Database</RootNamespace>
+    <AssemblyName>TooksCms.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="user" />
+    <Folder Include="user\Tables" />
+    <Folder Include="stat" />
+    <Folder Include="stat\Stored Procedures" />
+    <Folder Include="stat\Tables" />
+    <Folder Include="security" />
+    <Folder Include="security\Tables" />
+    <Folder Include="lookup" />
+    <Folder Include="lookup\Stored Procedures" />
+    <Folder Include="lookup\Tables" />
+    <Folder Include="event" />
+    <Folder Include="event\Tables" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="config" />
+    <Folder Include="config\Stored Procedures" />
+    <Folder Include="config\Tables" />
+    <Folder Include="wed" />
+    <Folder Include="wed\Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="user\Tables\Address.sql" />
+    <Build Include="user\Tables\ContactInfo.sql" />
+    <Build Include="user\Tables\Email.sql" />
+    <Build Include="user\Tables\Guest.sql" />
+    <Build Include="user\Tables\PhoneNumber.sql" />
+    <Build Include="user\Tables\User.sql" />
+    <Build Include="stat\Stored Procedures\SelectBrowserStats.sql" />
+    <Build Include="stat\Stored Procedures\SelectUniqueVisits.sql" />
+    <Build Include="stat\Tables\PageVisit.sql" />
+    <Build Include="security\Tables\AreaType.sql" />
+    <Build Include="security\Tables\Gadget2Role2AreaType.sql" />
+    <Build Include="security\Tables\Role.sql" />
+    <Build Include="security\Tables\Site.sql" />
+    <Build Include="security\Tables\User2Role.sql" />
+    <Build Include="security\config.sql" />
+    <Build Include="security\event.sql" />
+    <Build Include="security\lookup.sql" />
+    <Build Include="security\security.sql" />
+    <Build Include="security\settings.sql" />
+    <Build Include="security\stat.sql" />
+    <Build Include="security\user.sql" />
+    <Build Include="lookup\Stored Procedures\CategoryInfoSelect.sql" />
+    <Build Include="lookup\Tables\Category.sql" />
+    <Build Include="lookup\Tables\Country.sql" />
+    <Build Include="lookup\Tables\Tag.sql" />
+    <Build Include="event\Tables\EventLog.sql" />
+    <Build Include="dbo\Stored Procedures\ArticleInfoSelect.sql" />
+    <Build Include="dbo\Stored Procedures\ArticleSearch.sql" />
+    <Build Include="dbo\Stored Procedures\GalleryInfoSelect.sql" />
+    <Build Include="dbo\Tables\Article.sql" />
+    <Build Include="dbo\Tables\Article2Tag.sql" />
+    <Build Include="dbo\Tables\ArticleComment.sql" />
+    <Build Include="dbo\Tables\ArticleContent.sql" />
+    <Build Include="dbo\Tables\ArticleImage.sql" />
+    <Build Include="dbo\Tables\Bulletin.sql" />
+    <Build Include="dbo\Tables\BulletinContent.sql" />
+    <Build Include="dbo\Tables\ContactForm.sql" />
+    <Build Include="dbo\Tables\Gallery.sql" />
+    <Build Include="dbo\Tables\Gallery2Tag.sql" />
+    <Build Include="dbo\Tables\GalleryImage.sql" />
+    <Build Include="config\Stored Procedures\DeleteRatingLinks.sql" />
+    <Build Include="config\Stored Procedures\GadgetInfoSelect.sql" />
+    <Build Include="config\Tables\ArticleType.sql" />
+    <Build Include="config\Tables\BulletinType.sql" />
+    <Build Include="config\Tables\Gadget.sql" />
+    <Build Include="config\Tables\Rating.sql" />
+    <Build Include="config\Tables\Rating2ArticleType2Category.sql" />
+    <Build Include="config\Tables\StaticRoute.sql" />
+    <Build Include="dbo\Stored Procedures\ArticleInfoSearch.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteArticle.sql" />
+    <Build Include="dbo\Tables\Snapshot.sql" />
+    <Build Include="dbo\Stored Procedures\SnapshotLiteSelect.sql" />
+    <Build Include="wed\Tables\Hotel.sql" />
+    <Build Include="security\wed.sql" />
+    <Build Include="wed\Tables\Guest.sql" />
+    <Build Include="wed\Tables\GuestGroup.sql" />
+    <Build Include="wed\Tables\FoodChoice.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Compare.scmp" />
+    <None Include="InsertAreaTypes.sql" />
+  </ItemGroup>
+</Project>

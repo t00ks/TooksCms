@@ -250,3 +250,6 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# Custom Ignores
+/TooksCms.Web/Uploads/Images/**/*.*

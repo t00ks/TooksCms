@@ -1,0 +1,14 @@
+{
+  "name": "PXtech.Subway.Dashboard.Web",
+  "version": "1.0.57.364",
+  "description": "",
+  "main": "gruntfile.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bowercopy": "^1.2.3",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "less": "^2.5.1",
+    "requirejs": "^2.1.20"
+  }
+}

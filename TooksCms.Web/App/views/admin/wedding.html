@@ -1,0 +1,307 @@
+﻿<div id="wedding-admin" data-bind="with: model">
+    <div class="admin-controls row">
+        <div class="col-xs-9">
+            <div>
+                <button class="btn btn-default" id="btn-add-article" data-bind="click: addGroup">
+                    <i class="fa fa-plus"></i>
+                    Add Group
+                </button>
+                <select id="dd-groups" class="form-control visible-lg-inline" style="width:200px" data-bind="value: selectedGroup, options: groups, optionsText: 'name', optionsValue: 'guestGroupId', optionsCaption: 'Select Guest Group'"></select>
+            </div>
+            <br />
+            <div>
+                <input type="text" class="form-control visible-lg-inline visible-md-inline visible-sm-block visible-xs-block" style="width:200px;" data-bind="value: filterName, valueUpdate: 'afterkeydown'" />
+                <select id="dd-type" class="form-control visible-lg-inline visible-md-inline visible-sm-block visible-xs-block" style="width:200px" data-bind="value: filterType, options:guestTypes , optionsText :'name', optionsValue: 'value', optionsCaption: 'Filter by Type'"></select>
+                <select id="dd-side" class="form-control visible-lg-inline visible-md-inline visible-sm-block visible-xs-block" style="width:200px" data-bind="value: filterSide, options:guestSides , optionsText :'name', optionsValue: 'value', optionsCaption: 'Filter by Side'"></select>
+                <select id="dd-side" class="form-control visible-lg-inline visible-md-inline visible-sm-block visible-xs-block" style="width:200px" data-bind="value: filterInvitation, options:invitationSentOptions , optionsText :'name', optionsValue: 'value', optionsCaption: 'Filter by Invitation'"></select>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="count-host">
+                <table class="count-table">
+                    <colgroup>
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Side</th>
+                            <th>Day</th>
+                            <th>Evening</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ko foreach: ['Jen','Tim','Both','Total'] -->
+                        <tr>
+                            <td data-bind="html: $data"></td>
+                            <!-- ko foreach: ['d','e','b'] -->
+                            <td data-bind="html: $parents[1].getTotal($parent, $data)"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row stats">
+        <div class="col-xs-4 title">
+            Day
+        </div>
+        <div class="col-xs-4 title">
+            Evening
+        </div>
+        <div class="col-xs-4 title last">
+            Total
+        </div>
+
+        <div class="col-xs-2 sub-title">
+            Accepted
+        </div>
+        <div class="col-xs-2 sub-title">
+            Potential
+        </div>
+        <div class="col-xs-2 sub-title">
+            Accepted
+        </div>
+        <div class="col-xs-2 sub-title">
+            Potential
+        </div>
+        <div class="col-xs-2 sub-title">
+            Accepted
+        </div>
+        <div class="col-xs-2 sub-title last">
+            Potential
+        </div>
+
+        <div class="col-xs-2 stat">
+            <b data-bind="html: getStats('d', 'a')"></b>
+        </div>
+        <div class="col-xs-2 stat">
+            <b data-bind="html: getStats('d', 'p')"></b>
+        </div>
+        <div class="col-xs-2 stat">
+            <b data-bind="html: getStats('e', 'a')"></b>
+        </div>
+        <div class="col-xs-2 stat">
+            <b data-bind="html: getStats('e', 'p')"></b>
+        </div>
+        <div class="col-xs-2 stat">
+            <b data-bind="html: getStats('t', 'a')"></b>
+        </div>
+        <div class="col-xs-2 stat last">
+            <b data-bind="html: getStats('t', 'p')"></b>
+        </div>
+    </div>
+    <div id="wedding-admin-content" class="div-list-host">
+        <div class="table-host">
+            <div class="list-item tall row header">
+                <div class="cell">In Group</div>
+                <div class="bdr lbdr cell">Name</div>
+                <div class="bdr lbdr cell">Address</div>
+                <div class="cell">Day/Evening</div>
+                <div class="cell">Side</div>
+                <div class="bdr cell">Invitation Sent</div>
+                <div class="bdr cell">Code</div>
+                <div class="bdr cell">Attending?</div>
+                <div class="cell">Food</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <!-- ko template: { name : 'guest-template', foreach: filteredGuests } --><!-- /ko -->
+            <!-- ko template: { name : 'guest-template', data: newGuest } --><!-- /ko -->
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="guest-template">
+    <div class="list-item row">
+        <div class="cell">
+            <input type="checkbox" data-bind="checked: inGroup" />
+        </div>
+        <!-- ko if: !editing() -->
+        <div class="bdr lbdr cell" data-bind="text: name"></div>
+        <div class="bdr lbdr cell" data-bind="html: formattedAddress"></div>
+        <div class="cell" data-bind="text: type"></div>
+        <div class="cell" data-bind="text: side"></div>
+        <div class="bdr cell" data-bind="text: invitation"></div>
+        <div class="bdr cell" data-bind="text: code"></div>
+        <div class="bdr cell">
+            <i class="fa fa-check" data-bind="attr: isAttending('check')"></i>
+            <i class="fa fa-times" data-bind="attr: isAttending('times')"></i>
+        </div>
+        <div class="cell" data-bind="">
+            <!-- ko if: attending -->
+            <!-- ko if: guestType() === 1-->
+            <p>
+                Starter <b data-bind="html:getFoodInfo('s')"></b>
+                Main <b data-bind="html:getFoodInfo('m')"></b>
+                Desert <b data-bind="html:getFoodInfo('d')"></b>
+            </p>
+            <!-- /ko -->
+            <!-- ko if: guestType() === 2-->
+            <p>
+                <b data-bind="html:getFoodInfo('e')"></b>
+            </p>
+            <!-- /ko -->
+            <p data-bind="text: dietaryRequirements"></p>
+            <!-- /ko -->
+        </div>
+        <div class="cell">
+            <button data-bind="click: rsvp">RSVP</button>
+        </div>
+        <div class="cell">
+            <button data-bind="click: edit">Edit</button>
+        </div>
+        <!-- /ko-->
+        <!-- ko if: editing -->
+        <div class="bdr lbdr cell">
+            <input type="text" data-bind="value: firstName" />
+            <input type="text" data-bind="value: lastName" />
+        </div>
+        <div class="bdr lbdr cell">
+            <input type="text" data-bind="value: address" />
+        </div>
+        <div class="cell">
+            <select data-bind="value: guestType, options:$parent.guestTypes , optionsText :'name', optionsValue: 'value'"></select>
+        </div>
+        <div class="cell">
+            <select data-bind="value: guestSide, options:$parent.guestSides, optionsText :'name', optionsValue: 'value'"></select>
+        </div>
+        <div class="bdr cell">
+            <input type="checkbox" data-bind="checked: invitationSent" />
+        </div>
+        <div class="bdr cell">
+            <input type="text" data-bind="value: code" />
+        </div>
+        <div class="bdr cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell">
+            <button data-bind="click: save">Save</button>
+        </div>
+        <!-- /ko -->
+    </div>
+</script>
+
+<div id="group-popup" class="white-popup mfp-hide">
+    <div class="inner">
+        <form class="form">
+            <div class="form-group">
+                <label for="menu-login-username">Group Name:</label>
+                <input type="text" class="form-control" id="group-name" name="GroupName" placeholder="Group Name" />
+            </div>
+            <div class="form-group">
+                <label for="menu-login-password">Message:</label>
+                <input type="text" class="form-control" id="group-message" name="Message" placeholder="Message" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+        </form>
+    </div>
+</div>
+
+
+<div id="rsvp-form" class="white-popup mfp-hide medium">
+    <div class="inner" data-bind="with: model">
+        <!-- ko with: selectedRsvpGuest() -->
+        <h1 data-bind="html:name"></h1>
+
+        <div class="row in-out">
+            <label class="col-xs-6">
+                I'm In!
+                <input type="checkbox" name="rsvp_radio" class="form-control" data-bind="checked: accepted" />
+            </label>
+            <label class="col-xs-6">
+                Sorry I'm Out :(
+                <input type="checkbox" name="rsvp_radio" class="form-control" data-bind="checked: declined" />
+            </label>
+            <label class="col-xs-12 text-danger" style="display:none">
+                Please RSVP by checking "Im In" or "Sorry I'm Out :("
+            </label>
+        </div>
+        <!-- ko if: guestType() == 2 -->
+        <div class="meal-choice">
+            <label>
+                I would like the vegitarian option please
+                <input type="checkbox" class="form-control" data-bind="checked: foodChoice.isVeggie" />
+            </label>
+        </div>
+        <!--/ko -->
+        <!-- ko if: guestType() == 1 -->
+        <div class="meal-choice starter">
+            <h3>
+                Starter:
+            </h3>
+            <label>
+                Ham Hock
+                <input type="radio" value="ham" class="form-control" name="starters" data-bind="checked: foodChoice.starter" />
+            </label>
+            <label>
+                Haloumi Fritters
+                <input type="radio" value="hal" class="form-control" name="starters" data-bind="checked: foodChoice.starter" />
+            </label>
+            <label class="col-xs-12 text-danger" style="display:none">
+                Please choose a starter!
+            </label>
+        </div>
+        <div class="meal-choice main">
+            <h3>
+                Main:
+            </h3>
+            <label>
+                Blade of Beef
+                <input type="radio" value="beef" class="form-control" name="mains" data-bind="checked: foodChoice.main" />
+            </label>
+            <label>
+                Sea Bream
+                <input type="radio" value="bream" class="form-control" name="mains" data-bind="checked: foodChoice.main" />
+            </label>
+            <label>
+                Gnocchi
+                <input type="radio" value="gnocchi" class="form-control" name="mains" data-bind="checked: foodChoice.main" />
+            </label>
+            <label class="col-xs-12 text-danger" style="display:none">
+                Please choose a Main!
+            </label>
+        </div>
+        <div class="meal-choice dessert">
+            <h3>
+                Dessert:
+            </h3>
+            <label>
+                Eton Mess
+                <input type="radio" value="eton" class="form-control" name="puds" data-bind="checked: foodChoice.dessert" />
+            </label>
+            <label>
+                Dark Chocolate Tart
+                <input type="radio" value="tart" class="form-control" name="puds" data-bind="checked: foodChoice.dessert" />
+            </label>
+            <label>
+                Creme Brulee
+                <input type="radio" value="brulee" class="form-control" name="puds" data-bind="checked: foodChoice.dessert" />
+            </label>
+            <label class="col-xs-12 text-danger" style="display:none">
+                Please choose a dessert!
+            </label>
+        </div>
+        <!-- /ko -->
+
+        <div style="margin-bottom:10px;">
+            <label>
+                Please Specify Any Dietary Requirements
+            </label>
+            <input type="text" class="form-control" data-bind="value: dietaryRequirements" />
+        </div>
+
+        <button class="btn btn-default" data-bind="click: submit">
+            Confirm
+        </button>
+        <button class="btn btn-default pull-right" data-bind="click: close">
+            I'll Finish This Later
+        </button>
+        <!--/ko -->
+    </div>
+</div>

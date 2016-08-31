@@ -1,0 +1,60 @@
+﻿<div id="admin-gallery" data-bind="with: model">
+    <div class="admin-controls">
+        <button class="btn btn-default" id="btn-add-article" data-bind="click: add">
+            <i class="fa fa-plus"></i>
+            Add
+        </button>
+        <select id="dd-category" class="form-control visible-lg-inline" style="width:200px" data-bind="options: categories, optionsText : 'text', optionsValue: 'value', value: selectedCategory, optionsCaption: '-- select article type --'"></select>
+
+        <button class="btn btn-default pull-right" id="btn-list" style="margin-right:10px;" data-bind="click: list">
+            <i class="fa fa-list"></i>
+            List
+        </button>
+        <!-- ko if: editing -->
+        <button class="btn btn-default pull-right" style="margin-right:5px;" data-bind="click: $parent.upload">
+            <i class="fa fa-upload"></i>
+            Upload
+        </button>
+        <button class="btn btn-default pull-right" style="margin-right:5px;" data-bind="click: $parent.save">
+            <i class="fa fa-save"></i>
+            Save
+        </button>
+        <!-- /ko -->
+    </div>
+
+    <div class="library admin" data-bind="visible: !editing()">
+        <!-- ko template : { name : 'preview-template', foreach : galleries }--><!-- /ko -->
+    </div>
+
+    <div class="gallery admin" data-bind="with: gallery, visible: editing">
+        <div>
+            <input type="text" class="form-control" data-bind="value: title " />
+        </div>
+        <!-- ko foreach: images -->
+        <div class="gallery-image">
+            <a class="gallery-image-a" data-bind="attr : { href : image }">
+                <img class="lazy" alt="image" data-bind="attr : { src : holding, 'data-original' : thumbnail }" />
+            </a>
+        </div>
+        <!-- /ko -->
+    </div>
+    <!-- ko compose: { model : 'viewmodels/fileupload', activationData: gallery } --><!-- /ko -->
+</div>
+
+<script type="text/html" id="preview-template">
+    <div class="library-preview">
+        <a data-bind="click: $parent.edit">
+            <img class="lazy" src="/Content/Images/grey.png" data-bind="attr : { 'data-original' : thumbnail }" alt="image" />
+        </a>
+        <a class="title-overlay" data-bind="click: $parent.edit">
+            <div class="title">
+                <span data-bind="text: title"></span>
+                <div style="float:right;" data-bind="html:imageCount"></div>
+            </div>
+            <div class="detail">
+                <div class="date" data-bind="html:$parent.formatDate($data)"></div>
+                <div class="user" data-bind="html:usersName"></div>
+            </div>
+        </a>
+    </div>
+</script>

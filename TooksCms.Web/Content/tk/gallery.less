@@ -1,0 +1,118 @@
+﻿@import "variables";
+
+.gallery, .library {
+}
+
+.gallery .gallery-image, .library .library-preview {
+    display: inline-block;
+    margin: 1% 0 1% 1%;
+    width: 30%;
+}
+
+.gallery.admin .gallery-image {
+    width: 23.5%;
+}
+
+@media screen and (max-width:940px) {
+    .gallery .gallery-image, .library .library-preview {
+        width: 46%;
+    }
+}
+
+.gallery-image {
+    opacity: 1;
+    animation: hoverOutOpacity 0.2s;
+    -moz-animation: hoverOutOpacity 0.2s;
+    -webkit-animation: hoverOutOpacity 0.2s;
+    -o-animation: hoverOutOpacity 0.2s;
+
+    &:hover {
+        opacity: 0.8;
+        animation: hoverInOpacity 0.2s;
+        -moz-animation: hoverInOpacity 0.2s;
+        -webkit-animation: hoverInOpacity 0.2s;
+        -o-animation: hoverInOpacity 0.2s;
+    }
+}
+
+.library {
+    .library-preview {
+        width: 32%;
+        position: relative;
+        overflow: hidden;
+
+        .title-overlay {
+            background: none repeat scroll 0 0 #111111;
+            width: 100%;
+            position: absolute;
+            opacity: 0.8;
+            color: #EEEEEE;
+            bottom: -55px;
+            .transition;
+        }
+
+        &:hover {
+            .title-overlay {
+                text-decoration: none;
+                bottom: 0;
+            }
+        }
+
+        .title {
+            margin: 15px;
+        }
+
+
+        .detail {
+            font-size: 0.8em;
+            margin: 15px;
+
+            .date {
+                border-bottom: 1px solid;
+                padding-bottom: 5px;
+            }
+
+            .user {
+                padding-top: 4px;
+            }
+        }
+    }
+
+    &.admin {
+        .library-preview {
+            width: 23.5%;
+        }
+    }
+
+    @media screen and (max-width: 1235px) {
+        .library-preview {
+            width: 31%;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        .library-preview {
+            width: 48%;
+        }
+    }
+
+    @media screen and (max-width: 390px) {
+        .library-preview {
+            width: 98%;
+            margin: 1%;
+        }
+    }
+}
+
+.gallery .gallery-image.bythree {
+    width: 32%;
+}
+
+.gallery .gallery-image.bytwo {
+    width: 48%;
+}
+
+.gallery-image img, .library-preview img {
+    width: 100%;
+    box-shadow: 0 5px 15px -10px #444444;
+}

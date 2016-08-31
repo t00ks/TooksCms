@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38A47AE9-9140-4767-B4C4-A7160ABDB7FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TooksCms.Core</RootNamespace>
+    <AssemblyName>TooksCms.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\JSONDescriptionAddribute.cs" />
+    <Compile Include="Bases\CollectionBase.cs" />
+    <Compile Include="Bases\InterfacingBase.cs" />
+    <Compile Include="Bases\ModelBase.cs" />
+    <Compile Include="Bases\ResponseBase.cs" />
+    <Compile Include="Bases\Xml\XmlProperty.cs" />
+    <Compile Include="Enums\ApprovalState.cs" />
+    <Compile Include="Enums\AreaType.cs" />
+    <Compile Include="Enums\ArticleType.cs" />
+    <Compile Include="Enums\DisplayType.cs" />
+    <Compile Include="Enums\EventLogType.cs" />
+    <Compile Include="Enums\PhoneType.cs" />
+    <Compile Include="Enums\ViewModelState.cs" />
+    <Compile Include="Enums\WeddingGuest.cs" />
+    <Compile Include="Exceptions\CriteriaException.cs" />
+    <Compile Include="Exceptions\DataNotFoundException.cs" />
+    <Compile Include="Interfaces\IAddress.cs" />
+    <Compile Include="Interfaces\IArticle.cs" />
+    <Compile Include="Interfaces\IArticleComment.cs" />
+    <Compile Include="Interfaces\IArticleImage.cs" />
+    <Compile Include="Interfaces\IArticleInfo.cs" />
+    <Compile Include="Interfaces\IArticleType.cs" />
+    <Compile Include="Interfaces\IBrowserStat.cs" />
+    <Compile Include="Interfaces\IBulletin.cs" />
+    <Compile Include="Interfaces\IBulletinType.cs" />
+    <Compile Include="Interfaces\ICategory.cs" />
+    <Compile Include="Interfaces\ICategoryInfo.cs" />
+    <Compile Include="Interfaces\IContactForm.cs" />
+    <Compile Include="Interfaces\IContactInfo.cs" />
+    <Compile Include="Interfaces\ICountry.cs" />
+    <Compile Include="Interfaces\IEmail.cs" />
+    <Compile Include="Interfaces\IEvent.cs" />
+    <Compile Include="Interfaces\IFoodChoice.cs" />
+    <Compile Include="Interfaces\IGadget.cs" />
+    <Compile Include="Interfaces\IGadgetInfo.cs" />
+    <Compile Include="Interfaces\IGallery.cs" />
+    <Compile Include="Interfaces\IGalleryImage.cs" />
+    <Compile Include="Interfaces\IGalleryInfo.cs" />
+    <Compile Include="Interfaces\IGuest.cs" />
+    <Compile Include="Interfaces\IImageService.cs" />
+    <Compile Include="Interfaces\IInterfacingBase.cs" />
+    <Compile Include="Interfaces\IMailRecipient.cs" />
+    <Compile Include="Interfaces\IHotel.cs" />
+    <Compile Include="Interfaces\IPageVisit.cs" />
+    <Compile Include="Interfaces\IPhoneNumber.cs" />
+    <Compile Include="Interfaces\IRankedTag.cs" />
+    <Compile Include="Interfaces\IRating.cs" />
+    <Compile Include="Interfaces\IRatingLink.cs" />
+    <Compile Include="Interfaces\IRole.cs" />
+    <Compile Include="Interfaces\IRsvp.cs" />
+    <Compile Include="Interfaces\ISite.cs" />
+    <Compile Include="Interfaces\ISnapshot.cs" />
+    <Compile Include="Interfaces\IStaticRoute.cs" />
+    <Compile Include="Interfaces\ITag.cs" />
+    <Compile Include="Interfaces\IUniqueVisit.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="Interfaces\IWeddingGuest.cs" />
+    <Compile Include="Interfaces\IWeddingGuestGroup.cs" />
+    <Compile Include="Interfaces\Repository\IAccountRepository.cs" />
+    <Compile Include="Interfaces\Repository\IArticleRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBulletinRepository.cs" />
+    <Compile Include="Interfaces\Repository\IConfigRepository.cs" />
+    <Compile Include="Interfaces\Repository\IContactRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEventRepository.cs" />
+    <Compile Include="Interfaces\Repository\IGalleryRepository.cs" />
+    <Compile Include="Interfaces\Repository\ILookupRepository.cs" />
+    <Compile Include="Interfaces\Repository\ISecurityRepository.cs" />
+    <Compile Include="Interfaces\Repository\ISnapshotRepository.cs" />
+    <Compile Include="Interfaces\Repository\IStatsRepository.cs" />
+    <Compile Include="Interfaces\Repository\IWeddingRepository.cs" />
+    <Compile Include="Mail\Emailer.cs" />
+    <Compile Include="Models\Account\Address.cs" />
+    <Compile Include="Models\Account\ContactInfo.cs" />
+    <Compile Include="Models\Account\Email.cs" />
+    <Compile Include="Models\Account\PhoneNumber.cs" />
+    <Compile Include="Models\Account\User.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Objects\Auther.cs" />
+    <Compile Include="Objects\FlotChart.cs" />
+    <Compile Include="Objects\Responses\ArticleResponse.cs" />
+    <Compile Include="Objects\Responses\BulletinResponse.cs" />
+    <Compile Include="Objects\Responses\CommentResponse.cs" />
+    <Compile Include="Objects\Responses\GadgetResponse.cs" />
+    <Compile Include="Objects\Responses\GalleryResponse.cs" />
+    <Compile Include="Objects\Responses\LookupResponse.cs" />
+    <Compile Include="Objects\Xml\EditableTextProperty.cs" />
+    <Compile Include="Objects\Xml\ImageProperty.cs" />
+    <Compile Include="Objects\Xml\RatingProperty.cs" />
+    <Compile Include="Objects\Xml\ReadMoreLinkProperty.cs" />
+    <Compile Include="Objects\Xml\StandardTextProperty.cs" />
+    <Compile Include="Objects\Xml\TitleTextBoxProperty.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\Reflector.cs" />
+    <Compile Include="Xml\XmlTransformer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Structs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

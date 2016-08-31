@@ -1,0 +1,15 @@
+﻿<div id="fileupload" class="white-popup big mfp-hide mfp-with-anim fileupload">
+    <div class="inner">
+        <div class="upload btn btn-primary" onchange="$('#fileupload_preview').click()">
+            <span>Select Files</span>
+            <input id="files" type="file" name="files[]" multiple="multiple" class="editmode">
+        </div>
+        <button id="fileupload_preview" style="display:none;" data-bind="click: preview">Preview</button>
+        <div id="uploadPreview" class="preview">
+
+        </div>
+        <button type="button" data-bind="click: uploadfiles" >
+            Upload
+        </button>
+    </div>
+</div>

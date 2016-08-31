@@ -1,0 +1,5 @@
+﻿##NAME## has replied to your comment ##TITLE##
+<br/><br/>
+##COMMENT##
+<br/><br/>
+http://www.dig-ec.co.uk/article/view/##ID##

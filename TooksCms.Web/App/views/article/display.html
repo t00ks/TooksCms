@@ -1,0 +1,100 @@
+﻿<section class="article style-container" data-bind="with:model">
+    <div class="inner">
+        <header data-bind="css: authClass">
+            <hgroup class="banner">
+                <h3 class="date" data-bind="text:formatDate(article.date)"></h3>
+                <h2 class="cat" data-bind="text: article.categoryName"></h2>
+            </hgroup>
+            <a class="btn btn-default edit-btn" href="/article/edit">
+                <i class="fa fa-pencil"></i>
+            </a>
+            <span class="triangle">
+                <span class="inner"></span>
+            </span>
+            <div class="links share">
+                <!-- ko template: { name : 'share-links', data: { id : article.id, title: article.title, type: article.type, addThisAttributes : addThisAttributes } } --><!-- /ko -->
+            </div>
+            <h2 class="title" data-bind="text: article.title"></h2>
+            <a class="details">
+                <img class="auther-image" src="/Content/images/avatars/rorschach.jpg" alt="avatar" />
+                <div class="auther">
+                    <span class="name">By Timothy Crittenden</span>
+                </div>
+            </a>
+        </header>
+        <article>
+            <div data-bind="attr : { id : 'editable-content-' + article.id }">
+                <!-- ko foreach: article.content -->
+                <!-- ko if: type === 'editablediv' -->
+                <div data-type="EditableDiv" data-bind="attr: { class : cssClass + ' view' }">
+                    <!-- ko template: { name : 'articleimage-template', data: $parent.getImage($index() + "-2") }--><!-- /ko-->
+                    <!-- ko template: { name : 'articleimage-template', data: $parent.getImage($index() + "-1") }--><!-- /ko-->
+                    <div data-bind="html: value"></div>
+                </div>
+                <!-- /ko-->
+                <!-- ko if: type === 'codesnippet' -->
+                <div class="syntax-highlight-host">
+                    <pre data-type="CodeSnippet" data-bind="html: value, attr : { class : cssClass }"></pre>
+                </div>
+                <!-- /ko-->
+                <!-- ko if: type === 'singleimage' -->
+                <div data-bind="attr: { class : cssClass }">
+                    <!-- ko template: { name : 'articleimage-template', data: $parent.getImage($index() + "-1") }--><!-- /ko-->
+                </div>
+                <!-- /ko-->
+                <!-- ko if: type === 'embededvideo' -->
+                <div class="video-host">
+                    <div data-bind="attr: $parent.getVideoAttributes($data, $index(), $parent.article.id)"></div>
+                </div>
+                <!-- /ko-->
+                <!-- /ko-->
+            </div>
+            <!-- ko if: article.type === 'review' -->
+            <!-- ko template: { name : 'ratings-template', foreach: article.ratings } --><!-- /ko -->
+            <div class="rating-host">
+                <div class="rating-item summary">
+                    <div class="name">
+                        <i class="fa fa-star"></i>
+                        <div id="rating-total" data-bind="attr : { class : getRatingClass(article.summary.rating) }, text : article.summary.rating"></div>
+                    </div>
+                    <div class="text" data-bind="text : article.summary.text"></div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </article>
+        <footer class="tag-host">
+            <ul class="tags">
+            <!-- ko foreach: tags -->
+                <li class="tag">
+                    <a data-bind="attr : { href : '/search/' + name }, html: name"></a>
+                </li>
+            <!-- /ko -->
+            </ul>
+        </footer>
+    </div>
+</section>
+<div data-bind="with:model">
+    <!-- ko compose: { model : 'viewmodels/comments', activationData: { id : article.id, type : 'article' } } --><!-- /ko -->
+</div>
+
+<script type="text/html" id="articleimage-template">
+    <!-- ko with: $data -->
+    <div data-bind="attr : { class : getImageClass($data) }">
+        <a class="view-image" data-bind="attr : { href : imagePath }">
+            <img alt="Missing Image" data-bind="attr : { src : thumbnail }" />
+        </a>
+    </div>
+    <!-- /ko-->
+</script>
+
+<script type="text/html" id="ratings-template">
+    <div class="rating-host">
+        <div class="rating-item">
+            <div class="name">
+                <span data-bind="html:name"></span>
+                <div data-bind="attr : { class : 'value v' + rating }"></div>
+            </div>
+            <div class="text" data-bind="text: text"></div>
+        </div>
+    </div>
+</script>

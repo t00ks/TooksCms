@@ -1,0 +1,302 @@
+﻿/*#region HoverIn*/
+@keyframes hoverIn
+{
+    from {background: #AAA4B2;}
+    to {background: #C0441A;}
+}
+
+@-moz-keyframes hoverIn /* Firefox */
+{
+    from {background: #AAA4B2;}
+    to {background: #C0441A;}
+}
+
+@-webkit-keyframes hoverIn /* Safari and Chrome */
+{
+    from {background: #AAA4B2;}
+    to {background: #C0441A;}
+}
+
+@-o-keyframes hoverIn /* Opera */
+{
+    from {background: #AAA4B2;}
+    to {background: #C0441A;}
+} 
+
+@keyframes hoverOut
+{
+    from {background: #C0441A;}
+    to {background: #AAA4B2;}
+}
+
+@-moz-keyframes hoverOut /* Firefox */
+{
+    from {background: #C0441A;}
+    to {background: #AAA4B2;}
+}
+
+@-webkit-keyframes hoverOut /* Safari and Chrome */
+{
+    from {background: #C0441A;}
+    to {background: #AAA4B2;}
+}
+
+@-o-keyframes hoverOut /* Opera */
+{
+    from {background: #C0441A;}
+    to {background: #AAA4B2;}
+} 
+/*#endregion*/
+
+/*#region hoverInText*/
+@keyframes hoverInText
+{
+    from {background: #f26631; color:#111111;}
+    to {background: #C0441A; color:#E8D5CE;}
+}
+
+@-moz-keyframes hoverInText /* Firefox */
+{
+    from {background: #f26631; color:#111111;}
+    to {background: #C0441A; color:#E8D5CE;}
+}
+
+@-webkit-keyframes hoverInText /* Safari and Chrome */
+{
+    from {background: #f26631; color:#111111;}
+    to {background: #C0441A; color:#E8D5CE;}
+}
+
+@-o-keyframes hoverInText /* Opera */
+{
+    from {background: #f26631; color:#111111;}
+    to {background: #C0441A; color:#E8D5CE;}
+} 
+
+@keyframes hoverOutText
+{
+    from {background: #C0441A; color:#E8D5CE;}
+    to {background: #f26631; color:#111111;}
+}
+
+@-moz-keyframes hoverOutText /* Firefox */
+{
+    from {background: #C0441A; color:#E8D5CE;}
+    to {background: #f26631; color:#111111;}
+}
+
+@-webkit-keyframes hoverOutText /* Safari and Chrome */
+{
+    from {background: #C0441A; color:#E8D5CE;}
+    to {background: #f26631; color:#111111;}
+}
+
+@-o-keyframes hoverOutText /* Opera */
+{
+    from {background: #C0441A; color:#E8D5CE;}
+    to {background: #f26631; color:#111111;}
+}
+/*#endregion*/
+
+/*#region hoverInTrans*/
+@keyframes hoverInTrans
+{
+    from {background: rgba(170, 164, 178, 0.9);}
+    to {background: rgba(192, 68, 26, 0.9);}
+}
+
+@-moz-keyframes hoverInTrans /* Firefox */
+{
+    from {background: rgba(170, 164, 178, 0.9);}
+    to {background: rgba(192, 68, 26, 0.9);}
+}
+
+@-webkit-keyframes hoverInTrans /* Safari and Chrome */
+{
+    from {background: rgba(170, 164, 178, 0.9);}
+    to {background: rgba(192, 68, 26, 0.9);}
+}
+
+@-o-keyframes hoverInTrans /* Opera */
+{
+    from {background: rgba(170, 164, 178, 0.9);}
+    to {background: rgba(192, 68, 26, 0.9);}
+} 
+
+@keyframes hoverOutTrans
+{
+    from {background: rgba(192, 68, 26, 0.9);}
+    to {background: rgba(170, 164, 178, 0.9);}
+}
+
+@-moz-keyframes hoverOutTrans /* Firefox */
+{
+    from {background: rgba(192, 68, 26, 0.9);}
+    to {background: rgba(170, 164, 178, 0.9);}
+}
+
+@-webkit-keyframes hoverOutTrans /* Safari and Chrome */
+{
+    from {background: rgba(192, 68, 26, 0.9);}
+    to {background: rgba(170, 164, 178, 0.9);}
+}
+
+@-o-keyframes hoverOutTrans /* Opera */
+{
+    from {background: rgba(192, 68, 26, 0.9);}
+    to {background: rgba(170, 164, 178, 0.9);}
+} 
+/*#endregion*/
+
+/*#region hoverInOpacity*/
+@keyframes hoverInOpacity
+{
+    from {opacity:1;}
+    to {opacity:0.8;}
+}
+
+@-moz-keyframes hoverInOpacity /* Firefox */
+{
+    from {opacity:1;}
+    to {opacity:0.8;}
+}
+
+@-webkit-keyframes hoverInOpacity /* Safari and Chrome */
+{
+    from {opacity:1;}
+    to {opacity:0.8;}
+}
+
+@-o-keyframes hoverInOpacity /* Opera */
+{
+    from {opacity:1;}
+    to {opacity:0.8;}
+} 
+
+@keyframes hoverOutOpacity
+{
+    from {opacity:0.8;}
+    to {opacity:1;}
+}
+
+@-moz-keyframes hoverOutOpacity
+{
+    from {opacity:0.8;}
+    to {opacity:1;}
+}
+
+@-webkit-keyframes hoverOutOpacity
+{
+    from {opacity:0.8;}
+    to {opacity:1;}
+}
+
+@-o-keyframes hoverOutOpacity
+{
+    from {opacity:0.8;}
+    to {opacity:1;}
+}
+/*#endregion*/
+
+
+/*#region hoverInTrans*/
+@keyframes hoverInWhite
+{
+    from {background: #FFFFFF;}
+    to {background: rgba(192, 68, 26, 0.5);}
+}
+
+@-moz-keyframes hoverInWhite /* Firefox */
+{
+    from {background: #FFFFFF;}
+    to {background: rgba(192, 68, 26, 0.5);}
+}
+
+@-webkit-keyframes hoverInWhite /* Safari and Chrome */
+{
+    from {background: #FFFFFF;}
+    to {background: rgba(192, 68, 26, 0.5);}
+}
+
+@-o-keyframes hoverInWhite /* Opera */
+{
+    from {background: #FFFFFF;}
+    to {background: rgba(192, 68, 26, 0.5);}
+} 
+
+@keyframes hoverOutWhite
+{
+    from {background: rgba(192, 68, 26, 0.5);}
+    to {background: #FFFFFF;}
+}
+
+@-moz-keyframes hoverOutWhite /* Firefox */
+{
+    from {background: rgba(192, 68, 26, 0.5);}
+    to {background: #FFFFFF;}
+}
+
+@-webkit-keyframes hoverOutWhite /* Safari and Chrome */
+{
+    from {background: rgba(192, 68, 26, 0.5);}
+    to {background: #FFFFFF;}
+}
+
+@-o-keyframes hoverOutWhite /* Opera */
+{
+    from {background: rgba(192, 68, 26, 0.5);}
+    to {background: #FFFFFF;}
+} 
+/*#endregion*/
+
+
+
+/*#region hoverInTrans*/
+@keyframes hoverInTransparent
+{
+    from {background: transparent;}
+    to {background: rgba(192, 68, 26, 0.5);}
+}
+
+@-moz-keyframes hoverInTransparent /* Firefox */
+{
+    from {background: transparent;}
+    to {background: rgba(192, 68, 26, 0.5);}
+}
+
+@-webkit-keyframes hoverInTransparent /* Safari and Chrome */
+{
+    from {background: transparent;}
+    to {background: rgba(192, 68, 26, 0.5);}
+}
+
+@-o-keyframes hoverInTransparent /* Opera */
+{
+    from {background: transparent;}
+    to {background: rgba(192, 68, 26, 0.5);}
+} 
+
+@keyframes hoverOutTransparent
+{
+    from {background: rgba(192, 68, 26, 0.5);}
+    to {background: transparent;}
+}
+
+@-moz-keyframes hoverOutTransparent /* Firefox */
+{
+    from {background: rgba(192, 68, 26, 0.5);}
+    to {background: transparent;}
+}
+
+@-webkit-keyframes hoverOutTransparent /* Safari and Chrome */
+{
+    from {background: rgba(192, 68, 26, 0.5);}
+    to {background: transparent;}
+}
+
+@-o-keyframes hoverOutTransparent /* Opera */
+{
+    from {background: rgba(192, 68, 26, 0.5);}
+    to {background: transparent;}
+} 
+/*#endregion*/

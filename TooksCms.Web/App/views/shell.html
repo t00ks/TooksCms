@@ -1,0 +1,33 @@
+﻿<div class="row">
+    <div id="articles" class="col-md-8" data-bind="attr : { class : pageCss }">
+        <div class="router" data-bind="router: { transition: 'articleentrance', cacheViews: false }, fadeVisible:!isLoading()"></div>
+
+        <div class="loading" data-bind="fadeVisible: isLoading() || router.isNavigating">
+            <i class="fa fa-spinner fa-spin"></i>
+        </div>
+    </div>
+
+    <aside class="col-md-4 side hidden-sm hidden-xs" data-bind="with:app.gadgets, visible:!app.isAdmin()">
+        <aside id="sidebar1" class="col col-lg-6">
+            <!-- ko foreach: col1 -->
+            <!-- ko compose: $data.modelId --><!-- /ko -->
+            <!-- /ko -->
+        </aside>
+        <aside id="sidebar2" class="col col-lg-6">
+            <!-- ko foreach: col2 -->
+            <!-- ko compose: $data.modelId --><!-- /ko -->
+            <!-- /ko -->
+        </aside>
+    </aside>
+</div>
+
+<script type="text/html" id="share-links">
+
+    <div class='addthis_toolbox addthis_default_style' data-bind="attr : addThisAttributes($data)">
+        <a class='addthis_button_facebook_like' fb:like:layout='button_count'></a>
+        <a class='addthis_button_tweet' tw:via='tooksnet'></a>
+        <a class='addthis_button_google_plusone' g:plusone:size='medium'></a>
+        <a class='addthis_counter addthis_pill_style'></a>
+    </div>
+
+</script>

@@ -1,0 +1,74 @@
+﻿@model TooksCms.Web.Models.SiteMapModel
+
+<div id="siteMap">
+    <h3>Pages</h3>
+    <div class="style-container">
+        <div class="inner">
+            <ul>
+                <li>
+                    <a href="@Model.HomeUrl">Home</a>
+                </li>
+                <li>
+                    <a href="@Model.MakeAbsolute("article/list/news")">News / Blog</a>
+                </li>
+                <li>
+                    <a href="@Model.MakeAbsolute("article/list/review")">Reviews</a>
+                </li>
+                <li>
+                    <a href="@Model.MakeAbsolute("gallery/list")">Galleries</a>
+                </li>
+                <li>
+                    <a href="@Model.MakeAbsolute("contact")">Contact</a>
+                </li>
+                <li>
+                    <a href="@Model.MakeAbsolute("about")">About</a>
+                </li>
+                <li>
+                    <a href="@Model.MakeAbsolute("about/prowork")">Professional Work</a>
+                </li>
+                <li>
+                    <a href="@Model.MakeAbsolute("about/personal")">Personal Projects</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <h3>News / Blog Posts</h3>
+    <div class="style-container">
+        <div class="inner">
+            <ul>
+            @foreach (var kvp in Model.News)
+            {
+                <li>
+                    <a href="@Model.MakeAbsolute(kvp.Value)">@kvp.Key</a>
+                </li>
+            }
+            </ul>
+        </div>
+    </div>
+    <h3>Reviews</h3>
+    <div class="style-container">
+        <div class="inner">
+            <ul>
+            @foreach (var kvp in Model.Reviews)
+            {
+                <li>
+                    <a href="@Model.MakeAbsolute(kvp.Value)">@kvp.Key</a>
+                </li>
+            }
+            </ul>
+        </div>
+    </div>
+    <h3>Galleries</h3>
+    <div class="style-container">
+        <div class="inner">
+            <ul>
+            @foreach (var kvp in Model.Galleries)
+            {
+                <li>
+                    <a href="@Model.MakeAbsolute(kvp.Value)">@kvp.Key</a>
+                </li>
+            }
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+﻿<div id="tag-cloud-gadget" class="tag-cloud tag-cloud-gadget" data-bind="with:model">
+    <ul>
+        <!-- ko foreach: tags -->
+        <li data-bind="attr : { class : 'ranked-tag-' + $parent.getRank($data) }">
+            <a data-bind="attr : { href : '/Search/' + $data.tag.name }, html: tag.name"></a>
+        </li>
+        <!-- /ko -->
+    </ul>
+</div>

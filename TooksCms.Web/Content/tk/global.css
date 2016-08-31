@@ -1,0 +1,300 @@
+﻿.style-container {
+  /*border: 1px solid;
+    border-color: #E4E4E4 #BEBEBD #BEBEBD #E4E4E4;
+    box-shadow: 1px 1px 2px 0 #D0D0D0;*/
+  background-color: #FFFFFF;
+}
+.style-container.pad {
+  padding: 5px;
+}
+textarea.input-validation-error,
+input.input-validation-error {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(236, 107, 82, 0.6) !important;
+  border-color: rgba(236, 107, 82, 0.8) !important;
+}
+span.field-validation-error {
+  color: rgba(236, 107, 82, 0.8);
+}
+input[type="button"],
+input[type="submit"],
+.fileinput-button {
+  background-color: #D65529;
+  background-image: -moz-linear-gradient(center top, #d65529, #c0441a);
+  border: 1px solid rgba(237, 129, 48, 0.5);
+  border-radius: 3px 3px 3px 3px;
+  color: #EFEFEF;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 3px 12px;
+}
+input[type="button"]:active,
+.form-line input[type="submit"]:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.form-line {
+  min-width: 450px;
+  text-align: right;
+}
+.form-line span.label {
+  display: inline-block;
+  font-size: 0.9rem;
+}
+.form-line input[type="text"],
+.form-line input[type="password"] {
+  display: inline-block;
+  margin: 0 5px 0 10px;
+  width: 250px;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border: 0 none;
+  padding: 5px 10px 4px;
+  font-size: 1rem;
+}
+.form-line input[type="button"],
+.form-line input[type="submit"] {
+  margin-right: 5px;
+}
+.input-control input[type="button"] {
+  margin-right: 5px;
+  float: right;
+}
+.input-control .input-host {
+  margin-left: 5px;
+  margin-right: 70px;
+  margin-top: 5px;
+}
+/* Lists */
+.table-host {
+  display: table;
+  width: 100%;
+}
+.list-item {
+  background-color: #F3F6F7;
+  border: 1px solid #DDE4E9;
+  height: 30px;
+  margin: 4px;
+  text-shadow: 0 1px 0 #FFFFFF;
+}
+.list-item.new {
+  background-color: #d1faa3;
+}
+.list-item.old {
+  background-color: #FFE4B5;
+}
+.list-item.tall {
+  height: 42px;
+}
+.list-item.row {
+  width: 100%;
+  display: table-row;
+}
+.list-item:hover {
+  background-color: rgba(239, 132, 95, 0.4);
+}
+.list-item.row > div.cell {
+  border-bottom: 1px solid #DDE4E9;
+  display: table-cell;
+}
+.list-item.row > div.cell.pad {
+  text-indent: 1%;
+  vertical-align: middle;
+}
+.list-item.row.header > div.cell {
+  vertical-align: middle;
+  text-indent: 1%;
+  font-weight: bold;
+}
+.list-item.border-top > div.cell {
+  border-top: 1px solid #DDE4E9;
+}
+.list-item input[type="text"] {
+  background-color: #F8FBFD;
+  border: 1px solid #D4DCE2;
+  line-height: 1.5em;
+  margin: 1%;
+  padding: 2px;
+  width: 98%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.list-item select {
+  background-color: #F8FBFD;
+  border: 1px solid #D4DCE2;
+  padding: 2px;
+  width: 98%;
+  margin: 1%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.list-item .bdr {
+  border-right: 1px solid #DDE4E9;
+}
+.list-item .lbdr {
+  border-left: 1px solid #DDE4E9;
+}
+.list-item .name {
+  width: 20%;
+}
+.list-item .icon {
+  width: 160px;
+  text-indent: 5px;
+}
+.list-item .control {
+  width: 5%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.list-item .control a:hover {
+  text-decoration: none !important;
+}
+.list-item .number {
+  width: 15%;
+}
+.list-item .small-num {
+  width: 10%;
+}
+.list-item .desc {
+  width: 55%;
+}
+.login-form input[type="text"],
+.login-form input[type="submit"],
+.login-form input[type="password"] {
+  font-size: 1.5em;
+  height: 45px;
+  width: 100%;
+}
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  font-size: 2em;
+  border: 2px solid #f8baa4;
+  border-radius: 1px 1px 1px 1px;
+}
+.login-form > div {
+  font-size: 1.2em;
+  margin: 15px 0;
+}
+.login-form input[type="checkbox"] {
+  vertical-align: -1px;
+}
+.white-popup {
+  border: 3px solid #D65529;
+  border-radius: 1px 1px 1px 1px;
+  margin: 20px auto;
+  max-width: 500px;
+  padding: 2px;
+  position: relative;
+  width: auto;
+}
+.white-popup.big {
+  max-width: none;
+  margin: 20px 50px;
+}
+.white-popup.medium {
+  max-width: 800px;
+}
+.white-popup .inner {
+  border-radius: 1px 1px 1px 1px;
+  background: #FFF;
+  padding: 20px;
+}
+.global-alert-host {
+  background-color: rgba(130, 130, 130, 0.5);
+  bottom: 0;
+  color: #000000;
+  font-weight: bold;
+  left: 0;
+  margin: 0;
+  padding: 12px;
+  position: fixed;
+  text-align: center;
+  width: 99%;
+  z-index: 2000;
+}
+.global-alert-host .message-content {
+  border: 1px solid #8A8D7F;
+  border-radius: 2px 2px 2px 2px;
+  margin-right: 17px;
+  padding: 0.5em 0;
+}
+.global-alert-host .message-content.positive {
+  background-color: #C5E775;
+}
+.global-alert-host .message-content.negative {
+  background-color: #F6C58B;
+}
+.global-alert-host .message-content.message {
+  background-color: rgba(130, 130, 130, 0.9);
+  color: #FFFFFF;
+}
+.tooltip-host {
+  background-color: #EAEDE6;
+  border: 2px solid #444;
+  max-width: 300px;
+  border-radius: 5px 5px 5px 5px;
+  display: none;
+  position: absolute;
+  z-index: 100002;
+  color: #444444;
+  padding: 5px;
+  box-shadow: 0px 0px 15px #444444;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/*#region File upload */
+#fileupload .upload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+#fileupload .upload input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+#fileupload #uploadPreview {
+  min-height: 400px;
+}
+/*#endregion*/
+/*#region Progress*/
+.progress {
+  bottom: 25px;
+  height: 25px;
+  left: 10%;
+  position: absolute;
+  width: 80%;
+}
+.progress .bar {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background-color: #D65529;
+}
+/*#endregion*/
+/*#region fileupload*/
+.fileupload .preview {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.fileupload .preview .image {
+  border: 2px solid #cccccc;
+  display: inline-flex;
+  margin: 2px;
+  padding: 2px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+.fileupload .preview .image img {
+  height: 150px;
+}
+/*# sourceMappingURL=global.css.map */

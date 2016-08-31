@@ -1,0 +1,391 @@
+﻿@font-face {
+  font-family: 'RomanD';
+  src: url('../../fonts/romand-webfont.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.wedding-colour {
+  background-color: #f9f6ef;
+}
+.wedding-colour #peek {
+  background-color: #f9f6ef;
+}
+#wedding-host {
+  font-family: 'RomanD', 'Times New Roman', Times, serif;
+}
+#wedding-host .top-image {
+  margin: 6% 6% 2%;
+  position: relative;
+}
+@media screen and (max-width: 600px) {
+  #wedding-host .top-image {
+    display: none;
+  }
+}
+#wedding-host .leaf {
+  position: fixed;
+  z-index: 0;
+  width: 15px;
+  top: 0;
+  height: 200%;
+  background-size: contain;
+}
+#wedding-host .leaf.one {
+  background-repeat: repeat-y;
+  width: 27px;
+}
+#wedding-host .leaf.one.left {
+  background-image: url('/Content/images/wedding/leaf-1-l.png');
+  left: 5px;
+}
+#wedding-host .leaf.one.right {
+  background-image: url('/Content/images/wedding/leaf-1-r.png');
+  right: 5px;
+}
+#wedding-host .leaf.two {
+  background-repeat: repeat-y;
+  width: 20px;
+  background-position-y: 30px;
+}
+#wedding-host .leaf.two.left {
+  background-image: url('/Content/images/wedding/leaf-2-l.png');
+  left: 37px;
+}
+#wedding-host .leaf.two.right {
+  background-image: url('/Content/images/wedding/leaf-2-r.png');
+  right: 37px;
+}
+#wedding-host .leaf.three {
+  background-repeat: repeat-y;
+  width: 30px;
+  background-position-y: 68px;
+}
+#wedding-host .leaf.three.left {
+  background-image: url('/Content/images/wedding/leaf-3-l.png');
+  left: 62px;
+}
+#wedding-host .leaf.three.right {
+  background-image: url('/Content/images/wedding/leaf-3-r.png');
+  right: 62px;
+}
+#wedding-host .frame-image {
+  position: absolute;
+  width: 15%;
+}
+#wedding-host .frame-image.top {
+  top: -55px;
+}
+#wedding-host .frame-image.bottom {
+  bottom: -35px;
+}
+#wedding-host .frame-image.left {
+  left: -60px;
+}
+#wedding-host .frame-image.right {
+  right: -60px;
+}
+#wedding-host .title {
+  font-family: 'RomanD', 'Times New Roman', Times, serif;
+  margin-bottom: 2%;
+}
+#wedding-host .title .message,
+#wedding-host .title .dates {
+  font-family: 'RomanD', 'Times New Roman', Times, serif;
+}
+#wedding-host .title .message {
+  font-size: 0;
+}
+#wedding-host .title .message > div {
+  font-size: 4rem;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+#wedding-host .title .message .left {
+  width: 25%;
+}
+#wedding-host .title .message .right {
+  width: 25%;
+}
+#wedding-host .title .message .logo {
+  width: 50%;
+}
+#wedding-host .title .message .logo > img {
+  max-width: 400px;
+  width: 100%;
+}
+#wedding-host .title .date {
+  text-align: center;
+  font-size: 4rem;
+}
+@media screen and (max-width: 1000px) {
+  #wedding-host .title .message > div {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 580px) {
+  #wedding-host .title .message > div {
+    font-size: 3rem;
+  }
+  #wedding-host .title .message .left {
+    width: 100%;
+  }
+  #wedding-host .title .message .right {
+    width: 100%;
+  }
+  #wedding-host .title .message .logo {
+    width: 100%;
+  }
+  #wedding-host .title .date {
+    font-size: 3rem;
+  }
+}
+#wedding-host #content-host {
+  position: relative;
+  -moz-transition: all 0.5s ease 0.001s;
+  -o-transition: all 0.5s ease 0.001s;
+  -webkit-transition: all 0.5s ease 0.001s;
+  transition: all 0.5s ease 0.001s;
+}
+#wedding-host #content-host.show {
+  opacity: 1;
+}
+#wedding-host #content-host .links {
+  width: 100%;
+  line-height: 6rem;
+  font-size: 3rem;
+}
+@media screen and (max-width: 1000px) {
+  #wedding-host #content-host .links {
+    width: 100%;
+    line-height: 5rem;
+    font-size: 2rem;
+  }
+}
+#wedding-host #content-host .rsvp-guest {
+  padding: 2rem 2rem 2rem 0;
+}
+#wedding-host #content-host section {
+  position: relative;
+  margin-bottom: 3rem;
+}
+#wedding-host #content-host section > header h2 {
+  border-bottom: 2px solid;
+  display: block;
+}
+#wedding-host #content-host section > header h1 {
+  text-align: right;
+}
+#wedding-host #content-host section .image {
+  float: left;
+  width: 60%;
+}
+#wedding-host #content-host section .details {
+  margin-left: 65%;
+}
+#wedding-host #content-host section .or {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#wedding-host #content-host section .icon {
+  width: 30%;
+  float: left;
+  font-size: 15rem;
+  padding-left: 10%;
+  color: #a3d2e4;
+}
+#wedding-host #content-host section .icon-detail {
+  margin-left: 30%;
+  padding-top: 6rem;
+}
+#wedding-host #content-host section.detail-heavy .image {
+  float: left;
+  width: 30%;
+  margin-top: 40px;
+}
+#wedding-host #content-host section.detail-heavy .details {
+  margin-left: 35%;
+}
+#wedding-host #content-host section .rsvp-guest input[type="checkbox"] {
+  box-shadow: none;
+}
+#wedding-host #content-host section .map {
+  cursor: pointer;
+}
+#wedding-host #content-host #info .icon {
+  font-size: 12rem;
+}
+#wedding-host #content-host #info .icon-detail {
+  padding-top: 3rem;
+}
+#wedding-host #content-host #info .icon-detail .row > div {
+  width: 32%;
+}
+#wedding-host #content-host #info .icon-detail .row .first {
+  padding-left: 0;
+}
+#wedding-host #content-host #info h3.trans {
+  margin-top: 1rem;
+}
+#wedding-host #content-host .map-host {
+  height: 420px;
+  position: relative;
+  top: 20px;
+}
+#wedding-host #login-host {
+  background-color: rgba(194, 223, 235, 0.5);
+  font-size: 2rem;
+  width: 100%;
+  -moz-transition: all 0.5s ease 0.001s;
+  -o-transition: all 0.5s ease 0.001s;
+  -webkit-transition: all 0.5s ease 0.001s;
+  transition: all 0.5s ease 0.001s;
+  position: relative;
+  padding: 2%;
+}
+#wedding-host #login-host h3 {
+  text-align: center;
+}
+#wedding-host #login-host .code,
+#wedding-host #login-host .input,
+#wedding-host #login-host .button,
+#wedding-host #login-host .thankyou {
+  font-size: 2rem;
+  padding: 0.5rem;
+  line-height: 5rem;
+}
+#wedding-host #login-host .code {
+  text-align: right;
+}
+@media screen and (max-width: 767px) {
+  #wedding-host #login-host .code {
+    text-align: center;
+  }
+}
+#wedding-host #login-host .input > input {
+  text-align: center;
+  display: inline-block;
+}
+#wedding-host #login-host .input .fa {
+  position: absolute;
+  right: -3rem;
+  top: 50%;
+  font-size: 3rem;
+  margin-top: -1.5rem;
+  opacity: 0;
+  -moz-transition: all 0.25s ease 0.001s;
+  -o-transition: all 0.25s ease 0.001s;
+  -webkit-transition: all 0.25s ease 0.001s;
+  transition: all 0.25s ease 0.001s;
+}
+#wedding-host #login-host .input .fa.show {
+  opacity: 1;
+}
+#wedding-host #login-host .button,
+#wedding-host #login-host .thankyou {
+  text-align: center;
+}
+#wedding-admin .admin-controls .count-host {
+  padding: 5px;
+  background-color: white;
+}
+#wedding-admin .admin-controls .count-host .count-table {
+  width: 100%;
+}
+#wedding-admin .admin-controls .count-host .count-table col {
+  width: 25%;
+}
+#wedding-admin .admin-controls .count-host .count-table th {
+  font-weight: bold;
+  border-bottom: 1px solid #444444;
+}
+#wedding-admin .admin-controls .count-host .count-table .number {
+  text-align: right;
+}
+#wedding-admin .table-host .list-item.header .cell {
+  text-indent: 0;
+}
+#wedding-admin .table-host .list-item > div:nth-child(1) {
+  width: 80px;
+  text-align: center;
+}
+#wedding-admin .table-host .list-item > div:nth-child(2),
+#wedding-admin .table-host .list-item > div:nth-child(3) {
+  width: 17%;
+}
+#wedding-admin .table-host .list-item > div:nth-child(4) {
+  width: 100px;
+  text-align: center;
+}
+#wedding-admin .table-host .list-item > div:nth-child(5) {
+  width: 60px;
+  text-align: center;
+}
+#wedding-admin .table-host .list-item > div:nth-child(6) {
+  width: 80px;
+  text-align: center;
+}
+#wedding-admin .table-host .list-item > div:nth-child(7) {
+  width: 15%;
+}
+#wedding-admin .table-host .list-item > div:nth-child(8) {
+  width: 85px;
+  text-align: center;
+}
+#wedding-admin .table-host .list-item > div:nth-child(8) i {
+  font-size: 2rem;
+  cursor: pointer;
+}
+#wedding-admin .table-host .list-item > div:nth-child(9) {
+  width: 20%;
+}
+#wedding-admin .table-host .list-item > div:nth-child(10) {
+  width: 45px;
+  text-align: center;
+}
+#wedding-admin .stats {
+  margin: 15px;
+}
+#wedding-admin .stats .title {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  font-size: 25px;
+  text-align: center;
+}
+#wedding-admin .stats .title.last {
+  border-right: none;
+}
+#wedding-admin .stats .sub-title {
+  border-right: 1px solid black;
+  text-align: center;
+}
+#wedding-admin .stats .sub-title.last {
+  border-right: none;
+}
+#wedding-admin .stats .stat {
+  border-right: 1px solid black;
+  text-align: center;
+  font-size: 15px;
+}
+#wedding-admin .stats .stat.last {
+  border-right: none;
+}
+#rsvp-form {
+  font-family: 'RomanD', 'Times New Roman', Times, serif;
+}
+#rsvp-form h1 {
+  text-align: center;
+}
+#rsvp-form .in-out {
+  font-size: 2rem;
+  text-align: center;
+}
+#rsvp-form .in-out input {
+  vertical-align: text-top;
+}
+#rsvp-form .meal-choice {
+  font-size: 2rem;
+  padding: 2rem;
+  text-align: center;
+}
+/*# sourceMappingURL=wedding.css.map */

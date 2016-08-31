@@ -1,0 +1,78 @@
+﻿<div id="admin-articles" data-bind="with: model">
+    <div class="admin-controls">
+        <button class="btn btn-default" id="btn-add-article" data-bind="click: add">
+            <i class="fa fa-plus"></i>
+            Add
+        </button>
+        <select id="dd-category" class="form-control visible-lg-inline" style="width:200px" data-bind="options: categories, optionsText : 'text', optionsValue: 'value', value: selectedCategory, optionsCaption: '-- select article type --'"></select>
+
+        <select id="dd-articleType" class="form-control pull-right" style="width:200px" data-bind="options: articleTypes, optionsText : 'text', optionsValue: 'value', value: selectedType, optionsCaption: '-- select category --'"></select>
+        <button class="btn btn-default pull-right" id="btn-cancel" style="margin-right:10px;" data-bind="click: cancel" >
+            <i class="fa fa-ban"></i>
+            Cancel
+        </button>
+    </div>
+
+    <div id="article-edit-host" data-bind="with: article, visible: editing">
+        <div id="image-host" class="image-widget">
+            <div class="image-drop" style="display:none;">
+                <i class="fa fa-sign-in" style="display:none;"></i>
+            </div>
+            <!-- ko foreach: images -->
+            <!-- ko if: position() == 'gal' -->
+            <div class="editor-image" data-bind="attr: { 'data-name': value }">
+                <img data-bind="attr: { src : thumbnail }" alt="image" />
+                <a class="i-control move" title="Move Image" href="#"><i class="fa fa-arrows"></i></a>
+                <a class="i-control cancel" title="Move Image" href="#"><i class="fa fa-ban"></i></a>
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <div id="editor-host">
+            <!-- ko compose: { model : 'viewmodels/admin/articleedit', activationData : $data } --><!-- /ko-->
+        </div>
+    </div>
+
+    <div id="articles-list" class="div-list-host" data-bind="with: list, visible: !editing()">
+        <div class="table-host">
+            <div class="list-item row header">
+                <div class="name bdr cell pad">Date</div>
+                <div class="bdr cell pad">Title</div>
+                <div class="name bdr cell pad">Category Name</div>
+                <div class="number bdr cell pad">Version</div>
+                <div class="number bdr cell pad">Status</div>
+                <div class="control cell"></div>
+            </div>
+            <!-- ko foreach: $data -->
+            <div class="list-item row">
+                <div class="name bdr cell pad" data-bind="text: $parents[1].formatDate(date)"></div>
+                <div class="bdr cell pad" data-bind="text: title"></div>
+                <div class="name bdr cell pad" data-bind="text: categoryName"></div>
+                <div class="number bdr cell pad" data-bind="text: version"></div>
+                <div class="number bdr cell pad" data-bind="text: status"></div>
+                <div class="control cell">
+                    <a data-bind="click: $parents[1].edit">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a data-bind="click: $parents[1].remove">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+
+    <div id="confirmation-check" class="white-popup mfp-hide">
+        <div class="inner">
+            Are you sure you want to delete?
+
+            <button class="btn btn-default" data-bind="click: removeConfirm">
+                OK
+            </button>
+            <button class="btn btn-default" data-bind="click: cancelRemove">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

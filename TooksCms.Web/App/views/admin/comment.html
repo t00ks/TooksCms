@@ -1,0 +1,32 @@
+﻿<div id="admin-comments" data-bind="with: model">
+    <div id="lookup-admin-content" class="div-list-host">
+        <div class="table-host">
+            <div class="list-item tall row header">
+                <div class="name bdr cell">Article</div>
+                <div class="name cell">Title</div>
+                <div class="desc bdr lbdr cell">Comment</div>
+                <div class="control cell"></div>
+            </div>
+            <!-- ko template: { name : 'comment-template', foreach: comments } --><!-- /ko -->
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="comment-template">
+    <div class="list-item row">
+        <div class="name bdr cell">
+            <a data-bind="attr : $parent.articleLink($data)">Link to Article</a>
+        </div>
+        <div class="name bdr cell">
+            <span data-bind="text: title"></span>
+        </div>
+        <div class="desc left cell">
+            <span data-bind="text: comment"></span>
+        </div>
+        <div class="control cell">
+            <a data-bind="click: $parent.remove">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+</script>

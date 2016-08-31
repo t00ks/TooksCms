@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88b135f257ea4be2b3cd8b57a258ff71" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="TooksCmsModel.ArticleType" Width="1.5" PointX="2.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.BulletinType" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Gadget" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Rating" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Rating2ArticleType2Category" Width="1.5" PointX="4" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.StaticRoute" Width="1.5" PointX="7.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Article" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.ArticleComment" Width="1.5" PointX="0.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.ArticleContent" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.ArticleImage" Width="1.5" PointX="0.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Bulletin" Width="1.5" PointX="5.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.BulletinContent" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.ContactForm" Width="1.5" PointX="2.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Gallery" Width="1.5" PointX="9.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.GalleryImage" Width="1.5" PointX="10.875" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.EventLog" Width="1.5" PointX="12.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Category" Width="1.5" PointX="5.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Country" Width="1.5" PointX="7.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Tag" Width="1.5" PointX="4" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.AreaType" Width="1.5" PointX="2.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Gadget2Role2AreaType" Width="1.5" PointX="4" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Role" Width="1.5" PointX="4" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Site" Width="1.5" PointX="2.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.PageVisit" Width="1.5" PointX="12.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Address" Width="1.5" PointX="9.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.ContactInfo" Width="1.5" PointX="11" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Email" Width="1.5" PointX="11" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.Guest" Width="1.5" PointX="0.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.PhoneNumber" Width="1.5" PointX="12.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TooksCmsModel.User" Width="1.5" PointX="9.25" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="TooksCmsModel.FK_Article_ArticleType" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Rating2ArticleType2Category_ArticleType" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Bulletin_BulletinType" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Gadget_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Gadget2Role2AreaType_Gadget" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Rating2ArticleType2Category_Rating" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Rating2ArticleType2Category_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Article_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Article_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_ArticleComment_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_ArticleContent_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_ArticleImage_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Bulletin_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_ArticleComment_ArticleComment" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_ArticleComment_Guest" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_ArticleComment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Bulletin_Gallery" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Bulletin_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_BulletinContent_Bulletin" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_ContactForm_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Gallery_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Gallery_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_GalleryImage_Gallery" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Address_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Gadget2Role2AreaType_AreaType" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Gadget2Role2AreaType_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_User_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_PageVisit_PageVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Address_ContactInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_ContactInfo_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_Email_ContactInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.FK_PhoneNumber_ContactInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.Article2Tag" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.Gallery2Tag" ManuallyRouted="false" />
+        <AssociationConnector Association="TooksCmsModel.User2Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TooksCmsModel.Snapshot" Width="1.5" PointX="4" PointY="12.625" />
+        <EntityTypeShape EntityType="TooksCmsModel.Hotel" Width="1.5" PointX="7" PointY="11.75" />
+        <EntityTypeShape EntityType="TooksCmsModel.GuestGroup" Width="1.5" PointX="7" PointY="14.75" />
+        <EntityTypeShape EntityType="TooksCmsModel.FoodChoice" Width="1.5" PointX="11.5" PointY="14.5" />
+        <EntityTypeShape EntityType="TooksCmsModel.Guest1" Width="1.5" PointX="9.25" PointY="13.75" />
+        <AssociationConnector Association="TooksCmsModel.FK_Guest_FoodChoice" />
+        <AssociationConnector Association="TooksCmsModel.FK_Guest_GuestGroup" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

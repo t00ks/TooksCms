@@ -1,0 +1,412 @@
+﻿<div id="content-host" class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>
+                Welcome <span data-bind="text: getGroupName()"></span> to our wedding page, below you will find information on lacation,
+                accomodation and how to RSVP. We are looking forward to seeing you all there!
+            </h3>
+        </div>
+    </div>
+    <div class="row links">
+        <div class="col-xs-12">
+            <a>Event Info</a> \
+            <a>RSVP</a> \
+            <a>Location</a> \
+            <a>Accomodation</a> \
+            <a>Gifts</a> \
+            <a>Transport</a> \
+            <a>Contact Us</a>
+        </div>
+    </div>
+    <div class="row" style="height:100%;">
+        <div class="col-xs-12">
+            <section id="contact" class="clearfix">
+                <header>
+                    <hgroup>
+                        <h2>Event Info</h2>
+                    </hgroup>
+                </header>
+                <div class="icon">
+                    <i class="fa fa-info"></i>
+                </div>
+                <div class="icon-detail">
+                    <h3>Times</h3>
+                    <!-- ko if: isDay -->
+                    <p>
+                        Guests can arrive from 12:00pm to be seated by 12:30pm (The Perkins Resturant bar will be available for early arrivals)
+                        <br /><br />
+                        Carriages home at 12:30am (Details of local Taxis can be found futher down this page)
+                    </p>
+                    <!-- /ko -->
+                    <!-- ko ifnot: isDay -->
+                    <p>
+                        Guests to start arriving from 7pm
+                        <br /><br />
+                        Carriages home at 12:30am (Details of local Taxis can be found futher down this page)
+                    </p>
+                    <!-- /ko -->
+                    <h3>Food</h3>
+                    <!-- ko if: isDay -->
+                    <p>
+                        You have a choice in what you would like to eat for the wedding breakfast, please choose from the following options when reviewing your RSVP
+                    </p>
+                    <p>
+                        <b>Starter:</b>
+                    </p>
+                    <p>
+                        Ham hock Terrine, plum & apple chutney, toasted focaccia
+                        <br />
+                        <b class="or">OR</b>
+                        <br />
+                        Mange tout, pecan nut and sesame seed salad, halloumi fritters, orange and walnut dressing (v)
+                    </p>
+                    <p>
+                        <b>Main:</b>
+                    </p>
+                    <p>
+                        Slow braised blade of beef with Dauphinoise potato, green cabbage, red wine jus
+                        <br />
+                        <b class="or">OR</b>
+                        <br />
+                        Seared fillet of sea bream with fondant potato, asparagus spears, tomato & tarragon hollandaise sauce
+                        <br />
+                        <b class="or">OR</b>
+                        <br />
+                        Potato gnocchi, wild mushrooms, crushed toasted hazelnuts, truffle cream & pea shoots (v)
+                    </p>
+                    <p>
+                        <b>Dessert:</b>
+                    </p>
+                    <p>
+                        Eton Mess (strawberries, meringue, cream & chocolate)
+                        <br />
+                        <b class="or">OR</b>
+                        <br />
+                        Dark chocolate tart with passion fruit sorbet
+                        <br />
+                        <b class="or">OR</b>
+                        <br />
+                        White chocolate & raspberry crème brûlée with Carriage Hall cookie
+                    </p>
+                    <!-- /ko -->
+                    <!-- ko ifnot: isDay -->
+                    <p>
+                        Hog Roast<br />
+                        Apple sauce and stuffing<br />
+                        Bread rolls<br />
+                        Duck fat roast potatoes
+                        <br /><br />
+                        The vegetarian option is Lightly spiced chick pea cakes. Please specify if you wish to have the vegetarian option in you RSVP
+                        <br /><br />
+                        There will also be a cheese board served with traditional garnishes and biscuits
+                    </p>
+                    <!-- /ko -->
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-12">
+            <section id="rsvp">
+                <header>
+                    <hgroup>
+                        <h2>RSVP</h2>
+                    </hgroup>
+                </header>
+                <div class="row">
+                    <!-- ko foreach: guests-->
+                    <div class="col-xs-12 rsvp-guest">
+                        <div class="col-sm-3" data-bind="html: name"></div>
+                        <!-- ko if: attending() === null -->
+                        <div class="col-sm-2">
+                            Not Yet Responded
+                        </div>
+                        <div class="col-sm-2">
+                            <button data-bind="click: $parent.openRsvp">
+                                RSVP
+                            </button>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if: attending() === false -->
+                        <div class="col-sm-8">
+                            Cannot Attend :(. If you have situation has changed please contact one of us
+                        </div>
+                        <!-- /ko-->
+                        <!-- ko if: attending() === true -->
+                        <div class="col-sm-8">
+                            <!-- ko if: guestType() == 1 -->
+                            See you there! :). You chose:
+                            Starter <b data-bind="html:getFoodInfo('s')"></b>
+                            Main <b data-bind="html:getFoodInfo('m')"></b>
+                            Desert <b data-bind="html:getFoodInfo('d')"></b>
+                            <!-- /ko -->
+                            <!-- ko if: guestType() == 2 -->
+                            See you there! :). 
+                            <!-- ko if: foodChoice.isVeggie() -->
+                            <b>You have specified you would like the veggie option</b>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if: attending() !== null && rsvpDate() === null -->
+                        <div class="col-sm-1">
+                            <button data-bind="click: $parent.openRsvp">
+                                RSVP
+                            </button>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </section>
+        </div>
+        <div class="col-sm-6 col-xs-12" style="height:100%;">
+            <section id="location">
+                <header>
+                    <hgroup>
+                        <h2>Location</h2>
+                        <h1>The Carriage Hall</h1>
+                    </hgroup>
+                </header>
+                <div class="image">
+                    <img src="../../Content/images/wedding/thecarriagehall.jpg" />
+                </div>
+                <div class="details">
+                    <h3>Address</h3>
+                    <p>
+                        Station Road,<br />Plumtree,<br />Nottingham,<br />NG12 5NA
+                    </p>
+                    <h3>Telephone</h3>
+                    <p>
+                        (0115) 9375300
+                    </p>
+                    <p class="map hidden-xs">
+                        <a data-bind="click: centreCarriageHall">Map <i class="fa fa-arrow-right"></i></a>
+                    </p>
+                    <p class="map hidden-sm hidden-lg hidden-xl">
+                        <a href="https://www.google.co.uk/maps/place/The+Carriage+Hall/@52.8850277,-1.0829186,17z/data=!3m1!4b1!4m2!3m1!1s0x4879c65b0729bd7f:0x13505183c7964f53" target="_blank">Map <i class="fa fa-arrow-right"></i></a>
+                    </p>
+                </div>
+            </section>
+            <section id="accomodation" class="detail-heavy">
+                <header>
+                    <hgroup>
+                        <h2>Accomodation</h2>
+                    </hgroup>
+                </header>
+                <!-- ko with: hotels -->
+                <!-- ko foreach: hotel-->
+                <div class="image">
+                    <img data-bind="attr : { src : '../../Content/images/wedding/' + image }" />
+                </div>
+                <div class="details">
+                    <h2 data-bind="text: name, attr : { id : 'hotel_' + hotelId }"></h2>
+                    <h3>Address</h3>
+                    <p data-bind="html: address"></p>
+                    <h3>Telephone</h3>
+                    <p data-bind="html: number"></p>
+                    <h3>Website</h3>
+                    <p>
+                        <a data-bind="text: website, attr : { href : website }"></a>
+                    </p>
+                    <p class="map hidden-xs">
+                        <a data-bind="click: $parent.showOnMap">Map <i class="fa fa-arrow-right"></i></a>
+                    </p>
+                    <p class="map hidden-sm hidden-lg hidden-xl">
+                        <a href="maps.google.co.uk" target="_blank">Map <i class="fa fa-arrow-right"></i></a>
+                    </p>
+                    <p>
+                        Lat: <span data-bind="html:latitude"></span>
+                        Lat: <span data-bind="html:longitude"></span>
+                    </p>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+            </section>
+        </div>
+        <div class="col-sm-6 map-host hidden-xs">
+            <div id="map-canvas" style="height:100%;"></div>
+        </div>
+        <div class="col-xs-12">
+            <section id="info" class="clearfix">
+                <header>
+                    <hgroup>
+                        <h2>Transport</h2>
+                    </hgroup>
+                </header>
+                <div class="icon">
+                    <i class="fa fa-car"></i>
+                </div>
+                <div class="icon-detail">
+                    <h3>Carriages</h3>
+                    <div class="row">
+                        <div class="col-xs-4 first">
+                            NG11 Cars<br />
+                            0115 9145145 <br />
+                            <a href="http://ng11cars.co.uk/" target="_blank">http://ng11cars.co.uk/</a>
+                        </div>
+                        <div class="col-xs-4">
+                            Yellow Cars<br />
+                            0115 9818181<br />
+                            <a href="http://www.yellowcars.net/" target="_blank">http://www.yellowcars.net/</a>
+                        </div>
+                        <div class="col-xs-4">
+                            Key Kars<br />
+                            0115 9376999 <br />
+                            <a href="http://keykars.org.uk/" target="_blank">http://keykars.org.uk/</a>
+                        </div>
+                    </div>
+                    <h3 class="trans">Public Transport</h3>
+                    <p>The nearest major train station is Nottingham</p>
+                    <p>
+                        The Keyworth Connection bus goes directly from Nottingham Broad Marsh to pretty much right outside the Carriage Hall
+                        <br /><br />
+                        <a href="https://www.trentbarton.co.uk/services/keyworthconnection/timetable" target="_blank">Keyworth Connection Timetable</a>: The stop you want is between  <b>KEYWORTH, Church</b> and <b>Plumtree, Griffin Inn</b>
+                        <br /><br />
+                        <a href="https://www.google.co.uk/maps/dir/Nottingham,+UK/52.887348,-1.087166/@52.9172718,-1.1154228,13.25z/data=!4m9!4m8!1m5!1m1!1s0x487832d2390779cd:0x108063201919db15!2m2!1d-1.1581086!2d52.9547832!1m0!3e3" target="_blank">Useful Google Maps Search</a>
+                    </p>
+                </div>
+            </section>
+            <section id="gifts" class="clearfix detail-heavy">
+                <header>
+                    <hgroup>
+                        <h2>Gifts</h2>
+                    </hgroup>
+                </header>
+                <div class="icon">
+                    <i class="fa fa-gift"></i>
+                </div>
+                <div class="icon-detail">
+                    What we really want is you there with us. However if you are one
+                    of those wonderfully generous people who wishes to bring a gift
+                    then we do have a list at <a href="https://www.johnlewisgiftlist.com" target="_blank">https://www.johnlewisgiftlist.com</a>
+                    (gift list number <b>654180</b>), or contributions towards our Honeymoon
+                    in Europe would be greatly appreciated.
+                </div>
+            </section>
+            <section id="contact" class="clearfix">
+                <header>
+                    <hgroup>
+                        <h2>Contact</h2>
+                    </hgroup>
+                </header>
+                <div class="icon">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <div class="icon-detail">
+                    <p>
+                        <b>Email:</b> <a href="mailto:timcrittenden@pcrules.com">timcrittenden@pcrules.com</a>
+                        <br />
+                        <br />
+                        <b>Phone/Text</b> Tim: 07793973721 Jen: 07968481607
+                        <br />
+                        <br />
+                        <b>Snail Mail</b> If you haven't made it into the 21st century you may write to us here: 31 Gough Grove, Long Eaton, Nottingham, NG10 3NZ
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="rsvp-form" class="white-popup mfp-hide medium">
+        <div class="inner">
+            <!-- ko with: selectedGuest() -->
+            <h1 data-bind="html:name"></h1>
+
+            <div class="row in-out">
+                <label class="col-xs-6">
+                    I'm In!
+                    <input type="checkbox" name="rsvp_radio" class="form-control" data-bind="checked: accepted" />
+                </label>
+                <label class="col-xs-6">
+                    Sorry I'm Out :(
+                    <input type="checkbox" name="rsvp_radio" class="form-control" data-bind="checked: declined" />
+                </label>
+                <label class="col-xs-12 text-danger" style="display:none">
+                    Please RSVP by checking "Im In" or "Sorry I'm Out :("
+                </label>
+            </div>
+            <!-- ko if: guestType() == 2 -->
+            <div class="meal-choice">
+                <label>
+                    I would like the vegitarian option please
+                    <input type="checkbox" class="form-control" data-bind="checked: foodChoice.isVeggie" />
+                </label>
+            </div>
+            <!--/ko -->
+            <!-- ko if: guestType() == 1 -->
+            <div class="meal-choice starter">
+                <h3>
+                    Starter:
+                </h3>
+                <label>
+                    Ham Hock
+                    <input type="radio" value="ham" class="form-control" name="starters" data-bind="checked: foodChoice.starter" />
+                </label>
+                <label>
+                    Haloumi Fritters
+                    <input type="radio" value="hal" class="form-control" name="starters" data-bind="checked: foodChoice.starter" />
+                </label>
+                <label class="col-xs-12 text-danger" style="display:none">
+                    Please choose a starter!
+                </label>
+            </div>
+            <div class="meal-choice main">
+                <h3>
+                    Main:
+                </h3>
+                <label>
+                    Blade of Beef
+                    <input type="radio" value="beef" class="form-control" name="mains" data-bind="checked: foodChoice.main" />
+                </label>
+                <label>
+                    Sea Bream
+                    <input type="radio" value="bream" class="form-control" name="mains" data-bind="checked: foodChoice.main" />
+                </label>
+                <label>
+                    Gnocchi
+                    <input type="radio" value="gnocchi" class="form-control" name="mains" data-bind="checked: foodChoice.main" />
+                </label>
+                <label class="col-xs-12 text-danger" style="display:none">
+                    Please choose a Main!
+                </label>
+            </div>
+            <div class="meal-choice dessert">
+                <h3>
+                    Dessert:
+                </h3>
+                <label>
+                    Eton Mess
+                    <input type="radio" value="eton" class="form-control" name="puds" data-bind="checked: foodChoice.dessert" />
+                </label>
+                <label>
+                    Dark Chocolate Tart
+                    <input type="radio" value="tart" class="form-control" name="puds" data-bind="checked: foodChoice.dessert" />
+                </label>
+                <label>
+                    Creme Brulee
+                    <input type="radio" value="brulee" class="form-control" name="puds" data-bind="checked: foodChoice.dessert" />
+                </label>
+                <label class="col-xs-12 text-danger" style="display:none">
+                    Please choose a dessert!
+                </label>
+            </div>
+            <!-- /ko -->
+
+            <div style="margin-bottom:10px;">
+                <label>
+                    Please Specify Any Dietary Requirements
+                </label>
+                <input type="text" class="form-control" data-bind="value: dietaryRequirements" />
+            </div>
+
+            <button class="btn btn-default" data-bind="click: submit">
+                Confirm
+            </button>
+            <button class="btn btn-default pull-right" data-bind="click: close">
+                I'll Finish This Later
+            </button>
+            <!--/ko -->
+        </div>
+    </div>
+
+</div>
+

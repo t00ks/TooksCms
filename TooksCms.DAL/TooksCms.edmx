@@ -1,0 +1,2955 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TooksCmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ArticleType">
+          <Key>
+            <PropertyRef Name="ArticleTypeId" />
+          </Key>
+          <Property Name="ArticleTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleTypeUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Class" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Assembly" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BulletinType">
+          <Key>
+            <PropertyRef Name="BulletinTypeId" />
+          </Key>
+          <Property Name="BulletinTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BulletinTypeUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Class" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Assembly" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gadget">
+          <Key>
+            <PropertyRef Name="GadgetId" />
+          </Key>
+          <Property Name="GadgetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GadgetUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="View" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DefaultColumn" Type="int" Nullable="false" />
+          <Property Name="SiteId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RatingUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rating2ArticleType2Category">
+          <Key>
+            <PropertyRef Name="RatingId" />
+            <PropertyRef Name="ArticleTypeId" />
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="RatingId" Type="int" Nullable="false" />
+          <Property Name="ArticleTypeId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Ordinal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaticRoute">
+          <Key>
+            <PropertyRef Name="StaticRoute" />
+          </Key>
+          <Property Name="StaticRoute" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="56" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" MaxLength="56" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArticleTypeId" Type="int" Nullable="false" />
+          <Property Name="SiteId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Article2Tag">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="TagId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArticleComment">
+          <Key>
+            <PropertyRef Name="ArticleCommentId" />
+          </Key>
+          <Property Name="ArticleCommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleCommentUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="GuestId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ParentCommentId" Type="int" />
+        </EntityType>
+        <EntityType Name="ArticleContent">
+          <Key>
+            <PropertyRef Name="ArticleContentId" />
+          </Key>
+          <Property Name="ArticleContentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleContentUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="Content" Type="xml" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArticleImage">
+          <Key>
+            <PropertyRef Name="ArticleImageId" />
+          </Key>
+          <Property Name="ArticleImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleImageUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Thumbnail" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Size" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bulletin">
+          <Key>
+            <PropertyRef Name="BulletinId" />
+          </Key>
+          <Property Name="BulletinId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BulletinUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArticleId" Type="int" />
+          <Property Name="GalleryId" Type="int" />
+          <Property Name="BulletinTypeId" Type="int" Nullable="false" />
+          <Property Name="SiteId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BulletinContent">
+          <Key>
+            <PropertyRef Name="BulletinContentId" />
+          </Key>
+          <Property Name="BulletinContentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BulletinContentUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BulletinId" Type="int" Nullable="false" />
+          <Property Name="Content" Type="xml" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactForm">
+          <Key>
+            <PropertyRef Name="ContactFormId" />
+          </Key>
+          <Property Name="ContactFormId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactFormUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SiteId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
+          <Property Name="Public" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="GalleryId" />
+          </Key>
+          <Property Name="GalleryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GalleryUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gallery2Tag">
+          <Key>
+            <PropertyRef Name="GalleryId" />
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="GalleryId" Type="int" Nullable="false" />
+          <Property Name="TagId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GalleryImage">
+          <Key>
+            <PropertyRef Name="GalleryImageId" />
+          </Key>
+          <Property Name="GalleryImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GalleryImageUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GalleryId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Thumbnail" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Snapshot">
+          <Key>
+            <PropertyRef Name="SnapshotId" />
+          </Key>
+          <Property Name="SnapshotId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Html" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventLogId" />
+          </Key>
+          <Property Name="EventLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventLogUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EventType" Type="tinyint" Nullable="false" />
+          <Property Name="EventSource" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CategoryDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ParentCategoryId" Type="int" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ISO3166" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AreaType">
+          <Key>
+            <PropertyRef Name="AreaTypeId" />
+          </Key>
+          <Property Name="AreaTypeId" Type="int" Nullable="false" />
+          <Property Name="AreaTypeUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AreaType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gadget2Role2AreaType">
+          <Key>
+            <PropertyRef Name="GadgetId" />
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="AreaTypeId" />
+          </Key>
+          <Property Name="GadgetId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="AreaTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="SiteId" />
+          </Key>
+          <Property Name="SiteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="URL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Host" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'tookscms_live.security.User2Role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User2Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PageVisit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaType" Type="tinyint" Nullable="false" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="SearchTerm" Type="nvarchar(max)" />
+          <Property Name="Referer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LinkType" Type="nvarchar" MaxLength="48" />
+          <Property Name="PreviousId" Type="int" />
+          <Property Name="UserAgent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserLanguages" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BrowserVersion" Type="nvarchar" MaxLength="48" Nullable="false" />
+          <Property Name="BrowserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="48" Nullable="false" />
+          <Property Name="DateTime" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ContactInfoId" Type="int" Nullable="false" />
+          <Property Name="HouseNumber" Type="int" />
+          <Property Name="HouseName" Type="nvarchar" MaxLength="200" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AddressLine3" Type="nvarchar" MaxLength="1000" />
+          <Property Name="City" Type="nvarchar" MaxLength="150" />
+          <Property Name="County" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactInfo">
+          <Key>
+            <PropertyRef Name="ContactInfoId" />
+          </Key>
+          <Property Name="ContactInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactInfoUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ContactInfoId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IsPrimary" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuestUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="Website" Type="nvarchar" MaxLength="512" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhoneNumber">
+          <Key>
+            <PropertyRef Name="PhoneNumberId" />
+          </Key>
+          <Property Name="PhoneNumberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneNumberUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ContactInfoId" Type="int" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ScreenName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="SiteId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="CreationIP" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginIP" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodChoice">
+          <Key>
+            <PropertyRef Name="FoodChoiceId" />
+          </Key>
+          <Property Name="FoodChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuestId" Type="int" Nullable="false" />
+          <Property Name="Starter" Type="nvarchar" MaxLength="15" />
+          <Property Name="Main" Type="nvarchar" MaxLength="15" />
+          <Property Name="Dessert" Type="nvarchar" MaxLength="15" />
+          <Property Name="IsVeggie" Type="bit" />
+        </EntityType>
+        <EntityType Name="Guest1">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GuestType" Type="tinyint" Nullable="false" />
+          <Property Name="GuestSide" Type="tinyint" Nullable="false" />
+          <Property Name="InvitationSent" Type="bit" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Attending" Type="bit" />
+          <Property Name="GuestGroupId" Type="int" />
+          <Property Name="DietaryRequirements" Type="nvarchar(max)" />
+          <Property Name="RSVPDate" Type="datetime" />
+          <Property Name="RSVPIpAddress" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="GuestGroup">
+          <Key>
+            <PropertyRef Name="GuestGroupId" />
+          </Key>
+          <Property Name="GuestGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="HotelId" />
+          </Key>
+          <Property Name="HotelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Website" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Longitude" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Address_ContactInfo">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="ContactInfoId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="ContactInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_ArticleType">
+          <End Role="ArticleType" Type="Self.ArticleType" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleType">
+              <PropertyRef Name="ArticleTypeId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="ArticleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article2Tag_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Article2Tag" Type="Self.Article2Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Article2Tag">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article2Tag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Article2Tag" Type="Self.Article2Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagId" />
+            </Principal>
+            <Dependent Role="Article2Tag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleComment_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ArticleComment" Type="Self.ArticleComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="ArticleComment">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleComment_ArticleComment">
+          <End Role="ArticleComment" Type="Self.ArticleComment" Multiplicity="0..1" />
+          <End Role="ArticleComment1" Type="Self.ArticleComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleComment">
+              <PropertyRef Name="ArticleCommentId" />
+            </Principal>
+            <Dependent Role="ArticleComment1">
+              <PropertyRef Name="ParentCommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleComment_Guest">
+          <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
+          <End Role="ArticleComment" Type="Self.ArticleComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest">
+              <PropertyRef Name="GuestId" />
+            </Principal>
+            <Dependent Role="ArticleComment">
+              <PropertyRef Name="GuestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleComment_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ArticleComment" Type="Self.ArticleComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ArticleComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleContent_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ArticleContent" Type="Self.ArticleContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="ArticleContent">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleImage_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="ArticleImage" Type="Self.ArticleImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="ArticleImage">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bulletin_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bulletin" Type="Self.Bulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Bulletin">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bulletin_BulletinType">
+          <End Role="BulletinType" Type="Self.BulletinType" Multiplicity="1" />
+          <End Role="Bulletin" Type="Self.Bulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BulletinType">
+              <PropertyRef Name="BulletinTypeId" />
+            </Principal>
+            <Dependent Role="Bulletin">
+              <PropertyRef Name="BulletinTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bulletin_Gallery">
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bulletin" Type="Self.Bulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gallery">
+              <PropertyRef Name="GalleryId" />
+            </Principal>
+            <Dependent Role="Bulletin">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bulletin_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="Bulletin" Type="Self.Bulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Bulletin">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BulletinContent_Bulletin">
+          <End Role="Bulletin" Type="Self.Bulletin" Multiplicity="1" />
+          <End Role="BulletinContent" Type="Self.BulletinContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bulletin">
+              <PropertyRef Name="BulletinId" />
+            </Principal>
+            <Dependent Role="BulletinContent">
+              <PropertyRef Name="BulletinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactForm_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="ContactForm" Type="Self.ContactForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="ContactForm">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactInfo_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ContactInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Email_ContactInfo">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
+          <End Role="Email" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="ContactInfoId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="ContactInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gadget_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="Gadget" Type="Self.Gadget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Gadget">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gadget2Role2AreaType_AreaType">
+          <End Role="AreaType" Type="Self.AreaType" Multiplicity="1" />
+          <End Role="Gadget2Role2AreaType" Type="Self.Gadget2Role2AreaType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaType">
+              <PropertyRef Name="AreaTypeId" />
+            </Principal>
+            <Dependent Role="Gadget2Role2AreaType">
+              <PropertyRef Name="AreaTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gadget2Role2AreaType_Gadget">
+          <End Role="Gadget" Type="Self.Gadget" Multiplicity="1" />
+          <End Role="Gadget2Role2AreaType" Type="Self.Gadget2Role2AreaType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gadget">
+              <PropertyRef Name="GadgetId" />
+            </Principal>
+            <Dependent Role="Gadget2Role2AreaType">
+              <PropertyRef Name="GadgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gadget2Role2AreaType_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Gadget2Role2AreaType" Type="Self.Gadget2Role2AreaType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Gadget2Role2AreaType">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gallery_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Gallery">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gallery_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Gallery">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gallery2Tag_Gallery">
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Gallery2Tag" Type="Self.Gallery2Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gallery">
+              <PropertyRef Name="GalleryId" />
+            </Principal>
+            <Dependent Role="Gallery2Tag">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gallery2Tag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Gallery2Tag" Type="Self.Gallery2Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagId" />
+            </Principal>
+            <Dependent Role="Gallery2Tag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GalleryImage_Gallery">
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="1" />
+          <End Role="GalleryImage" Type="Self.GalleryImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gallery">
+              <PropertyRef Name="GalleryId" />
+            </Principal>
+            <Dependent Role="GalleryImage">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guest_FoodChoice">
+          <End Role="Guest1" Type="Self.Guest1" Multiplicity="1" />
+          <End Role="FoodChoice" Type="Self.FoodChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest1">
+              <PropertyRef Name="GuestId" />
+            </Principal>
+            <Dependent Role="FoodChoice">
+              <PropertyRef Name="GuestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guest_GuestGroup">
+          <End Role="GuestGroup" Type="Self.GuestGroup" Multiplicity="0..1" />
+          <End Role="Guest1" Type="Self.Guest1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GuestGroup">
+              <PropertyRef Name="GuestGroupId" />
+            </Principal>
+            <Dependent Role="Guest1">
+              <PropertyRef Name="GuestGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PageVisit_PageVisit">
+          <End Role="PageVisit" Type="Self.PageVisit" Multiplicity="0..1" />
+          <End Role="PageVisit1" Type="Self.PageVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageVisit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PageVisit1">
+              <PropertyRef Name="PreviousId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhoneNumber_ContactInfo">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
+          <End Role="PhoneNumber" Type="Self.PhoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="ContactInfoId" />
+            </Principal>
+            <Dependent Role="PhoneNumber">
+              <PropertyRef Name="ContactInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating2ArticleType2Category_ArticleType">
+          <End Role="ArticleType" Type="Self.ArticleType" Multiplicity="1" />
+          <End Role="Rating2ArticleType2Category" Type="Self.Rating2ArticleType2Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleType">
+              <PropertyRef Name="ArticleTypeId" />
+            </Principal>
+            <Dependent Role="Rating2ArticleType2Category">
+              <PropertyRef Name="ArticleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating2ArticleType2Category_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Rating2ArticleType2Category" Type="Self.Rating2ArticleType2Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Rating2ArticleType2Category">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating2ArticleType2Category_Rating">
+          <End Role="Rating" Type="Self.Rating" Multiplicity="1" />
+          <End Role="Rating2ArticleType2Category" Type="Self.Rating2ArticleType2Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rating">
+              <PropertyRef Name="RatingId" />
+            </Principal>
+            <Dependent Role="Rating2ArticleType2Category">
+              <PropertyRef Name="RatingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User2Role_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User2Role" Type="Self.User2Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="User2Role">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User2Role_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User2Role" Type="Self.User2Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User2Role">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteRatingLinks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="config">
+          <Parameter Name="articleTypeid" Type="int" Mode="In" />
+          <Parameter Name="categoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GadgetInfoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="config">
+          <Parameter Name="roleId" Type="int" Mode="In" />
+          <Parameter Name="gadgetId" Type="int" Mode="In" />
+          <Parameter Name="areaTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ArticleInfoSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="searchText" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ArticleInfoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ArticleSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="searchText" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DeleteArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="articleId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GalleryInfoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GalleryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SnapshotLiteSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CategoryInfoSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="lookup">
+          <Parameter Name="categoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectBrowserStats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="stat" />
+        <Function Name="SelectUniqueVisits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="stat">
+          <Parameter Name="fromDate" Type="datetime2" Mode="In" />
+          <Parameter Name="toDate" Type="datetime2" Mode="In" />
+        </Function>
+        <EntityContainer Name="TooksCmsModelStoreContainer">
+          <EntitySet Name="ArticleType" EntityType="Self.ArticleType" Schema="config" store:Type="Tables" />
+          <EntitySet Name="BulletinType" EntityType="Self.BulletinType" Schema="config" store:Type="Tables" />
+          <EntitySet Name="Gadget" EntityType="Self.Gadget" Schema="config" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="config" store:Type="Tables" />
+          <EntitySet Name="Rating2ArticleType2Category" EntityType="Self.Rating2ArticleType2Category" Schema="config" store:Type="Tables" />
+          <EntitySet Name="StaticRoute" EntityType="Self.StaticRoute" Schema="config" store:Type="Tables" />
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article2Tag" EntityType="Self.Article2Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticleComment" EntityType="Self.ArticleComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticleContent" EntityType="Self.ArticleContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticleImage" EntityType="Self.ArticleImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bulletin" EntityType="Self.Bulletin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BulletinContent" EntityType="Self.BulletinContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactForm" EntityType="Self.ContactForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gallery2Tag" EntityType="Self.Gallery2Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GalleryImage" EntityType="Self.GalleryImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Snapshot" EntityType="Self.Snapshot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventLog" EntityType="Self.EventLog" Schema="event" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="lookup" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="lookup" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="lookup" store:Type="Tables" />
+          <EntitySet Name="AreaType" EntityType="Self.AreaType" Schema="security" store:Type="Tables" />
+          <EntitySet Name="Gadget2Role2AreaType" EntityType="Self.Gadget2Role2AreaType" Schema="security" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="security" store:Type="Tables" />
+          <EntitySet Name="Site" EntityType="Self.Site" Schema="security" store:Type="Tables" />
+          <EntitySet Name="PageVisit" EntityType="Self.PageVisit" Schema="stat" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="user" store:Type="Tables" />
+          <EntitySet Name="ContactInfo" EntityType="Self.ContactInfo" Schema="user" store:Type="Tables" />
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="user" store:Type="Tables" />
+          <EntitySet Name="Guest" EntityType="Self.Guest" Schema="user" store:Type="Tables" />
+          <EntitySet Name="PhoneNumber" EntityType="Self.PhoneNumber" Schema="user" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="user" store:Type="Tables" />
+          <EntitySet Name="FoodChoice" EntityType="Self.FoodChoice" Schema="wed" store:Type="Tables" />
+          <EntitySet Name="Guest1" EntityType="Self.Guest1" Schema="wed" Table="Guest" store:Type="Tables" />
+          <EntitySet Name="GuestGroup" EntityType="Self.GuestGroup" Schema="wed" store:Type="Tables" />
+          <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="wed" store:Type="Tables" />
+          <EntitySet Name="User2Role" EntityType="Self.User2Role" store:Type="Tables" store:Schema="security">
+            <DefiningQuery>SELECT 
+[User2Role].[RoleId] AS [RoleId], 
+[User2Role].[UserId] AS [UserId]
+FROM [security].[User2Role] AS [User2Role]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Address_ContactInfo" Association="Self.FK_Address_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Country" Association="Self.FK_Address_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_ArticleType" Association="Self.FK_Article_ArticleType">
+            <End Role="ArticleType" EntitySet="ArticleType" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Category" Association="Self.FK_Article_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Site" Association="Self.FK_Article_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article2Tag_Article" Association="Self.FK_Article2Tag_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Article2Tag" EntitySet="Article2Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article2Tag_Tag" Association="Self.FK_Article2Tag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="Article2Tag" EntitySet="Article2Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleComment_Article" Association="Self.FK_ArticleComment_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleComment" EntitySet="ArticleComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleComment_ArticleComment" Association="Self.FK_ArticleComment_ArticleComment">
+            <End Role="ArticleComment" EntitySet="ArticleComment" />
+            <End Role="ArticleComment1" EntitySet="ArticleComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleComment_Guest" Association="Self.FK_ArticleComment_Guest">
+            <End Role="Guest" EntitySet="Guest" />
+            <End Role="ArticleComment" EntitySet="ArticleComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleComment_User" Association="Self.FK_ArticleComment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ArticleComment" EntitySet="ArticleComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleContent_Article" Association="Self.FK_ArticleContent_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleContent" EntitySet="ArticleContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleImage_Article" Association="Self.FK_ArticleImage_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleImage" EntitySet="ArticleImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_Article" Association="Self.FK_Bulletin_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Bulletin" EntitySet="Bulletin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_BulletinType" Association="Self.FK_Bulletin_BulletinType">
+            <End Role="BulletinType" EntitySet="BulletinType" />
+            <End Role="Bulletin" EntitySet="Bulletin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_Gallery" Association="Self.FK_Bulletin_Gallery">
+            <End Role="Gallery" EntitySet="Gallery" />
+            <End Role="Bulletin" EntitySet="Bulletin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_Site" Association="Self.FK_Bulletin_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="Bulletin" EntitySet="Bulletin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BulletinContent_Bulletin" Association="Self.FK_BulletinContent_Bulletin">
+            <End Role="Bulletin" EntitySet="Bulletin" />
+            <End Role="BulletinContent" EntitySet="BulletinContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactForm_Site" Association="Self.FK_ContactForm_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="ContactForm" EntitySet="ContactForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactInfo_User" Association="Self.FK_ContactInfo_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Email_ContactInfo" Association="Self.FK_Email_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="Email" EntitySet="Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gadget_Site" Association="Self.FK_Gadget_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="Gadget" EntitySet="Gadget" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gadget2Role2AreaType_AreaType" Association="Self.FK_Gadget2Role2AreaType_AreaType">
+            <End Role="AreaType" EntitySet="AreaType" />
+            <End Role="Gadget2Role2AreaType" EntitySet="Gadget2Role2AreaType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gadget2Role2AreaType_Gadget" Association="Self.FK_Gadget2Role2AreaType_Gadget">
+            <End Role="Gadget" EntitySet="Gadget" />
+            <End Role="Gadget2Role2AreaType" EntitySet="Gadget2Role2AreaType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gadget2Role2AreaType_Role" Association="Self.FK_Gadget2Role2AreaType_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Gadget2Role2AreaType" EntitySet="Gadget2Role2AreaType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gallery_Category" Association="Self.FK_Gallery_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Gallery" EntitySet="Gallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gallery_User" Association="Self.FK_Gallery_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Gallery" EntitySet="Gallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gallery2Tag_Gallery" Association="Self.FK_Gallery2Tag_Gallery">
+            <End Role="Gallery" EntitySet="Gallery" />
+            <End Role="Gallery2Tag" EntitySet="Gallery2Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gallery2Tag_Tag" Association="Self.FK_Gallery2Tag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="Gallery2Tag" EntitySet="Gallery2Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryImage_Gallery" Association="Self.FK_GalleryImage_Gallery">
+            <End Role="Gallery" EntitySet="Gallery" />
+            <End Role="GalleryImage" EntitySet="GalleryImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guest_FoodChoice" Association="Self.FK_Guest_FoodChoice">
+            <End Role="Guest1" EntitySet="Guest1" />
+            <End Role="FoodChoice" EntitySet="FoodChoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guest_GuestGroup" Association="Self.FK_Guest_GuestGroup">
+            <End Role="GuestGroup" EntitySet="GuestGroup" />
+            <End Role="Guest1" EntitySet="Guest1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PageVisit_PageVisit" Association="Self.FK_PageVisit_PageVisit">
+            <End Role="PageVisit" EntitySet="PageVisit" />
+            <End Role="PageVisit1" EntitySet="PageVisit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhoneNumber_ContactInfo" Association="Self.FK_PhoneNumber_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="PhoneNumber" EntitySet="PhoneNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating2ArticleType2Category_ArticleType" Association="Self.FK_Rating2ArticleType2Category_ArticleType">
+            <End Role="ArticleType" EntitySet="ArticleType" />
+            <End Role="Rating2ArticleType2Category" EntitySet="Rating2ArticleType2Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating2ArticleType2Category_Category" Association="Self.FK_Rating2ArticleType2Category_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Rating2ArticleType2Category" EntitySet="Rating2ArticleType2Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating2ArticleType2Category_Rating" Association="Self.FK_Rating2ArticleType2Category_Rating">
+            <End Role="Rating" EntitySet="Rating" />
+            <End Role="Rating2ArticleType2Category" EntitySet="Rating2ArticleType2Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Site" Association="Self.FK_User_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User2Role_Role" Association="Self.FK_User2Role_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User2Role" EntitySet="User2Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User2Role_User" Association="Self.FK_User2Role_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User2Role" EntitySet="User2Role" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TooksCmsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TooksCmsDAL" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ArticleTypes" EntityType="TooksCmsModel.ArticleType" />
+          <EntitySet Name="BulletinTypes" EntityType="TooksCmsModel.BulletinType" />
+          <EntitySet Name="Gadgets" EntityType="TooksCmsModel.Gadget" />
+          <EntitySet Name="Ratings" EntityType="TooksCmsModel.Rating" />
+          <EntitySet Name="Rating2ArticleType2Category" EntityType="TooksCmsModel.Rating2ArticleType2Category" />
+          <EntitySet Name="StaticRoutes" EntityType="TooksCmsModel.StaticRoute" />
+          <EntitySet Name="Articles" EntityType="TooksCmsModel.Article" />
+          <EntitySet Name="ArticleComments" EntityType="TooksCmsModel.ArticleComment" />
+          <EntitySet Name="ArticleContents" EntityType="TooksCmsModel.ArticleContent" />
+          <EntitySet Name="ArticleImages" EntityType="TooksCmsModel.ArticleImage" />
+          <EntitySet Name="Bulletins" EntityType="TooksCmsModel.Bulletin" />
+          <EntitySet Name="BulletinContents" EntityType="TooksCmsModel.BulletinContent" />
+          <EntitySet Name="ContactForms" EntityType="TooksCmsModel.ContactForm" />
+          <EntitySet Name="Galleries" EntityType="TooksCmsModel.Gallery" />
+          <EntitySet Name="GalleryImages" EntityType="TooksCmsModel.GalleryImage" />
+          <EntitySet Name="EventLogs" EntityType="TooksCmsModel.EventLog" />
+          <EntitySet Name="Categories" EntityType="TooksCmsModel.Category" />
+          <EntitySet Name="Countries" EntityType="TooksCmsModel.Country" />
+          <EntitySet Name="Tags" EntityType="TooksCmsModel.Tag" />
+          <EntitySet Name="AreaTypes" EntityType="TooksCmsModel.AreaType" />
+          <EntitySet Name="Gadget2Role2AreaType" EntityType="TooksCmsModel.Gadget2Role2AreaType" />
+          <EntitySet Name="Roles" EntityType="TooksCmsModel.Role" />
+          <EntitySet Name="Sites" EntityType="TooksCmsModel.Site" />
+          <EntitySet Name="PageVisits" EntityType="TooksCmsModel.PageVisit" />
+          <EntitySet Name="Addresses" EntityType="TooksCmsModel.Address" />
+          <EntitySet Name="ContactInfoes" EntityType="TooksCmsModel.ContactInfo" />
+          <EntitySet Name="Emails" EntityType="TooksCmsModel.Email" />
+          <EntitySet Name="Guests" EntityType="TooksCmsModel.Guest" />
+          <EntitySet Name="PhoneNumbers" EntityType="TooksCmsModel.PhoneNumber" />
+          <EntitySet Name="Users" EntityType="TooksCmsModel.User" />
+          <AssociationSet Name="FK_Article_ArticleType" Association="TooksCmsModel.FK_Article_ArticleType">
+            <End Role="ArticleType" EntitySet="ArticleTypes" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating2ArticleType2Category_ArticleType" Association="TooksCmsModel.FK_Rating2ArticleType2Category_ArticleType">
+            <End Role="ArticleType" EntitySet="ArticleTypes" />
+            <End Role="Rating2ArticleType2Category" EntitySet="Rating2ArticleType2Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_BulletinType" Association="TooksCmsModel.FK_Bulletin_BulletinType">
+            <End Role="BulletinType" EntitySet="BulletinTypes" />
+            <End Role="Bulletin" EntitySet="Bulletins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gadget_Site" Association="TooksCmsModel.FK_Gadget_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="Gadget" EntitySet="Gadgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gadget2Role2AreaType_Gadget" Association="TooksCmsModel.FK_Gadget2Role2AreaType_Gadget">
+            <End Role="Gadget" EntitySet="Gadgets" />
+            <End Role="Gadget2Role2AreaType" EntitySet="Gadget2Role2AreaType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating2ArticleType2Category_Rating" Association="TooksCmsModel.FK_Rating2ArticleType2Category_Rating">
+            <End Role="Rating" EntitySet="Ratings" />
+            <End Role="Rating2ArticleType2Category" EntitySet="Rating2ArticleType2Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating2ArticleType2Category_Category" Association="TooksCmsModel.FK_Rating2ArticleType2Category_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Rating2ArticleType2Category" EntitySet="Rating2ArticleType2Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Category" Association="TooksCmsModel.FK_Article_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Site" Association="TooksCmsModel.FK_Article_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleComment_Article" Association="TooksCmsModel.FK_ArticleComment_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="ArticleComment" EntitySet="ArticleComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleContent_Article" Association="TooksCmsModel.FK_ArticleContent_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="ArticleContent" EntitySet="ArticleContents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleImage_Article" Association="TooksCmsModel.FK_ArticleImage_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="ArticleImage" EntitySet="ArticleImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_Article" Association="TooksCmsModel.FK_Bulletin_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Bulletin" EntitySet="Bulletins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleComment_ArticleComment" Association="TooksCmsModel.FK_ArticleComment_ArticleComment">
+            <End Role="ArticleComment" EntitySet="ArticleComments" />
+            <End Role="ArticleComment1" EntitySet="ArticleComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleComment_Guest" Association="TooksCmsModel.FK_ArticleComment_Guest">
+            <End Role="Guest" EntitySet="Guests" />
+            <End Role="ArticleComment" EntitySet="ArticleComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleComment_User" Association="TooksCmsModel.FK_ArticleComment_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ArticleComment" EntitySet="ArticleComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_Gallery" Association="TooksCmsModel.FK_Bulletin_Gallery">
+            <End Role="Gallery" EntitySet="Galleries" />
+            <End Role="Bulletin" EntitySet="Bulletins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_Site" Association="TooksCmsModel.FK_Bulletin_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="Bulletin" EntitySet="Bulletins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BulletinContent_Bulletin" Association="TooksCmsModel.FK_BulletinContent_Bulletin">
+            <End Role="Bulletin" EntitySet="Bulletins" />
+            <End Role="BulletinContent" EntitySet="BulletinContents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactForm_Site" Association="TooksCmsModel.FK_ContactForm_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="ContactForm" EntitySet="ContactForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gallery_Category" Association="TooksCmsModel.FK_Gallery_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Gallery" EntitySet="Galleries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gallery_User" Association="TooksCmsModel.FK_Gallery_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Gallery" EntitySet="Galleries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryImage_Gallery" Association="TooksCmsModel.FK_GalleryImage_Gallery">
+            <End Role="Gallery" EntitySet="Galleries" />
+            <End Role="GalleryImage" EntitySet="GalleryImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Country" Association="TooksCmsModel.FK_Address_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gadget2Role2AreaType_AreaType" Association="TooksCmsModel.FK_Gadget2Role2AreaType_AreaType">
+            <End Role="AreaType" EntitySet="AreaTypes" />
+            <End Role="Gadget2Role2AreaType" EntitySet="Gadget2Role2AreaType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gadget2Role2AreaType_Role" Association="TooksCmsModel.FK_Gadget2Role2AreaType_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Gadget2Role2AreaType" EntitySet="Gadget2Role2AreaType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Site" Association="TooksCmsModel.FK_User_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PageVisit_PageVisit" Association="TooksCmsModel.FK_PageVisit_PageVisit">
+            <End Role="PageVisit" EntitySet="PageVisits" />
+            <End Role="PageVisit1" EntitySet="PageVisits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_ContactInfo" Association="TooksCmsModel.FK_Address_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfoes" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactInfo_User" Association="TooksCmsModel.FK_ContactInfo_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ContactInfo" EntitySet="ContactInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Email_ContactInfo" Association="TooksCmsModel.FK_Email_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfoes" />
+            <End Role="Email" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhoneNumber_ContactInfo" Association="TooksCmsModel.FK_PhoneNumber_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfoes" />
+            <End Role="PhoneNumber" EntitySet="PhoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="Article2Tag" Association="TooksCmsModel.Article2Tag">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Tag" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="Gallery2Tag" Association="TooksCmsModel.Gallery2Tag">
+            <End Role="Gallery" EntitySet="Galleries" />
+            <End Role="Tag" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="User2Role" Association="TooksCmsModel.User2Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="DeleteRatingLinks">
+            <Parameter Name="articleTypeid" Mode="In" Type="Int32" />
+            <Parameter Name="categoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGadgetInfo" ReturnType="Collection(TooksCmsModel.GadgetInfo)" >
+            <Parameter Name="roleId" Mode="In" Type="Int32" />
+            <Parameter Name="gadgetId" Mode="In" Type="Int32" />
+            <Parameter Name="areaTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetArticleInfo" ReturnType="Collection(TooksCmsModel.ArticleInfo)">
+          <Parameter Name="ArticleId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SearchArticles" EntitySet="Articles" ReturnType="Collection(TooksCmsModel.Article)">
+          <Parameter Name="searchText" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGalleryInfo" ReturnType="Collection(TooksCmsModel.GalleryInfo)">
+          <Parameter Name="GalleryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectCategoryInfo" ReturnType="Collection(TooksCmsModel.CategoryInfo)">
+          <Parameter Name="categoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBrowserStats" ReturnType="Collection(TooksCmsModel.BrowserStat)" />
+          <FunctionImport Name="GetUniqueVisits" ReturnType="Collection(TooksCmsModel.UniqueVisit)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ArticleInfoSearch" ReturnType="Collection(TooksCmsModel.ArticleInfo)">
+          <Parameter Name="searchText" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteArticle">
+          <Parameter Name="articleId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetSnapshotLite" ReturnType="Collection(TooksCmsModel.SnapshotLite)" />
+          <EntitySet Name="Snapshots" EntityType="TooksCmsModel.Snapshot" />
+          <EntitySet Name="Hotels" EntityType="TooksCmsModel.Hotel" />
+          <EntitySet Name="GuestGroups" EntityType="TooksCmsModel.GuestGroup" />
+          <EntitySet Name="FoodChoices" EntityType="TooksCmsModel.FoodChoice" />
+          <EntitySet Name="Guest1" EntityType="TooksCmsModel.Guest1" />
+          <AssociationSet Name="FK_Guest_FoodChoice" Association="TooksCmsModel.FK_Guest_FoodChoice">
+            <End Role="Guest1" EntitySet="Guest1" />
+            <End Role="FoodChoice" EntitySet="FoodChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guest_GuestGroup" Association="TooksCmsModel.FK_Guest_GuestGroup">
+            <End Role="GuestGroup" EntitySet="GuestGroups" />
+            <End Role="Guest1" EntitySet="Guest1" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ArticleType">
+          <Key>
+            <PropertyRef Name="ArticleTypeId" />
+          </Key>
+          <Property Name="ArticleTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleTypeUid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Assembly" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Articles" Relationship="TooksCmsModel.FK_Article_ArticleType" FromRole="ArticleType" ToRole="Article" />
+          <NavigationProperty Name="Rating2ArticleType2Category" Relationship="TooksCmsModel.FK_Rating2ArticleType2Category_ArticleType" FromRole="ArticleType" ToRole="Rating2ArticleType2Category" />
+        </EntityType>
+        <EntityType Name="BulletinType">
+          <Key>
+            <PropertyRef Name="BulletinTypeId" />
+          </Key>
+          <Property Name="BulletinTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BulletinTypeUid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Assembly" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Bulletins" Relationship="TooksCmsModel.FK_Bulletin_BulletinType" FromRole="BulletinType" ToRole="Bulletin" />
+        </EntityType>
+        <EntityType Name="Gadget">
+          <Key>
+            <PropertyRef Name="GadgetId" />
+          </Key>
+          <Property Name="GadgetId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GadgetUid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="View" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DefaultColumn" Type="Int32" Nullable="false" />
+          <Property Name="SiteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Site" Relationship="TooksCmsModel.FK_Gadget_Site" FromRole="Gadget" ToRole="Site" />
+          <NavigationProperty Name="Gadget2Role2AreaType" Relationship="TooksCmsModel.FK_Gadget2Role2AreaType_Gadget" FromRole="Gadget" ToRole="Gadget2Role2AreaType" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RatingUid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Rating2ArticleType2Category" Relationship="TooksCmsModel.FK_Rating2ArticleType2Category_Rating" FromRole="Rating" ToRole="Rating2ArticleType2Category" />
+        </EntityType>
+        <EntityType Name="Rating2ArticleType2Category">
+          <Key>
+            <PropertyRef Name="RatingId" />
+            <PropertyRef Name="ArticleTypeId" />
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="RatingId" Type="Int32" Nullable="false" />
+          <Property Name="ArticleTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Ordinal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArticleType" Relationship="TooksCmsModel.FK_Rating2ArticleType2Category_ArticleType" FromRole="Rating2ArticleType2Category" ToRole="ArticleType" />
+          <NavigationProperty Name="Rating" Relationship="TooksCmsModel.FK_Rating2ArticleType2Category_Rating" FromRole="Rating2ArticleType2Category" ToRole="Rating" />
+          <NavigationProperty Name="Category" Relationship="TooksCmsModel.FK_Rating2ArticleType2Category_Category" FromRole="Rating2ArticleType2Category" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="StaticRoute">
+          <Key>
+            <PropertyRef Name="StaticRoute1" />
+          </Key>
+          <Property Name="StaticRoute1" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Area" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleUid" Type="Guid" Nullable="false" />
+          <Property Name="ArticleTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SiteId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ArticleType" Relationship="TooksCmsModel.FK_Article_ArticleType" FromRole="Article" ToRole="ArticleType" />
+          <NavigationProperty Name="Category" Relationship="TooksCmsModel.FK_Article_Category" FromRole="Article" ToRole="Category" />
+          <NavigationProperty Name="Site" Relationship="TooksCmsModel.FK_Article_Site" FromRole="Article" ToRole="Site" />
+          <NavigationProperty Name="ArticleComments" Relationship="TooksCmsModel.FK_ArticleComment_Article" FromRole="Article" ToRole="ArticleComment" />
+          <NavigationProperty Name="ArticleContents" Relationship="TooksCmsModel.FK_ArticleContent_Article" FromRole="Article" ToRole="ArticleContent" />
+          <NavigationProperty Name="ArticleImages" Relationship="TooksCmsModel.FK_ArticleImage_Article" FromRole="Article" ToRole="ArticleImage" />
+          <NavigationProperty Name="Bulletins" Relationship="TooksCmsModel.FK_Bulletin_Article" FromRole="Article" ToRole="Bulletin" />
+          <NavigationProperty Name="Tags" Relationship="TooksCmsModel.Article2Tag" FromRole="Article" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="ArticleComment">
+          <Key>
+            <PropertyRef Name="ArticleCommentId" />
+          </Key>
+          <Property Name="ArticleCommentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleCommentUid" Type="Guid" Nullable="false" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="GuestId" Type="Int32" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ParentCommentId" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="TooksCmsModel.FK_ArticleComment_Article" FromRole="ArticleComment" ToRole="Article" />
+          <NavigationProperty Name="ArticleComment1" Relationship="TooksCmsModel.FK_ArticleComment_ArticleComment" FromRole="ArticleComment" ToRole="ArticleComment1" />
+          <NavigationProperty Name="ArticleComment2" Relationship="TooksCmsModel.FK_ArticleComment_ArticleComment" FromRole="ArticleComment1" ToRole="ArticleComment" />
+          <NavigationProperty Name="Guest" Relationship="TooksCmsModel.FK_ArticleComment_Guest" FromRole="ArticleComment" ToRole="Guest" />
+          <NavigationProperty Name="User" Relationship="TooksCmsModel.FK_ArticleComment_User" FromRole="ArticleComment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ArticleContent">
+          <Key>
+            <PropertyRef Name="ArticleContentId" />
+          </Key>
+          <Property Name="ArticleContentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleContentUid" Type="Guid" Nullable="false" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="TooksCmsModel.FK_ArticleContent_Article" FromRole="ArticleContent" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="ArticleImage">
+          <Key>
+            <PropertyRef Name="ArticleImageId" />
+          </Key>
+          <Property Name="ArticleImageId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleImageUid" Type="Guid" Nullable="false" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Size" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Article" Relationship="TooksCmsModel.FK_ArticleImage_Article" FromRole="ArticleImage" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="Bulletin">
+          <Key>
+            <PropertyRef Name="BulletinId" />
+          </Key>
+          <Property Name="BulletinId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BulletinUid" Type="Guid" Nullable="false" />
+          <Property Name="ArticleId" Type="Int32" />
+          <Property Name="GalleryId" Type="Int32" />
+          <Property Name="BulletinTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SiteId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BulletinType" Relationship="TooksCmsModel.FK_Bulletin_BulletinType" FromRole="Bulletin" ToRole="BulletinType" />
+          <NavigationProperty Name="Article" Relationship="TooksCmsModel.FK_Bulletin_Article" FromRole="Bulletin" ToRole="Article" />
+          <NavigationProperty Name="Gallery" Relationship="TooksCmsModel.FK_Bulletin_Gallery" FromRole="Bulletin" ToRole="Gallery" />
+          <NavigationProperty Name="Site" Relationship="TooksCmsModel.FK_Bulletin_Site" FromRole="Bulletin" ToRole="Site" />
+          <NavigationProperty Name="BulletinContents" Relationship="TooksCmsModel.FK_BulletinContent_Bulletin" FromRole="Bulletin" ToRole="BulletinContent" />
+        </EntityType>
+        <EntityType Name="BulletinContent">
+          <Key>
+            <PropertyRef Name="BulletinContentId" />
+          </Key>
+          <Property Name="BulletinContentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BulletinContentUid" Type="Guid" Nullable="false" />
+          <Property Name="BulletinId" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Bulletin" Relationship="TooksCmsModel.FK_BulletinContent_Bulletin" FromRole="BulletinContent" ToRole="Bulletin" />
+        </EntityType>
+        <EntityType Name="ContactForm">
+          <Key>
+            <PropertyRef Name="ContactFormId" />
+          </Key>
+          <Property Name="ContactFormId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactFormUid" Type="Guid" Nullable="false" />
+          <Property Name="SiteId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <Property Name="Public" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Site" Relationship="TooksCmsModel.FK_ContactForm_Site" FromRole="ContactForm" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="GalleryId" />
+          </Key>
+          <Property Name="GalleryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryUid" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bulletins" Relationship="TooksCmsModel.FK_Bulletin_Gallery" FromRole="Gallery" ToRole="Bulletin" />
+          <NavigationProperty Name="Category" Relationship="TooksCmsModel.FK_Gallery_Category" FromRole="Gallery" ToRole="Category" />
+          <NavigationProperty Name="User" Relationship="TooksCmsModel.FK_Gallery_User" FromRole="Gallery" ToRole="User" />
+          <NavigationProperty Name="GalleryImages" Relationship="TooksCmsModel.FK_GalleryImage_Gallery" FromRole="Gallery" ToRole="GalleryImage" />
+          <NavigationProperty Name="Tags" Relationship="TooksCmsModel.Gallery2Tag" FromRole="Gallery" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="GalleryImage">
+          <Key>
+            <PropertyRef Name="GalleryImageId" />
+          </Key>
+          <Property Name="GalleryImageId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryImageUid" Type="Guid" Nullable="false" />
+          <Property Name="GalleryId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Gallery" Relationship="TooksCmsModel.FK_GalleryImage_Gallery" FromRole="GalleryImage" ToRole="Gallery" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventLogId" />
+          </Key>
+          <Property Name="EventLogId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="EventLogUid" Type="Guid" Nullable="false" />
+          <Property Name="EventType" Type="Byte" Nullable="false" />
+          <Property Name="EventSource" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryUid" Type="Guid" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="CategoryDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ParentCategoryId" Type="Int32" />
+          <NavigationProperty Name="Rating2ArticleType2Category" Relationship="TooksCmsModel.FK_Rating2ArticleType2Category_Category" FromRole="Category" ToRole="Rating2ArticleType2Category" />
+          <NavigationProperty Name="Articles" Relationship="TooksCmsModel.FK_Article_Category" FromRole="Category" ToRole="Article" />
+          <NavigationProperty Name="Galleries" Relationship="TooksCmsModel.FK_Gallery_Category" FromRole="Category" ToRole="Gallery" />
+          <Property Type="String" Name="ImageName" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryUid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ISO3166" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Addresses" Relationship="TooksCmsModel.FK_Address_Country" FromRole="Country" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="TagId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TagUid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Articles" Relationship="TooksCmsModel.Article2Tag" FromRole="Tag" ToRole="Article" />
+          <NavigationProperty Name="Galleries" Relationship="TooksCmsModel.Gallery2Tag" FromRole="Tag" ToRole="Gallery" />
+        </EntityType>
+        <EntityType Name="AreaType">
+          <Key>
+            <PropertyRef Name="AreaTypeId" />
+          </Key>
+          <Property Name="AreaTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AreaTypeUid" Type="Guid" Nullable="false" />
+          <Property Name="AreaType1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Gadget2Role2AreaType" Relationship="TooksCmsModel.FK_Gadget2Role2AreaType_AreaType" FromRole="AreaType" ToRole="Gadget2Role2AreaType" />
+        </EntityType>
+        <EntityType Name="Gadget2Role2AreaType">
+          <Key>
+            <PropertyRef Name="GadgetId" />
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="AreaTypeId" />
+          </Key>
+          <Property Name="GadgetId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="AreaTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gadget" Relationship="TooksCmsModel.FK_Gadget2Role2AreaType_Gadget" FromRole="Gadget2Role2AreaType" ToRole="Gadget" />
+          <NavigationProperty Name="AreaType" Relationship="TooksCmsModel.FK_Gadget2Role2AreaType_AreaType" FromRole="Gadget2Role2AreaType" ToRole="AreaType" />
+          <NavigationProperty Name="Role" Relationship="TooksCmsModel.FK_Gadget2Role2AreaType_Role" FromRole="Gadget2Role2AreaType" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleUid" Type="Guid" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Gadget2Role2AreaType" Relationship="TooksCmsModel.FK_Gadget2Role2AreaType_Role" FromRole="Role" ToRole="Gadget2Role2AreaType" />
+          <NavigationProperty Name="Users" Relationship="TooksCmsModel.User2Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="SiteId" />
+          </Key>
+          <Property Name="SiteId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteUid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Host" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Gadgets" Relationship="TooksCmsModel.FK_Gadget_Site" FromRole="Site" ToRole="Gadget" />
+          <NavigationProperty Name="Articles" Relationship="TooksCmsModel.FK_Article_Site" FromRole="Site" ToRole="Article" />
+          <NavigationProperty Name="Bulletins" Relationship="TooksCmsModel.FK_Bulletin_Site" FromRole="Site" ToRole="Bulletin" />
+          <NavigationProperty Name="ContactForms" Relationship="TooksCmsModel.FK_ContactForm_Site" FromRole="Site" ToRole="ContactForm" />
+          <NavigationProperty Name="Users" Relationship="TooksCmsModel.FK_User_Site" FromRole="Site" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PageVisit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaType" Type="Byte" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="SearchTerm" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Referer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LinkType" Type="String" MaxLength="48" Unicode="true" FixedLength="false" />
+          <Property Name="PreviousId" Type="Int32" />
+          <Property Name="UserAgent" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserLanguages" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BrowserVersion" Type="String" Nullable="false" MaxLength="48" Unicode="true" FixedLength="false" />
+          <Property Name="BrowserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="48" Unicode="true" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="PageVisit1" Relationship="TooksCmsModel.FK_PageVisit_PageVisit" FromRole="PageVisit" ToRole="PageVisit1" />
+          <NavigationProperty Name="PageVisit2" Relationship="TooksCmsModel.FK_PageVisit_PageVisit" FromRole="PageVisit1" ToRole="PageVisit" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressUid" Type="Guid" Nullable="false" />
+          <Property Name="ContactInfoId" Type="Int32" Nullable="false" />
+          <Property Name="HouseNumber" Type="Int32" />
+          <Property Name="HouseName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine3" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="County" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="PostCode" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Country" Relationship="TooksCmsModel.FK_Address_Country" FromRole="Address" ToRole="Country" />
+          <NavigationProperty Name="ContactInfo" Relationship="TooksCmsModel.FK_Address_ContactInfo" FromRole="Address" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="ContactInfo">
+          <Key>
+            <PropertyRef Name="ContactInfoId" />
+          </Key>
+          <Property Name="ContactInfoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactInfoUid" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Addresses" Relationship="TooksCmsModel.FK_Address_ContactInfo" FromRole="ContactInfo" ToRole="Address" />
+          <NavigationProperty Name="User" Relationship="TooksCmsModel.FK_ContactInfo_User" FromRole="ContactInfo" ToRole="User" />
+          <NavigationProperty Name="Emails" Relationship="TooksCmsModel.FK_Email_ContactInfo" FromRole="ContactInfo" ToRole="Email" />
+          <NavigationProperty Name="PhoneNumbers" Relationship="TooksCmsModel.FK_PhoneNumber_ContactInfo" FromRole="ContactInfo" ToRole="PhoneNumber" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailUid" Type="Guid" Nullable="false" />
+          <Property Name="ContactInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ContactInfo" Relationship="TooksCmsModel.FK_Email_ContactInfo" FromRole="Email" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestUid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="Website" Type="String" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ArticleComments" Relationship="TooksCmsModel.FK_ArticleComment_Guest" FromRole="Guest" ToRole="ArticleComment" />
+        </EntityType>
+        <EntityType Name="PhoneNumber">
+          <Key>
+            <PropertyRef Name="PhoneNumberId" />
+          </Key>
+          <Property Name="PhoneNumberId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNumberUid" Type="Guid" Nullable="false" />
+          <Property Name="ContactInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContactInfo" Relationship="TooksCmsModel.FK_PhoneNumber_ContactInfo" FromRole="PhoneNumber" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserUid" Type="Guid" Nullable="false" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="ScreenName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="SiteId" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="Salt" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreationIP" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="LastLogin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginIP" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ArticleComments" Relationship="TooksCmsModel.FK_ArticleComment_User" FromRole="User" ToRole="ArticleComment" />
+          <NavigationProperty Name="Galleries" Relationship="TooksCmsModel.FK_Gallery_User" FromRole="User" ToRole="Gallery" />
+          <NavigationProperty Name="Site" Relationship="TooksCmsModel.FK_User_Site" FromRole="User" ToRole="Site" />
+          <NavigationProperty Name="ContactInfoes" Relationship="TooksCmsModel.FK_ContactInfo_User" FromRole="User" ToRole="ContactInfo" />
+          <NavigationProperty Name="Roles" Relationship="TooksCmsModel.User2Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Article_ArticleType">
+          <End Role="ArticleType" Type="TooksCmsModel.ArticleType" Multiplicity="1" />
+          <End Role="Article" Type="TooksCmsModel.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleType">
+              <PropertyRef Name="ArticleTypeId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="ArticleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating2ArticleType2Category_ArticleType">
+          <End Role="ArticleType" Type="TooksCmsModel.ArticleType" Multiplicity="1" />
+          <End Role="Rating2ArticleType2Category" Type="TooksCmsModel.Rating2ArticleType2Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleType">
+              <PropertyRef Name="ArticleTypeId" />
+            </Principal>
+            <Dependent Role="Rating2ArticleType2Category">
+              <PropertyRef Name="ArticleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bulletin_BulletinType">
+          <End Role="BulletinType" Type="TooksCmsModel.BulletinType" Multiplicity="1" />
+          <End Role="Bulletin" Type="TooksCmsModel.Bulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BulletinType">
+              <PropertyRef Name="BulletinTypeId" />
+            </Principal>
+            <Dependent Role="Bulletin">
+              <PropertyRef Name="BulletinTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gadget_Site">
+          <End Role="Site" Type="TooksCmsModel.Site" Multiplicity="1" />
+          <End Role="Gadget" Type="TooksCmsModel.Gadget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Gadget">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gadget2Role2AreaType_Gadget">
+          <End Role="Gadget" Type="TooksCmsModel.Gadget" Multiplicity="1" />
+          <End Role="Gadget2Role2AreaType" Type="TooksCmsModel.Gadget2Role2AreaType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gadget">
+              <PropertyRef Name="GadgetId" />
+            </Principal>
+            <Dependent Role="Gadget2Role2AreaType">
+              <PropertyRef Name="GadgetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating2ArticleType2Category_Rating">
+          <End Role="Rating" Type="TooksCmsModel.Rating" Multiplicity="1" />
+          <End Role="Rating2ArticleType2Category" Type="TooksCmsModel.Rating2ArticleType2Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rating">
+              <PropertyRef Name="RatingId" />
+            </Principal>
+            <Dependent Role="Rating2ArticleType2Category">
+              <PropertyRef Name="RatingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating2ArticleType2Category_Category">
+          <End Role="Category" Type="TooksCmsModel.Category" Multiplicity="1" />
+          <End Role="Rating2ArticleType2Category" Type="TooksCmsModel.Rating2ArticleType2Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Rating2ArticleType2Category">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Category">
+          <End Role="Category" Type="TooksCmsModel.Category" Multiplicity="1" />
+          <End Role="Article" Type="TooksCmsModel.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Site">
+          <End Role="Site" Type="TooksCmsModel.Site" Multiplicity="1" />
+          <End Role="Article" Type="TooksCmsModel.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleComment_Article">
+          <End Role="Article" Type="TooksCmsModel.Article" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ArticleComment" Type="TooksCmsModel.ArticleComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="ArticleComment">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleContent_Article">
+          <End Role="Article" Type="TooksCmsModel.Article" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ArticleContent" Type="TooksCmsModel.ArticleContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="ArticleContent">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleImage_Article">
+          <End Role="Article" Type="TooksCmsModel.Article" Multiplicity="1" />
+          <End Role="ArticleImage" Type="TooksCmsModel.ArticleImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="ArticleImage">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bulletin_Article">
+          <End Role="Article" Type="TooksCmsModel.Article" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bulletin" Type="TooksCmsModel.Bulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Bulletin">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleComment_ArticleComment">
+          <End Role="ArticleComment" Type="TooksCmsModel.ArticleComment" Multiplicity="0..1" />
+          <End Role="ArticleComment1" Type="TooksCmsModel.ArticleComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleComment">
+              <PropertyRef Name="ArticleCommentId" />
+            </Principal>
+            <Dependent Role="ArticleComment1">
+              <PropertyRef Name="ParentCommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleComment_Guest">
+          <End Role="Guest" Type="TooksCmsModel.Guest" Multiplicity="0..1" />
+          <End Role="ArticleComment" Type="TooksCmsModel.ArticleComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest">
+              <PropertyRef Name="GuestId" />
+            </Principal>
+            <Dependent Role="ArticleComment">
+              <PropertyRef Name="GuestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleComment_User">
+          <End Role="User" Type="TooksCmsModel.User" Multiplicity="0..1" />
+          <End Role="ArticleComment" Type="TooksCmsModel.ArticleComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ArticleComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bulletin_Gallery">
+          <End Role="Gallery" Type="TooksCmsModel.Gallery" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bulletin" Type="TooksCmsModel.Bulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gallery">
+              <PropertyRef Name="GalleryId" />
+            </Principal>
+            <Dependent Role="Bulletin">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bulletin_Site">
+          <End Role="Site" Type="TooksCmsModel.Site" Multiplicity="1" />
+          <End Role="Bulletin" Type="TooksCmsModel.Bulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="Bulletin">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BulletinContent_Bulletin">
+          <End Role="Bulletin" Type="TooksCmsModel.Bulletin" Multiplicity="1" />
+          <End Role="BulletinContent" Type="TooksCmsModel.BulletinContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bulletin">
+              <PropertyRef Name="BulletinId" />
+            </Principal>
+            <Dependent Role="BulletinContent">
+              <PropertyRef Name="BulletinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactForm_Site">
+          <End Role="Site" Type="TooksCmsModel.Site" Multiplicity="1" />
+          <End Role="ContactForm" Type="TooksCmsModel.ContactForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="ContactForm">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gallery_Category">
+          <End Role="Category" Type="TooksCmsModel.Category" Multiplicity="1" />
+          <End Role="Gallery" Type="TooksCmsModel.Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Gallery">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gallery_User">
+          <End Role="User" Type="TooksCmsModel.User" Multiplicity="1" />
+          <End Role="Gallery" Type="TooksCmsModel.Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Gallery">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GalleryImage_Gallery">
+          <End Role="Gallery" Type="TooksCmsModel.Gallery" Multiplicity="1" />
+          <End Role="GalleryImage" Type="TooksCmsModel.GalleryImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gallery">
+              <PropertyRef Name="GalleryId" />
+            </Principal>
+            <Dependent Role="GalleryImage">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Country">
+          <End Role="Country" Type="TooksCmsModel.Country" Multiplicity="1" />
+          <End Role="Address" Type="TooksCmsModel.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gadget2Role2AreaType_AreaType">
+          <End Role="AreaType" Type="TooksCmsModel.AreaType" Multiplicity="1" />
+          <End Role="Gadget2Role2AreaType" Type="TooksCmsModel.Gadget2Role2AreaType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaType">
+              <PropertyRef Name="AreaTypeId" />
+            </Principal>
+            <Dependent Role="Gadget2Role2AreaType">
+              <PropertyRef Name="AreaTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gadget2Role2AreaType_Role">
+          <End Role="Role" Type="TooksCmsModel.Role" Multiplicity="1" />
+          <End Role="Gadget2Role2AreaType" Type="TooksCmsModel.Gadget2Role2AreaType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Gadget2Role2AreaType">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Site">
+          <End Role="Site" Type="TooksCmsModel.Site" Multiplicity="1" />
+          <End Role="User" Type="TooksCmsModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PageVisit_PageVisit">
+          <End Role="PageVisit" Type="TooksCmsModel.PageVisit" Multiplicity="0..1" />
+          <End Role="PageVisit1" Type="TooksCmsModel.PageVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageVisit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PageVisit1">
+              <PropertyRef Name="PreviousId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_ContactInfo">
+          <End Role="ContactInfo" Type="TooksCmsModel.ContactInfo" Multiplicity="1" />
+          <End Role="Address" Type="TooksCmsModel.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="ContactInfoId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="ContactInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactInfo_User">
+          <End Role="User" Type="TooksCmsModel.User" Multiplicity="0..1" />
+          <End Role="ContactInfo" Type="TooksCmsModel.ContactInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ContactInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Email_ContactInfo">
+          <End Role="ContactInfo" Type="TooksCmsModel.ContactInfo" Multiplicity="1" />
+          <End Role="Email" Type="TooksCmsModel.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="ContactInfoId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="ContactInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhoneNumber_ContactInfo">
+          <End Role="ContactInfo" Type="TooksCmsModel.ContactInfo" Multiplicity="1" />
+          <End Role="PhoneNumber" Type="TooksCmsModel.PhoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="ContactInfoId" />
+            </Principal>
+            <Dependent Role="PhoneNumber">
+              <PropertyRef Name="ContactInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Article2Tag">
+          <End Role="Article" Type="TooksCmsModel.Article" Multiplicity="*" />
+          <End Role="Tag" Type="TooksCmsModel.Tag" Multiplicity="*" />
+        </Association>
+        <Association Name="Gallery2Tag">
+          <End Role="Gallery" Type="TooksCmsModel.Gallery" Multiplicity="*" />
+          <End Role="Tag" Type="TooksCmsModel.Tag" Multiplicity="*" />
+        </Association>
+        <Association Name="User2Role">
+          <End Role="Role" Type="TooksCmsModel.Role" Multiplicity="*" />
+          <End Role="User" Type="TooksCmsModel.User" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="BrowserStat">
+          <Property Type="String" Name="UserAgent" Nullable="false" />
+          <Property Type="String" Name="BrowserName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="BrowserVersion" Nullable="false" MaxLength="48" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UniqueVisit">
+          <Property Type="String" Name="IpAddress" Nullable="false" MaxLength="48" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CategoryInfo">
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="FullCategoryName" Nullable="false" MaxLength="303" />
+          <Property Type="String" Name="CategoryDescription" Nullable="false" />
+          <Property Type="String" Name="ParentDescription" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="Int32" Name="ParentCategoryId" Nullable="true" />
+          <Property Type="String" Name="ImageName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="ArticleInfo">
+          <Property Type="Int32" Name="ArticleId" Nullable="false" />
+          <Property Type="Guid" Name="ArticleUid" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="CategoryImage" Nullable="true" MaxLength="150" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+          <Property Type="String" Name="TypeName" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="ArticleTypeId" Nullable="false" />
+          <Property Type="Int32" Name="Version" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" />
+          <Property Type="Boolean" Name="HasImages" Nullable="true" />
+          <Property Type="String" Name="ImageThumbnail" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="GadgetInfo">
+          <Property Type="Int32" Name="GadgetId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="512" />
+          <Property Type="String" Name="View" Nullable="false" />
+          <Property Type="Int32" Name="DefaultColumn" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AreaType" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GalleryInfo">
+          <Property Type="Int32" Name="GalleryId" Nullable="false" />
+          <Property Type="Guid" Name="GalleryUid" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="150" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="String" Name="ImageThumbnail" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="SnapshotLite">
+          <Property Type="Int32" Name="SnapshotId" Nullable="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="150" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="Snapshot">
+          <Key>
+            <PropertyRef Name="SnapshotId" />
+          </Key>
+          <Property Name="SnapshotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Html" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="HotelId" />
+          </Key>
+          <Property Name="HotelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GuestGroup">
+          <Key>
+            <PropertyRef Name="GuestGroupId" />
+          </Key>
+          <Property Name="GuestGroupId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Guest1" Relationship="TooksCmsModel.FK_Guest_GuestGroup" FromRole="GuestGroup" ToRole="Guest1" />
+        </EntityType>
+        <EntityType Name="FoodChoice">
+          <Key>
+            <PropertyRef Name="FoodChoiceId" />
+          </Key>
+          <Property Name="FoodChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestId" Type="Int32" Nullable="false" />
+          <Property Name="Starter" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Main" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Dessert" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IsVeggie" Type="Boolean" />
+          <NavigationProperty Name="Guest1" Relationship="TooksCmsModel.FK_Guest_FoodChoice" FromRole="FoodChoice" ToRole="Guest1" />
+        </EntityType>
+        <EntityType Name="Guest1">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GuestType" Type="Byte" Nullable="false" />
+          <Property Name="GuestSide" Type="Byte" Nullable="false" />
+          <Property Name="InvitationSent" Type="Boolean" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Attending" Type="Boolean" />
+          <Property Name="GuestGroupId" Type="Int32" />
+          <Property Name="DietaryRequirements" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RSVPDate" Type="DateTime" Precision="3" />
+          <Property Name="RSVPIpAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FoodChoices" Relationship="TooksCmsModel.FK_Guest_FoodChoice" FromRole="Guest1" ToRole="FoodChoice" />
+          <NavigationProperty Name="GuestGroup" Relationship="TooksCmsModel.FK_Guest_GuestGroup" FromRole="Guest1" ToRole="GuestGroup" />
+        </EntityType>
+        <Association Name="FK_Guest_FoodChoice">
+          <End Type="TooksCmsModel.Guest1" Role="Guest1" Multiplicity="1" />
+          <End Type="TooksCmsModel.FoodChoice" Role="FoodChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest1">
+              <PropertyRef Name="GuestId" />
+            </Principal>
+            <Dependent Role="FoodChoice">
+              <PropertyRef Name="GuestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guest_GuestGroup">
+          <End Type="TooksCmsModel.GuestGroup" Role="GuestGroup" Multiplicity="0..1" />
+          <End Type="TooksCmsModel.Guest1" Role="Guest1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GuestGroup">
+              <PropertyRef Name="GuestGroupId" />
+            </Principal>
+            <Dependent Role="Guest1">
+              <PropertyRef Name="GuestGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TooksCmsModelStoreContainer" CdmEntityContainer="TooksCmsDAL">
+          <EntitySetMapping Name="ArticleTypes">
+            <EntityTypeMapping TypeName="TooksCmsModel.ArticleType">
+              <MappingFragment StoreEntitySet="ArticleType">
+                <ScalarProperty Name="ArticleTypeId" ColumnName="ArticleTypeId" />
+                <ScalarProperty Name="ArticleTypeUid" ColumnName="ArticleTypeUid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Assembly" ColumnName="Assembly" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BulletinTypes">
+            <EntityTypeMapping TypeName="TooksCmsModel.BulletinType">
+              <MappingFragment StoreEntitySet="BulletinType">
+                <ScalarProperty Name="BulletinTypeId" ColumnName="BulletinTypeId" />
+                <ScalarProperty Name="BulletinTypeUid" ColumnName="BulletinTypeUid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Assembly" ColumnName="Assembly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gadgets">
+            <EntityTypeMapping TypeName="TooksCmsModel.Gadget">
+              <MappingFragment StoreEntitySet="Gadget">
+                <ScalarProperty Name="GadgetId" ColumnName="GadgetId" />
+                <ScalarProperty Name="GadgetUid" ColumnName="GadgetUid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="DefaultColumn" ColumnName="DefaultColumn" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="TooksCmsModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+                <ScalarProperty Name="RatingUid" ColumnName="RatingUid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rating2ArticleType2Category">
+            <EntityTypeMapping TypeName="TooksCmsModel.Rating2ArticleType2Category">
+              <MappingFragment StoreEntitySet="Rating2ArticleType2Category">
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+                <ScalarProperty Name="ArticleTypeId" ColumnName="ArticleTypeId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Ordinal" ColumnName="Ordinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaticRoutes">
+            <EntityTypeMapping TypeName="TooksCmsModel.StaticRoute">
+              <MappingFragment StoreEntitySet="StaticRoute">
+                <ScalarProperty Name="StaticRoute1" ColumnName="StaticRoute" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="TooksCmsModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ArticleUid" ColumnName="ArticleUid" />
+                <ScalarProperty Name="ArticleTypeId" ColumnName="ArticleTypeId" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleComments">
+            <EntityTypeMapping TypeName="TooksCmsModel.ArticleComment">
+              <MappingFragment StoreEntitySet="ArticleComment">
+                <ScalarProperty Name="ArticleCommentId" ColumnName="ArticleCommentId" />
+                <ScalarProperty Name="ArticleCommentUid" ColumnName="ArticleCommentUid" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ParentCommentId" ColumnName="ParentCommentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleContents">
+            <EntityTypeMapping TypeName="TooksCmsModel.ArticleContent">
+              <MappingFragment StoreEntitySet="ArticleContent">
+                <ScalarProperty Name="ArticleContentId" ColumnName="ArticleContentId" />
+                <ScalarProperty Name="ArticleContentUid" ColumnName="ArticleContentUid" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleImages">
+            <EntityTypeMapping TypeName="TooksCmsModel.ArticleImage">
+              <MappingFragment StoreEntitySet="ArticleImage">
+                <ScalarProperty Name="ArticleImageId" ColumnName="ArticleImageId" />
+                <ScalarProperty Name="ArticleImageUid" ColumnName="ArticleImageUid" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bulletins">
+            <EntityTypeMapping TypeName="TooksCmsModel.Bulletin">
+              <MappingFragment StoreEntitySet="Bulletin">
+                <ScalarProperty Name="BulletinId" ColumnName="BulletinId" />
+                <ScalarProperty Name="BulletinUid" ColumnName="BulletinUid" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+                <ScalarProperty Name="BulletinTypeId" ColumnName="BulletinTypeId" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BulletinContents">
+            <EntityTypeMapping TypeName="TooksCmsModel.BulletinContent">
+              <MappingFragment StoreEntitySet="BulletinContent">
+                <ScalarProperty Name="BulletinContentId" ColumnName="BulletinContentId" />
+                <ScalarProperty Name="BulletinContentUid" ColumnName="BulletinContentUid" />
+                <ScalarProperty Name="BulletinId" ColumnName="BulletinId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactForms">
+            <EntityTypeMapping TypeName="TooksCmsModel.ContactForm">
+              <MappingFragment StoreEntitySet="ContactForm">
+                <ScalarProperty Name="ContactFormId" ColumnName="ContactFormId" />
+                <ScalarProperty Name="ContactFormUid" ColumnName="ContactFormUid" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="Public" ColumnName="Public" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galleries">
+            <EntityTypeMapping TypeName="TooksCmsModel.Gallery">
+              <MappingFragment StoreEntitySet="Gallery">
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+                <ScalarProperty Name="GalleryUid" ColumnName="GalleryUid" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GalleryImages">
+            <EntityTypeMapping TypeName="TooksCmsModel.GalleryImage">
+              <MappingFragment StoreEntitySet="GalleryImage">
+                <ScalarProperty Name="GalleryImageId" ColumnName="GalleryImageId" />
+                <ScalarProperty Name="GalleryImageUid" ColumnName="GalleryImageUid" />
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventLogs">
+            <EntityTypeMapping TypeName="TooksCmsModel.EventLog">
+              <MappingFragment StoreEntitySet="EventLog">
+                <ScalarProperty Name="EventLogId" ColumnName="EventLogId" />
+                <ScalarProperty Name="EventLogUid" ColumnName="EventLogUid" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="EventSource" ColumnName="EventSource" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="TooksCmsModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryUid" ColumnName="CategoryUid" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="TooksCmsModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryUid" ColumnName="CountryUid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ISO3166" ColumnName="ISO3166" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="TooksCmsModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="TagUid" ColumnName="TagUid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AreaTypes">
+            <EntityTypeMapping TypeName="TooksCmsModel.AreaType">
+              <MappingFragment StoreEntitySet="AreaType">
+                <ScalarProperty Name="AreaTypeId" ColumnName="AreaTypeId" />
+                <ScalarProperty Name="AreaTypeUid" ColumnName="AreaTypeUid" />
+                <ScalarProperty Name="AreaType1" ColumnName="AreaType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gadget2Role2AreaType">
+            <EntityTypeMapping TypeName="TooksCmsModel.Gadget2Role2AreaType">
+              <MappingFragment StoreEntitySet="Gadget2Role2AreaType">
+                <ScalarProperty Name="GadgetId" ColumnName="GadgetId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="AreaTypeId" ColumnName="AreaTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="TooksCmsModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleUid" ColumnName="RoleUid" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sites">
+            <EntityTypeMapping TypeName="TooksCmsModel.Site">
+              <MappingFragment StoreEntitySet="Site">
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="SiteUid" ColumnName="SiteUid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageVisits">
+            <EntityTypeMapping TypeName="TooksCmsModel.PageVisit">
+              <MappingFragment StoreEntitySet="PageVisit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AreaType" ColumnName="AreaType" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="SearchTerm" ColumnName="SearchTerm" />
+                <ScalarProperty Name="Referer" ColumnName="Referer" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="LinkType" ColumnName="LinkType" />
+                <ScalarProperty Name="PreviousId" ColumnName="PreviousId" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="UserLanguages" ColumnName="UserLanguages" />
+                <ScalarProperty Name="BrowserVersion" ColumnName="BrowserVersion" />
+                <ScalarProperty Name="BrowserName" ColumnName="BrowserName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="TooksCmsModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="AddressUid" ColumnName="AddressUid" />
+                <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="HouseName" ColumnName="HouseName" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactInfoes">
+            <EntityTypeMapping TypeName="TooksCmsModel.ContactInfo">
+              <MappingFragment StoreEntitySet="ContactInfo">
+                <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+                <ScalarProperty Name="ContactInfoUid" ColumnName="ContactInfoUid" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emails">
+            <EntityTypeMapping TypeName="TooksCmsModel.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="EmailUid" ColumnName="EmailUid" />
+                <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guests">
+            <EntityTypeMapping TypeName="TooksCmsModel.Guest">
+              <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+                <ScalarProperty Name="GuestUid" ColumnName="GuestUid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhoneNumbers">
+            <EntityTypeMapping TypeName="TooksCmsModel.PhoneNumber">
+              <MappingFragment StoreEntitySet="PhoneNumber">
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+                <ScalarProperty Name="PhoneNumberUid" ColumnName="PhoneNumberUid" />
+                <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TooksCmsModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserUid" ColumnName="UserUid" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreationIP" ColumnName="CreationIP" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="LastLoginIP" ColumnName="LastLoginIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Article2Tag" TypeName="TooksCmsModel.Article2Tag" StoreEntitySet="Article2Tag">
+            <EndProperty Name="Article">
+              <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+            </EndProperty>
+            <EndProperty Name="Tag">
+              <ScalarProperty Name="TagId" ColumnName="TagId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Gallery2Tag" TypeName="TooksCmsModel.Gallery2Tag" StoreEntitySet="Gallery2Tag">
+            <EndProperty Name="Gallery">
+              <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+            </EndProperty>
+            <EndProperty Name="Tag">
+              <ScalarProperty Name="TagId" ColumnName="TagId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="User2Role" TypeName="TooksCmsModel.User2Role" StoreEntitySet="User2Role">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteRatingLinks" FunctionName="TooksCmsModel.Store.DeleteRatingLinks" />
+          <FunctionImportMapping FunctionImportName="GetGadgetInfo" FunctionName="TooksCmsModel.Store.GadgetInfoSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TooksCmsModel.GadgetInfo">
+                <ScalarProperty Name="GadgetId" ColumnName="GadgetId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="DefaultColumn" ColumnName="DefaultColumn" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="AreaType" ColumnName="AreaType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetArticleInfo" FunctionName="TooksCmsModel.Store.ArticleInfoSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TooksCmsModel.ArticleInfo">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ArticleUid" ColumnName="ArticleUid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ArticleTypeId" ColumnName="ArticleTypeId" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HasImages" ColumnName="HasImages" />
+                <ScalarProperty Name="ImageThumbnail" ColumnName="ImageThumbnail" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchArticles" FunctionName="TooksCmsModel.Store.ArticleSearch">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGalleryInfo" FunctionName="TooksCmsModel.Store.GalleryInfoSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TooksCmsModel.GalleryInfo">
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+                <ScalarProperty Name="GalleryUid" ColumnName="GalleryUid" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ImageThumbnail" ColumnName="ImageThumbnail" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectCategoryInfo" FunctionName="TooksCmsModel.Store.CategoryInfoSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TooksCmsModel.CategoryInfo">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="FullCategoryName" ColumnName="FullCategoryName" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+                <ScalarProperty Name="ParentDescription" ColumnName="ParentDescription" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBrowserStats" FunctionName="TooksCmsModel.Store.SelectBrowserStats">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="TooksCmsModel.BrowserStat">
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="BrowserName" ColumnName="BrowserName" />
+                <ScalarProperty Name="BrowserVersion" ColumnName="BrowserVersion" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUniqueVisits" FunctionName="TooksCmsModel.Store.SelectUniqueVisits">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="TooksCmsModel.UniqueVisit">
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ArticleInfoSearch" FunctionName="TooksCmsModel.Store.ArticleInfoSearch">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="TooksCmsModel.ArticleInfo">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ArticleUid" ColumnName="ArticleUid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ArticleTypeId" ColumnName="ArticleTypeId" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HasImages" ColumnName="HasImages" />
+                <ScalarProperty Name="ImageThumbnail" ColumnName="ImageThumbnail" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteArticle" FunctionName="TooksCmsModel.Store.DeleteArticle" />
+          <FunctionImportMapping FunctionImportName="GetSnapshotLite" FunctionName="TooksCmsModel.Store.SnapshotLiteSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TooksCmsModel.SnapshotLite">
+                <ScalarProperty Name="SnapshotId" ColumnName="SnapshotId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Snapshots">
+            <EntityTypeMapping TypeName="TooksCmsModel.Snapshot">
+              <MappingFragment StoreEntitySet="Snapshot">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Html" ColumnName="Html" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="SnapshotId" ColumnName="SnapshotId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="TooksCmsModel.Hotel">
+              <MappingFragment StoreEntitySet="Hotel">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuestGroups">
+            <EntityTypeMapping TypeName="TooksCmsModel.GuestGroup">
+              <MappingFragment StoreEntitySet="GuestGroup">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GuestGroupId" ColumnName="GuestGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodChoices">
+            <EntityTypeMapping TypeName="TooksCmsModel.FoodChoice">
+              <MappingFragment StoreEntitySet="FoodChoice">
+                <ScalarProperty Name="IsVeggie" ColumnName="IsVeggie" />
+                <ScalarProperty Name="Dessert" ColumnName="Dessert" />
+                <ScalarProperty Name="Main" ColumnName="Main" />
+                <ScalarProperty Name="Starter" ColumnName="Starter" />
+                <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+                <ScalarProperty Name="FoodChoiceId" ColumnName="FoodChoiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guest1">
+            <EntityTypeMapping TypeName="TooksCmsModel.Guest1">
+              <MappingFragment StoreEntitySet="Guest1">
+                <ScalarProperty Name="RSVPIpAddress" ColumnName="RSVPIpAddress" />
+                <ScalarProperty Name="RSVPDate" ColumnName="RSVPDate" />
+                <ScalarProperty Name="DietaryRequirements" ColumnName="DietaryRequirements" />
+                <ScalarProperty Name="GuestGroupId" ColumnName="GuestGroupId" />
+                <ScalarProperty Name="Attending" ColumnName="Attending" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="InvitationSent" ColumnName="InvitationSent" />
+                <ScalarProperty Name="GuestSide" ColumnName="GuestSide" />
+                <ScalarProperty Name="GuestType" ColumnName="GuestType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
